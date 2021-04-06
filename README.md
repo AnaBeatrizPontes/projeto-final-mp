@@ -1,2 +1,2 @@
 # projeto-final-mp
-Sistema que oferece questionários on-line.
+Sistema que oferece questionários online.
