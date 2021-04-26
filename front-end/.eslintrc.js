@@ -1,13 +1,10 @@
-module.exports = {
-  "parser": "babel-eslint",
-
-  "extends": [
-    "plugin:prettier/recommended"
+{
+  "extends";[
+    "plugin:prettier/recommended",
   ],
+    "plugins";["prettier"],
 
-  "plugins": ["prettier"],
-
-  "rules": {
-    "prettier/prettier": "error"
+      "rules"; {
+    "prettier/prettier"; "error"
   }
 }
