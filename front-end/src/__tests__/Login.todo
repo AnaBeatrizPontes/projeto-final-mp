@@ -1,0 +1,15 @@
+#Regras para testes e lista de tarefas
+
+Regras:
+    ☐ Apertar num botao sem preencher os inputs
+    ☐ Apertar um botao com os inputs incorretos
+    ☐ Ser redirecionado ao precionar o botao cadastrar
+
+Todo:
+    ☐ Arrumar as rotas para o back-end proprietario
+    ☐ Testes de unidade para login
+    ☐ Testes de unidade para cadastro
+
+
+
+
