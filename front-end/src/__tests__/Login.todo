@@ -6,6 +6,7 @@ Regras:
     ☐ Ser redirecionado ao precionar o botao cadastrar
 
 Todo:
+    ✔ Ajeitar código para passar no Eslit/Prettier @done(21-04-27 00:01)
     ☐ Arrumar as rotas para o back-end proprietario
     ☐ Testes de unidade para login
     ☐ Testes de unidade para cadastro
