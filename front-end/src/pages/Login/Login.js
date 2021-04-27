@@ -95,7 +95,7 @@ function PagesLogin() {
                     </button>
                     </div>
                     <div>
-                        <h4>Não tenho conta.</h4>
+                        <h4>Não tenho conta</h4>
                     </div>
 
                     <div>
