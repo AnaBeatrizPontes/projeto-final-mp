@@ -7,10 +7,6 @@
     background-color: rgba(0,0,0, 0.7);
 }
 
-.back {
-    background-image: url('../../pages/background.jpg');
-}
-
 .register-box {
     margin-left: 1rem;
     position: flex;
