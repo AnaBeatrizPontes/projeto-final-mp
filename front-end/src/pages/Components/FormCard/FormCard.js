@@ -3,6 +3,7 @@ import './FormCard.css';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import EditIcon from '@material-ui/icons/Edit';
 import FileCopyIcon from '@material-ui/icons/FileCopy';
+import AssignmentOutlinedIcon from '@material-ui/icons/AssignmentOutlined';
 
 const FormCard = ({ form }) => {
   return (
@@ -11,7 +12,7 @@ const FormCard = ({ form }) => {
       <span className="card-box__info">{form.description}</span>
       <footer className="card-box__footer">
         <a href={form.link} target="blank" className="card-box__link">
-          Abrir Questionário
+          <AssignmentOutlinedIcon style={{ fontSize: 20 }} />
         </a>
         <a href={form.link} target="blank" className="card-box__edit">
           <EditIcon style={{ fontSize: 20 }} />

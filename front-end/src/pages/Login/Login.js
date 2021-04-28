@@ -82,7 +82,7 @@ function PagesLogin() {
           </div>
 
           <div>
-            <button onClick={mandaProBack} className="mailButton">
+            <button onClick={mandaProBack} className="login-submit">
               Entrar
             </button>
           </div>
@@ -91,7 +91,7 @@ function PagesLogin() {
           </div>
 
           <div>
-            <button onClick={mandaRegistrar} className="passButton">
+            <button onClick={mandaRegistrar} className="register-call">
               Cadastrar
             </button>
           </div>

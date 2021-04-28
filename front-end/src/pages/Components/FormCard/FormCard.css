@@ -30,22 +30,22 @@
   justify-content: center;
 }
 
-.card-box__link {
+.card-box__link{
   margin-right: 5px;
-  border: 1px solid #3498DB;
+  border: 1px solid #11283b;
   border-radius: 4px;
-  color: #3498DB;
+  color: #11283b;
   text-decoration: none;
-  padding: 8px 10px;
+  padding: 5px 10px;
 }
 
 .card-box__link:hover{
-  border: 1px solid #3498DB;
+  border: 1px solid #11283b;
   border-radius: 4px;
   color: white;
   text-decoration: none;
-  padding: 8px 10px;
-  background-color: #3498DB;
+  background-color: #11283b
+  ;
 }
 
 .card-box__delete{

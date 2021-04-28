@@ -114,7 +114,7 @@ body {
   margin-right: 10px;
 }
 
-.mailButton {
+.login-submit {
   font-family: 'Roboto Slab';
   width: 500px;
   background-color: grey;
@@ -128,7 +128,7 @@ body {
   outline-width: 0;
 }
 
-.passButton {
+.register-call {
   font-family: 'Roboto Slab';
   width: 500px;
   background-color: grey;
@@ -142,13 +142,13 @@ body {
   outline-width: 0;
 }
 
-.login-right button.mailButton:hover {
+.login-right button.login-submit:hover {
   cursor: pointer;
   background-color: #00924c;
   color: white;
 }
 
-.login-right button.passButton:hover {
+.login-right button.register-call:hover {
   cursor: pointer;
   background-color: #00924c;
   color: white;
