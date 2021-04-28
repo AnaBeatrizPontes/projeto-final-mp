@@ -15,7 +15,6 @@ function PagesLogin() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showImage, setShowImage] = useState(false);
-  const [errInput, setErrInput] = useState(false);
 
   const history = useHistory();
 
@@ -28,12 +27,13 @@ function PagesLogin() {
       .then((resp) => {
         const { data } = resp;
         if (data) {
+          console.log(data);
           localStorage.setItem('token', data);
+          localStorage.setItem('usrName', email);
           history.push('/home');
         }
       })
       .catch((err) => {
-        setErrInput(true);
         alert('Email ou senha inválidos');
         console.log(err.message);
       });
