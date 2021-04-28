@@ -73,10 +73,9 @@ function NavBar() {
                 className="nav-links"
                 onClick={closeMobileMenu}
               >
-                Config
+                {localStorage.getItem('usrName')}
               </Link>
             </li>
-            <li className="nav-user">{localStorage.getItem('usrName')}</li>
           </ul>
           {button && (
             <Button buttonStyle="btn--outline" onClick={logOut}>

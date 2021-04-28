@@ -1,4 +1,5 @@
 .card-box {
+  font-family: 'Roboto Slab';
   margin: 1rem;
   border-radius: 8px;
   border: 1px solid #C3C3C3;
@@ -23,10 +24,10 @@
 }
 
 .card-box__footer {
-  position: absolute;
   display: flex;
+  flex-direction: row;
   align-items: center;
-  padding: 20px;
+  justify-content: center;
 }
 
 .card-box__link {
@@ -47,20 +48,55 @@
   background-color: #3498DB;
 }
 
-.card-box__delete {
+.card-box__delete{
+  margin-right: 5px;
   border: 1px solid red;
   border-radius: 4px;
   color: red;
-  padding: 8px 10px;
-  display: flex;
-  justify-content: center; 
-  align-items: center;
+  text-decoration: none;
+  padding: 5px 10px;
 }
 
 .card-box__delete:hover{
   border: 1px solid red;
   border-radius: 4px;
   color: white;
-  padding: 8px 10px;
+  text-decoration: none;
   background-color: red;
+}
+
+.card-box__edit{
+  margin-right: 5px;
+  border: 1px solid green;
+  border-radius: 4px;
+  color: green;
+  text-decoration: none;
+  padding: 5px 10px;
+}
+
+.card-box__edit:hover{
+  border: 1px solid green;
+  border-radius: 4px;
+  color: white;
+  text-decoration: none;
+  background-color: green
+  ;
+}
+
+.card-box__copy{
+  margin-right: 5px;
+  border: 1px solid purple;
+  border-radius: 4px;
+  color: purple;
+  text-decoration: none;
+  padding: 5px 10px;
+}
+
+.card-box__copy:hover{
+  border: 1px solid purple;
+  border-radius: 4px;
+  color: white;
+  text-decoration: none;
+  background-color: purple
+  ;
 }
