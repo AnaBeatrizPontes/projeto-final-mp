@@ -1,9 +1,9 @@
-import style from './Opcoes.module.scss'
-export default function Opcoes(){
-    return(
-        <div className={style.container}>
+import './Opcoes.css';
+export default function Opcoes() {
+    return (
+        <div className="container">
             <h1>oiiiiiiiiiiiiii</h1>
-            <hr/>
+            <hr />
         </div>
     );
 }
