@@ -1,4 +1,4 @@
-import './HomepageRespondente.style.css';
+import style from './HomepageRespondente.module.css';
 import Card from '../../components/Card/Card';
 import { useEffect, useState } from 'react';
 import MaisAtribuidos from '../../components/MaisAtribuidos/MaisAtribuidos';
@@ -60,20 +60,20 @@ function App(props) {
         <MaisAtribuidos obj={all} onClose={() => setShowAtribuidos(false)} />
       ) : null}
       <header>
-        <img src="./assents/logo.png" alt="Logo" className="logo" />
-        <div className="info">
-          <button className="opcao">
-            {showOpcoes ? <img src="./assents/seta-cima.svg" className="seta" onClick={handleClick}/> : <img src="./assents/seta-baixo.svg" className="seta" onClick={handleClick}/>}
+        <img src="./assents/logo.png" alt="Logo" className={style.logo} />
+        <div className={style.info}>
+          <button className={style.opcao}>
+            {showOpcoes ? <img src="./assents/seta-cima.svg" className={style.seta} onClick={handleClick}/> : <img src="./assents/seta-baixo.svg" className={style.seta} onClick={handleClick}/>}
             {showOpcoes ? <Opcoes /> : null}
           </button>
-          <h2 className="tituloBranco">Jhon Borges</h2>
+          <h2 className={style.tituloBranco}>Jhon Borges</h2>
         </div>
       </header>
 
       <main onClick={() => setShowOpcoes(false)}>
-        <div className="cards">
-          <h2 className="titulo">Últimos atribuídos</h2>
-          <div className="ultimosForm">
+        <div className={style.cards}>
+          <h2 className={style.titulo}>Últimos atribuídos</h2>
+          <div className={style.ultimosForm}>
             {last.map((form) => {
               return (
                 <div key={form.id}>
@@ -82,20 +82,20 @@ function App(props) {
               );
             })}
 
-            <div className="mostar-mais-formularios-atribuidos">
+            <div className={style.mostar_mais_formularios_atribuidos}>
               <a
                 onClick={() => setShowAtribuidos(true)}
                 href="#"
-                className="mostrar-formulario-atribuido"
+                className={style.mostrar_formulario_atribuido}
               >
-                <img src="./assents/olho.svg" className="olho" />
+                <img src="./assents/olho.svg" className={style.olho} />
                 <h2>Ver mais...</h2>
               </a>
             </div>
           </div>
 
-          <div className="todosForm">
-            <h2 className="titulo">Formulários respondidos</h2>
+          <div className={style.todosForm}>
+            <h2 className={style.titulo}>Formulários respondidos</h2>
 
             <table cellSpacing={0}>
               <thead>

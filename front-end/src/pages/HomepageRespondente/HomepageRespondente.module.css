@@ -103,7 +103,7 @@
     height: 1rem;
   }
   
-  .mostrar-formulario-atribuido{
+  .mostrar_formulario_atribuido{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -114,7 +114,7 @@
     border-radius: 1.2rem;
   }
 
-  .mostrar-formulario-atribuido .olho{
+  .mostrar_formulario_atribuido .olho{
     width: 30%;
     height: 30%;
     margin-bottom: 1rem;
