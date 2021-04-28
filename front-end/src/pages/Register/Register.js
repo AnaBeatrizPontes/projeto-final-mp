@@ -51,7 +51,7 @@ function PagesRegister() {
             onClick={mandaEsseTrecoDeVolta}
             className="backButton"
           >
-            Voltar
+            Login
           </button>
           <h1 className="register-titulo">Registrar no App</h1>
 

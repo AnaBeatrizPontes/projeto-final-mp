@@ -1,20 +1,13 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import NavBar from '../Components/NavBar/NavBar';
 
 import './Home.css';
 
 function PagesHome() {
-  const history = useHistory();
-
-  const logOut = () => {
-    localStorage.removeItem('token');
-    history.push('/');
-  };
-
   return (
     <div className="pagina">
+      <NavBar />
       <h1>HOME PAGE</h1>
-      <button onClick={logOut}>Sair</button>
     </div>
   );
 }
