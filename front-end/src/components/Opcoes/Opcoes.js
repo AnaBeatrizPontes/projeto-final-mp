@@ -1,4 +1,4 @@
-import style from './Opcoes.module.scss';
+import style from './Opcoes.module.css';
 export default function Opcoes() {
   return (
     <div className={style.container}>
