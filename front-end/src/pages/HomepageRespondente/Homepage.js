@@ -2,11 +2,13 @@ import './HomepageRespondente.style.css';
 import Card from '../../components/Card/Card';
 import { useEffect, useState } from 'react';
 import MaisAtribuidos from '../../components/MaisAtribuidos/MaisAtribuidos'
+import Opcoes from '../../components/Opcoes/Opcoes'
 function App(props) {
   const [objeto, setObjeto] = useState([]);
   const [user, setUser] = useState();
   const [showAtribuidos, setShowAtribuidos] = useState(false);
-  const last = objeto.slice(0, 3);
+  const [showOpcoes, setShowOpcoes] = useState(false)
+  const last = objeto.slice(0, 2);
   const all = objeto.slice(3, objeto.length);
   useEffect(() => {
     fetch('http://localhost:3333/formularios')
@@ -54,8 +56,11 @@ function App(props) {
       <header>
         <img src="./assents/logo.png" alt="Logo" className="logo" />
         <div className="info">
+          <button className="opcao" onClick={() => setShowOpcoes(true)}>
+            \/
+            {showOpcoes ? <Opcoes/> : null}
+          </button>
           <h2 className="tituloBranco">Jhon Borges</h2>
-          <button className="opcao">\/</button>
         </div>
       </header>
 
