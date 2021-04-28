@@ -2,12 +2,11 @@ module.exports = {
   "parser": "babel-eslint",
 
   "extends": [
-    "plugin:prettier/recommended"
+		"plugin:prettier/recommended",
   ],
-
   "plugins": ["prettier"],
 
   "rules": {
-    "prettier/prettier": "error"
+    "prettier/prettier": "warn",
   }
 }
