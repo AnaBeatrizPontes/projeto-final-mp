@@ -47,6 +47,11 @@
     background-color: transparent;
     border: none;
   }
+
+  .seta{
+    width: 1rem;
+    height: 1rem;
+  }
   .ultimosForm {
     display: flex;
     flex-direction: row;
