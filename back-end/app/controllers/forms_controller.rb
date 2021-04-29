@@ -3,13 +3,10 @@ class FormsController < ApplicationController
 
 	def index
 		@forms = Form.includes(:questions).all
-		# @forms = Form.all
         render json: @forms, include: [:questions]
 	end
 
 	def show
-		# @form = Form.find(params[:id])
-		# render json: @form, status: :ok
 		@form = Form.includes(:questions).where(id: params[:id])
         render json: @form, include: [:questions], status: :ok
 	end
@@ -24,6 +21,11 @@ class FormsController < ApplicationController
 		end
 	end
 
+	def form_per_user
+		@forms = Form.includes(:questions).where(user_id: params[:user_id])
+		render json: @forms, include: [:questions], status: :ok
+	end
+
 	private
 
     def set_form
@@ -31,7 +33,7 @@ class FormsController < ApplicationController
     end
  
     def form_params
-      params.require(:form).permit(:title, :description, :link)
+      params.require(:form).permit(:title, :description, :link, :user_id)
     end
 	
 	
