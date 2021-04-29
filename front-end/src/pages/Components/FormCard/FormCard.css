@@ -48,6 +48,23 @@
   ;
 }
 
+.card-box__answers{
+  margin-right: 5px;
+  border: 1px solid grey;
+  border-radius: 4px;
+  color: grey;
+  text-decoration: none;
+  padding: 5px 10px;
+}
+
+.card-box__answers:hover{
+  border: 1px solid grey;
+  border-radius: 4px;
+  color: white;
+  text-decoration: none;
+  background-color: grey;
+}
+
 .card-box__delete{
   margin-right: 5px;
   border: 1px solid red;

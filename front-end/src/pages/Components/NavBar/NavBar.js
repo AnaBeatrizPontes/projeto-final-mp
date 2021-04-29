@@ -54,7 +54,11 @@ function NavBar() {
           </div>
           <ul className={showMenu ? 'nav-menu active' : 'nav-menu'}>
             <li className="nav-item">
-              <Link to="/notfound" className="nav-links" onClick={closeMobileMenu}>
+              <Link
+                to="/notfound"
+                className="nav-links"
+                onClick={closeMobileMenu}
+              >
                 Home
               </Link>
             </li>

@@ -27,13 +27,12 @@ body {
 .login-logo img {
   position: flex;
   right: auto;
-  width: 540px;
-  height: 541px;
+  width: 500px;
+  height: 500px;
 }
 
 .login-right {
   margin-left: 2rem;
-  position: flex;
   align-items: center;
   justify-content: center;
   background-color: #11283b;
@@ -114,7 +113,7 @@ body {
   margin-right: 10px;
 }
 
-.login-submit {
+.submitButton {
   font-family: 'Roboto Slab';
   width: 500px;
   background-color: grey;
@@ -128,27 +127,8 @@ body {
   outline-width: 0;
 }
 
-.register-call {
-  font-family: 'Roboto Slab';
-  width: 500px;
-  background-color: grey;
-  color: black;
-  font-weight: 700;
-  height: 50px;
-  border-radius: 50px;
-  font-size: 20px;
-  margin-top: 10px;
-  border: none;
-  outline-width: 0;
-}
 
-.login-right button.login-submit:hover {
-  cursor: pointer;
-  background-color: #00924c;
-  color: white;
-}
-
-.login-right button.register-call:hover {
+.login-right button.submitButton:hover {
   cursor: pointer;
   background-color: #00924c;
   color: white;

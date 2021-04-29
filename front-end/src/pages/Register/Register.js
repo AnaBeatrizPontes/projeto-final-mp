@@ -99,7 +99,7 @@ function PagesRegister() {
             </div>
           </div>
           <div>
-            <button onClick={mandaProBack} className="registerButton">
+            <button onClick={mandaProBack} className="submitButton">
               Cadastrar
             </button>
           </div>
