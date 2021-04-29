@@ -2,13 +2,16 @@ class FormsController < ApplicationController
 	  	before_action :set_form, only: [:show, :update, :destroy]
 
 	def index
-		@forms = Form.all
-        render json: @forms
+		@forms = Form.includes(:questions).all
+		# @forms = Form.all
+        render json: @forms, include: [:questions]
 	end
 
 	def show
-		@form = Form.find(params[:id])
-        render json: @form
+		# @form = Form.find(params[:id])
+		# render json: @form, status: :ok
+		@form = Form.includes(:questions).where(id: params[:id])
+        render json: @form, include: [:questions], status: :ok
 	end
 
 	def create
