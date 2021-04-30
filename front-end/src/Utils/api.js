@@ -24,7 +24,16 @@ export const login = (email, password) => {
 };
 
 export const register = (email, password, firstName) => {
-  return api.post('/users', { email, password, firstName });
+  return api.post('/users', {
+    email: email,
+    password: password,
+    password_confirmation: password,
+    name: firstName,
+  });
+};
+
+export const getFormPerUser = (user_id) => {
+  return api.get(`/forms-per-user/${user_id}`, { user_id: user_id });
 };
 
 export const getQuestionario = (questionarioId) => {

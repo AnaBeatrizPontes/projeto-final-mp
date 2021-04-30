@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import PagesLogin from './Login/Login';
 import PagesRegister from './Register/Register';
@@ -13,21 +13,15 @@ import PagesMyFormsList from './MyFormsList/MyFormsList';
 const Root = () => {
 
   return (
-    <>
-      <Router>
-        <PrivatePage>
-          <NavBar />
-        </PrivatePage>
-        <Switch>
-          <PrivateRoute exact path="/myforms" component={PagesMyFormsList} />
-          <Route exact path="/register" component={PagesRegister} />
-          <Route exact path="/" component={PagesLogin} />
-          <PrivateRoute exact path="/home" component={HomepageRespondente} />
-          <PrivateRoute exact path="/respostaQuestionario" component={RespostaQuestionario} />
-          <PrivateRoute component={PagesNotFound} />
-        </Switch>
-      </Router>
-    </>
+    <Router>
+      <Switch>
+        <PrivateRoute exact path="/myforms" component={PagesMyFormsList} />
+        <Route exact path="/register" component={PagesRegister} />
+        <Route exact path="/login" component={PagesLogin} />
+        <PrivateRoute exact path="/respostaQuestionario" component={RespostaQuestionario} />
+        <PrivateRoute component={PagesNotFound} />
+      </Switch>
+    </Router>
   );
 
 };

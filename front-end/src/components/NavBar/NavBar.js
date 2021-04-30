@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './NavBar.css';
 import { useHistory } from 'react-router-dom';
 
-// import logo from '/logo.png';
+import logo from '../../pages/logo.png';
 import MenuIcon from '@material-ui/icons/Menu';
 import CloseIcon from '@material-ui/icons/Close';
 import { Button } from '../Button/Button';
@@ -43,7 +43,7 @@ function NavBar() {
       <nav className="navbar">
         <div className="navbar-container">
           <Link to="/home" className="navbar-logo">
-            <img src="https://picsum.photos/315/315" alt="Logo" />
+            <img src={logo} alt="Logo" />
           </Link>
           <div className="menu-icon">
             {showMenu ? (
@@ -73,12 +73,11 @@ function NavBar() {
             </li>
             <li className="nav-item">
               <Link
-                to="/respostaQuestionario"
+                to="/notfound"
                 className="nav-links"
                 onClick={closeMobileMenu}
               >
                 {localStorage.getItem('usrName')}
-                Teste perguntas
               </Link>
             </li>
           </ul>
