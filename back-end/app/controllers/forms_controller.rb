@@ -26,6 +26,14 @@ class FormsController < ApplicationController
 		render json: @forms, include: [:questions], status: :ok
 	end
 
+	def destroy
+    	if @form.destroy
+			render status: :ok
+		else
+			render json: { errors: 'Não foi possivel deletar o questionario' }, status: :unprocessable_entity
+		end	
+  	end
+
 	private
 
     def set_form
