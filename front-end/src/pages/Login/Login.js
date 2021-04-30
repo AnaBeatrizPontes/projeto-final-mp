@@ -28,8 +28,8 @@ function PagesLogin() {
         const { data } = resp;
         if (data) {
           console.log(data);
-          localStorage.setItem('token', data);
-          localStorage.setItem('usrName', email);
+          localStorage.setItem('token', data.token);
+          localStorage.setItem('usrName', data.name);
           history.push('/home');
         }
       })
