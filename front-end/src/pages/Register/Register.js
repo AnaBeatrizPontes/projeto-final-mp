@@ -24,7 +24,7 @@ function PagesRegister() {
   };
 
   const mandaProBack = () => {
-    register(email, password, firstName, lastName)
+    register(email, password, firstName)
       .then((resp) => {
         const { data } = resp;
         if (data) {
