@@ -69,11 +69,11 @@ function NavBar() {
             </li>
             <li className="nav-item">
               <Link
-                to="/notfound"
+                to="/respostaQuestionario"
                 className="nav-links"
                 onClick={closeMobileMenu}
               >
-                Config
+                Teste perguntas
               </Link>
             </li>
             <li className="nav-user">{localStorage.getItem('usrName')}</li>
