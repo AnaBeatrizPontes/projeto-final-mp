@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   post '/auth/login', to: 'authentication#login'
 #   get '/*a', to: 'application#not_found'
 
-
   resources :forms
   get '/forms-per-user/:user_id', to: 'forms#form_per_user'
   resources :questions

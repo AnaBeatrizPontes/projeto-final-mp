@@ -51,7 +51,7 @@ function PagesLogin() {
     <div className="back">
       <div className="login">
         <div className="login-logo">
-          <img src={logo} alt="Logo" />
+          <img src="https://picsum.photos/315/315" alt="Logo" />
         </div>
 
         <div className="login-right">

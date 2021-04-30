@@ -12,7 +12,6 @@ const FormCard = ({ form }) => {
   const urlEdit = `http:localhost:3000/forms/${form.id}`;
   const urlCopy = form.link;
   const urlDelete = form.link;
-
   return (
     <div className="card-box" key={form.id}>
       <h1 className="card-box__title">{form.title}</h1>
