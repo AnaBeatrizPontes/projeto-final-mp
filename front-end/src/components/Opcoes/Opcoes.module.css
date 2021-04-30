@@ -1,9 +1,14 @@
 .container{
+    padding: 0 0.5rem;
     margin-top: 1rem;
     position: absolute;
     max-width: 10rem;
-    height: 20rem;
+    
     background-color: white;
     border-radius: .5rem;
     border: 1px solid rgba(0,0,0, 0.7) ;
+}
+
+span{
+    margin: 0.4rem 0;
 }
