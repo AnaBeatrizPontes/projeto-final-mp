@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import './Login.css';
-import logo from './logo.png';
+import logo from '/logo.png';
 
 import MailIcon from '@material-ui/icons/Mail';
 import LockIcon from '@material-ui/icons/Lock';
@@ -82,7 +82,7 @@ function PagesLogin() {
           </div>
 
           <div>
-            <button onClick={mandaProBack} className="mailButton">
+            <button onClick={mandaProBack} className="submitButton">
               Entrar
             </button>
           </div>
@@ -91,7 +91,7 @@ function PagesLogin() {
           </div>
 
           <div>
-            <button onClick={mandaRegistrar} className="passButton">
+            <button onClick={mandaRegistrar} className="submitButton">
               Cadastrar
             </button>
           </div>

@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import PagesLogin from './Login/Login';
 import PagesRegister from './Register/Register';
-import PagesHome from './Home/Home'
 import RespostaQuestionario from './RespostaQuestionario/RespostaQuestionario';
 import PagesNotFound from './NotFound';
 import PrivateRoute from './PrivateRoute';
@@ -17,7 +16,6 @@ const Root = () => {
         <NavBar />
         <Switch>
           <PrivateRoute exact path="/myforms" component={PagesMyFormsList} />
-          <PrivateRoute exact path="/home" component={PagesHome} />
           <Route exact path="/register" component={PagesRegister} />
           <Route exact path="/" component={PagesLogin} />
           <Route exact path="/homepage" component={HomepageRespondente} />

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import FormCard from '../Components/FormCard/FormCard';
+import FormCard from '../components/FormCard/FormCard';
 import 'normalize.css';
 import './MyFormsList.css';
 import axios from 'axios';
@@ -9,6 +9,9 @@ import SearchIcon from '@material-ui/icons/Search';
 function PagesMyFormsList() {
   const [forms, setForms] = useState([]);
   const [search, setSearch] = useState('');
+  const [listPosition, setListPosition] = useState(1);
+
+  const listID = () => setListPosition(listPosition + 1);
 
   const params = {};
   if (search) {
@@ -34,7 +37,7 @@ function PagesMyFormsList() {
       </div>
       <div className="caixaDeForms">
         {forms.map((forms) => (
-          <FormCard form={forms} />
+          <FormCard form={forms} key={listID} />
         ))}
       </div>
     </div>
