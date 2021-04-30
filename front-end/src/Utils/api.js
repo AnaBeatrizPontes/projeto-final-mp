@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const api = axios.create({
-  baseURL: 'http://localhost:3000/',
+  baseURL: 'http://localhost:3000',
   headers: {
     'Content-Type': 'application/json',
   },
@@ -24,5 +24,14 @@ export const login = (email, password) => {
 };
 
 export const register = (email, password, firstName) => {
-  return api.post('/users', { email, password, firstName });
+  return api.post('/users', {
+    email: email,
+    password: password,
+    password_confirmation: password,
+    name: firstName,
+  });
+};
+
+export const getFormPerUser = (user_id) => {
+  return api.get(`/forms-per-user/${user_id}`, { user_id: user_id });
 };

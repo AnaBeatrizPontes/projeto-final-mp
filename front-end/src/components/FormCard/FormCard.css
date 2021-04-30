@@ -54,7 +54,7 @@
   border-radius: 4px;
   color: grey;
   text-decoration: none;
-  padding: 5px 10px;
+  padding: 7px 10px;
 }
 
 .card-box__answers:hover{
@@ -80,6 +80,7 @@
   color: white;
   text-decoration: none;
   background-color: red;
+  cursor: pointer;
 }
 
 .card-box__edit{

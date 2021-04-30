@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import FormCard from '../components/FormCard/FormCard';
-import NavBar from '../components/NavBar/NavBar';
+import FormCard from '../../components/FormCard/FormCard';
+import NavBar from '../../components/NavBar/NavBar';
 import 'normalize.css';
 import './MyFormsList.css';
-import axios from 'axios';
+
+//API
+import { getFormPerUser } from '../../Utils/api';
 
 import SearchIcon from '@material-ui/icons/Search';
+import axios from 'axios';
 
 function PagesMyFormsList() {
   const [forms, setForms] = useState([]);
@@ -19,11 +22,24 @@ function PagesMyFormsList() {
     params.title_like = search;
   }
 
-  useEffect(() => {
-    axios.get('http://localhost:5000/forms', { params }).then((resp) => {
-      setForms(resp.data);
-    });
-  }, [search]);
+  const { user_id } = useState(localStorage.getItem('id'));
+
+  //useEffect(() => {
+  //  getFormPerUser(user_id)
+  //    .then((res) => {
+  //      setForms(res.data);
+  //      console.log(forms);
+  //    })
+  //    .catch((err) => {
+  //      console.log(err);
+  //    });
+  //}, [search]);
+
+  //useEffect(() => {
+  //  axios.get('http://localhost:5000/forms', { params }).then((resp) => {
+  //    setForms(resp.data);
+  //  });
+  //}, [search]);
 
   return (
     <div className="myFormsList">
@@ -37,11 +53,15 @@ function PagesMyFormsList() {
         />
         <SearchIcon />
       </div>
-      <div className="caixaDeForms">
-        {forms.map((forms) => (
-          <FormCard form={forms} key={listID} />
-        ))}
-      </div>
+      {!(forms.length == 0) ? (
+        <div className="caixaDeForms">
+          {forms.map(function (form) {
+            return <FormCard key={form.id} form={form} />;
+          })}
+        </div>
+      ) : (
+        <h1>Voce nao possui quests</h1>
+      )}
     </div>
   );
 }

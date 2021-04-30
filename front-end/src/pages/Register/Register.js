@@ -70,7 +70,6 @@ function PagesRegister() {
               value={lastName}
               onChange={(clickEvent) => setLastName(clickEvent.target.value)}
             />
-
           </div>
 
           <div className="registerInputEmail">
