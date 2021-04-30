@@ -33,7 +33,7 @@ function PagesRegister() {
       })
       .catch((err) => {
         alert('Erro ao cadastrar, confira os dados inseridos');
-        console.log(err.message);
+        console.log("ERRO", err.message);
       });
   };
 
