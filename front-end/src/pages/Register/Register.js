@@ -24,7 +24,7 @@ function PagesRegister() {
   };
 
   const mandaProBack = () => {
-    register(email, password, firstName, lastName)
+    register(email, password, firstName)
       .then((resp) => {
         const { data } = resp;
         if (data) {
@@ -63,12 +63,14 @@ function PagesRegister() {
               value={firstName}
               onChange={(clickEvent) => setFirstName(clickEvent.target.value)}
             />
+
             <input
               type="name"
               placeholder="Last name"
               value={lastName}
               onChange={(clickEvent) => setLastName(clickEvent.target.value)}
             />
+
           </div>
 
           <div className="registerInputEmail">

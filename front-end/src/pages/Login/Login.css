@@ -21,7 +21,7 @@ body {
 }
 
 .back {
-  background-image: url('../../pages/background.jpg');
+  background-image: url('/background.jpg');
 }
 
 .login-logo img {

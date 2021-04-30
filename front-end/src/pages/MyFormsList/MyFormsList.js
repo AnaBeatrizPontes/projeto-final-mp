@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import FormCard from '../Components/FormCard/FormCard';
-import NavBar from '../Components/NavBar/NavBar';
+import FormCard from '../components/FormCard/FormCard';
+import NavBar from '../components/NavBar/NavBar';
 import 'normalize.css';
 import './MyFormsList.css';
 import axios from 'axios';
 
 import SearchIcon from '@material-ui/icons/Search';
-import { ForumSharp } from '@material-ui/icons';
 
 function PagesMyFormsList() {
   const [forms, setForms] = useState([]);

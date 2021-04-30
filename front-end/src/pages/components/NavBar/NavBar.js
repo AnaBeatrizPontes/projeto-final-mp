@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './NavBar.css';
 import { useHistory } from 'react-router-dom';
 
-import logo from '../../Login/logo.png';
+import logo from '/logo.png';
 import MenuIcon from '@material-ui/icons/Menu';
 import CloseIcon from '@material-ui/icons/Close';
 import { Button } from '../Button/Button';
