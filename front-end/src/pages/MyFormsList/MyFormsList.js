@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import FormCard from '../components/FormCard/FormCard';
+import FormCard from '../../components/FormCard/FormCard';
 import 'normalize.css';
 import './MyFormsList.css';
 import axios from 'axios';

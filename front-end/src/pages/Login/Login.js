@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import './Login.css';
-import logo from '/logo.png';
+// import logo from '/logo.png';
 
 import MailIcon from '@material-ui/icons/Mail';
 import LockIcon from '@material-ui/icons/Lock';
@@ -48,7 +48,7 @@ function PagesLogin() {
     <div className="back">
       <div className="login">
         <div className="login-logo">
-          <img src={logo} alt="Logo" />
+          <img src="https://picsum.photos/315/315" alt="Logo" />
         </div>
 
         <div className="login-right">

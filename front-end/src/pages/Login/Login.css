@@ -21,7 +21,7 @@ body {
 }
 
 .back {
-  background-image: url('/background.jpg');
+  background-image: url('https://picsum.photos/2394/1600');
 }
 
 .login-logo img {
