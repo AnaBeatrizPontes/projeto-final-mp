@@ -5,7 +5,7 @@ import PagesRegister from './Register/Register';
 import RespostaQuestionario from './RespostaQuestionario/RespostaQuestionario';
 import PagesNotFound from './NotFound';
 import PrivateRoute from './PrivateRoute';
-import NavBar from './Components/NavBar/NavBar';
+import NavBar from '../components/NavBar/NavBar';
 import HomepageRespondente from './HomepageRespondente/Homepage'
 import PagesMyFormsList from './MyFormsList/MyFormsList';
 
@@ -13,7 +13,7 @@ const Root = () => {
   return (
     <>
       <Router>
-        <NavBar />
+        {localStorage.getItem('token') ? <NavBar /> : null}
         <Switch>
           <PrivateRoute exact path="/myforms" component={PagesMyFormsList} />
           <Route exact path="/register" component={PagesRegister} />
