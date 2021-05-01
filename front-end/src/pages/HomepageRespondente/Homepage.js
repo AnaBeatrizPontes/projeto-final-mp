@@ -3,14 +3,16 @@ import Card from '../../components/Card/Card';
 import { useEffect, useState } from 'react';
 import MaisAtribuidos from '../../components/MaisAtribuidos/MaisAtribuidos';
 import Opcoes from '../../components/Opcoes/Opcoes';
-import FormCardList from '../../components/FormCardList/FormCardList'
-import Menu from '../../components/Menu/Menu'
+import FormCardList from '../../components/FormCardList/FormCardList';
+import Menu from '../../components/Menu/Menu';
 
 import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 
 
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
+import SearchIcon from '@material-ui/icons/Search';
 
 function HomepageRespondente(props) {
   const [objeto, setObjeto] = useState([]);
@@ -21,42 +23,38 @@ function HomepageRespondente(props) {
   const all = objeto.slice(3, objeto.length);
   const history = useHistory();
 
-  function mandaEdicao(){
-    return history.push('/edicao-formulario')
+  const [search, setSearch] = useState('');
+
+  function mandaEdicao() {
+    return history.push('/edicao-formulario', objeto);
   }
 
-
-
-
   useEffect(() => {
-    fetch('http://localhost:3333/formularios')
-      .then((response) => response.json())
-      .then((data) => setObjeto(data));
-    fetch('http://localhost:3333/usuario')
-      .then((response) => response.json())
-      .then((data) => setUser(data));
+    axios.get('http://localhost:3333/formularios').then((resp) => {
+      setObjeto(resp.data);
+    });
   }, []);
+
+ 
 
   function montarTabela() {
     if (all.length === 0) {
-      return (
-        <div>oi</div>
-      );
+      return <div>oi</div>;
     } else {
       return all.map((form) => {
         return (
           <div key={form.id}>
-            <FormCardList form={form}/>
+            <FormCardList form={form} />
           </div>
         );
       });
     }
   }
 
-  function handleClick(){
-    if(showOpcoes){
+  function handleClick() {
+    if (showOpcoes) {
       setShowOpcoes(false);
-    }else{
+    } else {
       setShowOpcoes(true);
     }
   }
@@ -70,22 +68,18 @@ function HomepageRespondente(props) {
         <img src="./assents/logo.png" alt="Logo" className={style.logo} />
         <div className={style.info}>
           <button className={style.opcao}>
-            {showOpcoes ? <ExpandLessIcon className={style.seta} onClick={handleClick}/> : <ExpandMoreIcon className={style.seta} onClick={handleClick}/>}
+            {showOpcoes ? (
+              <ExpandLessIcon className={style.seta} onClick={handleClick} />
+            ) : (
+              <ExpandMoreIcon className={style.seta} onClick={handleClick} />
+            )}
             {showOpcoes ? <Menu /> : null}
           </button>
           <h2 className={style.tituloBranco}>Jhon Borges</h2>
         </div>
       </header>
 
-
-      <a
-                onClick={() => mandaEdicao()}
-               
-                className={style.mostrar_formulario_atribuido}
-              >
-                <img src="./assents/olho.svg" className={style.olho} />
-                <h2>Abrir Page de edicao</h2>
-              </a>
+      <a onClick={mandaEdicao}>Não clique aqui</a>
 
       <main onClick={() => setShowOpcoes(false)}>
         <div className={style.cards}>
@@ -111,14 +105,20 @@ function HomepageRespondente(props) {
             </div>
           </div>
 
-
           <div className={style.todosForm}>
             <h2 className={style.titulo}>Formulários respondidos</h2>
 
-            
+            <div className="myFormsList__input">
+              <input
+                type="search"
+                placeholder="Buscar questionários feitos por você"
+                value={search}
+                onChange={(ev) => setSearch(ev.target.value)}
+              />
+              <SearchIcon />
+            </div>
 
-              {montarTabela()}
-            
+            {montarTabela()}
           </div>
         </div>
       </main>

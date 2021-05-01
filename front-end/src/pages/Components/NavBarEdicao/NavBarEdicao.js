@@ -7,10 +7,14 @@ import Button from '@material-ui/core/Button';
 
 import logo from '../../Login/logo.png';
 
+
 function NavBarEdicao(props) {
+  const history = useHistory();
+
+
   return (
     <div className={style.navbaredicao}>
-      <ArrowBackIcon className={style.voltar} />
+      <ArrowBackIcon className={style.voltar} onClick={history.goBack}/>
       <div className={style.container}>
         <h1 className={style.titulo}>
           {props.titulo} | {props.salvo ? 'Salvo' : 'Não salvo'}
