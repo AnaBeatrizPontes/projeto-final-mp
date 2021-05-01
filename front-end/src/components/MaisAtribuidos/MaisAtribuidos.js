@@ -1,4 +1,5 @@
 import './MaisAtribuidos.style.css';
+import FormCardList from '../../components/FormCardList/FormCardList'
 
 export default function MaisFormularios({ obj, onClose = () => {} }) {
   const all = obj;
@@ -6,20 +7,14 @@ export default function MaisFormularios({ obj, onClose = () => {} }) {
   function montarTabela() {
     if (all.length === 0) {
       return (
-        <tr>
-          <td>Sem nada para mostrar</td>
-        </tr>
+        <div>oi</div>
       );
     } else {
       return all.map((form) => {
         return (
-          <tr key={form.id}>
-            <td>
-              <a href="#" alt="Formulário">
-                {form.titulo}
-              </a>
-            </td>
-          </tr>
+          <div key={form.id}>
+            <FormCardList form={form}/>
+          </div>
         );
       });
     }
@@ -35,14 +30,8 @@ export default function MaisFormularios({ obj, onClose = () => {} }) {
 
 
 
-        <table className="tabela">
-          <thead>
-            <tr>
-              <th>Nome do formulário</th>
-            </tr>
-          </thead>
-          <tbody>{montarTabela()}</tbody>
-        </table>
+        
+          {montarTabela()}
       </div>
     </div>
   );

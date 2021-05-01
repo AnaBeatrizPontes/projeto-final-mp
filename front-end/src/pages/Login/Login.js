@@ -81,20 +81,17 @@ function PagesLogin() {
             </div>
           </div>
 
-          <div>
-            <button onClick={mandaProBack} className="mailButton">
-              Entrar
-            </button>
-          </div>
+          <button onClick={mandaProBack} className="login-submit">
+            Entrar
+          </button>
+
           <div>
             <h4>Não tenho conta</h4>
           </div>
 
-          <div>
-            <button onClick={mandaRegistrar} className="passButton">
-              Cadastrar
-            </button>
-          </div>
+          <button onClick={mandaRegistrar} className="register-call">
+            Cadastrar
+          </button>
         </div>
       </div>
     </div>

@@ -54,7 +54,7 @@ function NavBar() {
           </div>
           <ul className={showMenu ? 'nav-menu active' : 'nav-menu'}>
             <li className="nav-item">
-              <Link to="/home" className="nav-links" onClick={closeMobileMenu}>
+              <Link to="/notfound" className="nav-links" onClick={closeMobileMenu}>
                 Home
               </Link>
             </li>
@@ -73,10 +73,9 @@ function NavBar() {
                 className="nav-links"
                 onClick={closeMobileMenu}
               >
-                Config
+                {localStorage.getItem('usrName')}
               </Link>
             </li>
-            <li className="nav-user">{localStorage.getItem('usrName')}</li>
           </ul>
           {button && (
             <Button buttonStyle="btn--outline" onClick={logOut}>

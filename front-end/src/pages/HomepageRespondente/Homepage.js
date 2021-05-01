@@ -3,13 +3,31 @@ import Card from '../../components/Card/Card';
 import { useEffect, useState } from 'react';
 import MaisAtribuidos from '../../components/MaisAtribuidos/MaisAtribuidos';
 import Opcoes from '../../components/Opcoes/Opcoes';
-function App(props) {
+import FormCardList from '../../components/FormCardList/FormCardList'
+import Menu from '../../components/Menu/Menu'
+
+import { useHistory } from 'react-router-dom';
+
+
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import ExpandLessIcon from '@material-ui/icons/ExpandLess';
+
+function HomepageRespondente(props) {
   const [objeto, setObjeto] = useState([]);
   const [user, setUser] = useState();
   const [showAtribuidos, setShowAtribuidos] = useState(false);
   const [showOpcoes, setShowOpcoes] = useState(false);
   const last = objeto.slice(0, 3);
   const all = objeto.slice(3, objeto.length);
+  const history = useHistory();
+
+  function mandaEdicao(){
+    return history.push('/edicao-formulario')
+  }
+
+
+
+
   useEffect(() => {
     fetch('http://localhost:3333/formularios')
       .then((response) => response.json())
@@ -22,25 +40,14 @@ function App(props) {
   function montarTabela() {
     if (all.length === 0) {
       return (
-        <tr>
-          <td>Sem nada para mostrar</td>
-        </tr>
+        <div>oi</div>
       );
     } else {
       return all.map((form) => {
         return (
-          <tr key={form.id}>
-            <td>
-              <div className="corForm" style={{ backgroundColor: form.cor }} />
-            </td>
-            <td>
-              <a href="#" alt="Formulário">
-                {form.titulo}
-              </a>
-            </td>
-            <td>{form.dono}</td>
-            <td>23 de Julho</td>
-          </tr>
+          <div key={form.id}>
+            <FormCardList form={form}/>
+          </div>
         );
       });
     }
@@ -63,12 +70,22 @@ function App(props) {
         <img src="./assents/logo.png" alt="Logo" className={style.logo} />
         <div className={style.info}>
           <button className={style.opcao}>
-            {showOpcoes ? <img src="./assents/seta-cima.svg" className={style.seta} onClick={handleClick}/> : <img src="./assents/seta-baixo.svg" className={style.seta} onClick={handleClick}/>}
-            {showOpcoes ? <Opcoes /> : null}
+            {showOpcoes ? <ExpandLessIcon className={style.seta} onClick={handleClick}/> : <ExpandMoreIcon className={style.seta} onClick={handleClick}/>}
+            {showOpcoes ? <Menu /> : null}
           </button>
           <h2 className={style.tituloBranco}>Jhon Borges</h2>
         </div>
       </header>
+
+
+      <a
+                onClick={() => mandaEdicao()}
+               
+                className={style.mostrar_formulario_atribuido}
+              >
+                <img src="./assents/olho.svg" className={style.olho} />
+                <h2>Abrir Page de edicao</h2>
+              </a>
 
       <main onClick={() => setShowOpcoes(false)}>
         <div className={style.cards}>
@@ -94,21 +111,14 @@ function App(props) {
             </div>
           </div>
 
+
           <div className={style.todosForm}>
             <h2 className={style.titulo}>Formulários respondidos</h2>
 
-            <table cellSpacing={0}>
-              <thead>
-                <tr>
-                  <th></th>
-                  <th>Nome</th>
-                  <th>Dono</th>
-                  <th>Data de Postagem</th>
-                </tr>
-              </thead>
+            
 
-              <tbody>{montarTabela()}</tbody>
-            </table>
+              {montarTabela()}
+            
           </div>
         </div>
       </main>
@@ -116,4 +126,4 @@ function App(props) {
   );
 }
 
-export default App;
+export default HomepageRespondente;

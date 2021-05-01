@@ -6,13 +6,16 @@
   
     text-decoration: none;
     border: none;
+    box-shadow: 0 2px 7px 0 rgba(0,0,0, 0.15);
   
     width: 22rem;
     height: 7.5rem;
     background-color: white;
     border-radius: 1.2rem;
   }
-  
+  .cartao:hover{
+    box-shadow: 0 2px 7px 0 rgba(0,0,0, 0.5);
+  }
   .corFormulario {
     width: 3rem;
     height: 5.5rem;

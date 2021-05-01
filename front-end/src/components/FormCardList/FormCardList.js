@@ -1,5 +1,5 @@
 import React from 'react';
-import './FormCard.css';
+import style from './FormCardList.module.css';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import EditIcon from '@material-ui/icons/Edit';
 import FileCopyIcon from '@material-ui/icons/FileCopy';
@@ -7,20 +7,20 @@ import AssignmentOutlinedIcon from '@material-ui/icons/AssignmentOutlined';
 
 const FormCard = ({ form }) => {
   return (
-    <div className="card-box">
-      <h1 className="card-box__title">{form.title}</h1>
-      <span className="card-box__info">{form.description}</span>
-      <footer className="card-box__footer">
-        <a href={form.link} target="blank" className="card-box__link">
+    <div className={style.card_box} key={form.id}>
+      <h1 className={style.card_box__title}>{form.title}</h1>
+      <span className={style.card_box__info}>{form.dono}</span>
+      <footer className={style.card_box__footer}>
+        <a href="#" target="blank" className={style.card_box__link}>
           <AssignmentOutlinedIcon style={{ fontSize: 20 }} />
         </a>
-        <a href={form.link} target="blank" className="card-box__edit">
+        <a href="#" target="blank" className={style.card_box__edit}>
           <EditIcon style={{ fontSize: 20 }} />
         </a>
-        <a href={form.link} target="blank" className="card-box__copy">
+        <a href="#" target="blank" className={style.card_box__copy}>
           <FileCopyIcon style={{ fontSize: 20 }} />
         </a>
-        <a href={form.link} target="blank" className="card-box__delete">
+        <a href="#" target="blank" className={style.card_box__delete}>
           <DeleteOutlineIcon style={{ fontSize: 20 }} />
         </a>
       </footer>

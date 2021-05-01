@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import FormCard from '../Components/FormCard/FormCard';
 import NavBar from '../Components/NavBar/NavBar';
 import 'normalize.css';
-import './MyFormsList.css';
+import style from './MyFormsList.css';
 import axios from 'axios';
 
 import SearchIcon from '@material-ui/icons/Search';
