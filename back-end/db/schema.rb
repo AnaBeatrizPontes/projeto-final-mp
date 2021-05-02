@@ -10,17 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_01_193949) do
+ActiveRecord::Schema.define(version: 2021_05_02_171647) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "feedbacks", force: :cascade do |t|
     t.text "description"
-    t.bigint "form_id", null: false
-    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.bigint "form_id"
     t.index ["form_id"], name: "index_feedbacks_on_form_id"
     t.index ["user_id"], name: "index_feedbacks_on_user_id"
   end

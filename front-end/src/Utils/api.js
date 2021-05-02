@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const api = axios.create({
-  baseURL: 'http://127.0.0.1:3000',
+  baseURL: 'http://localhost:3000',
   headers: {
     'Content-Type': 'application/json',
   },
@@ -28,19 +28,13 @@ export const register = (email, password, firstName) => {
 };
 
 export const getFormPerUser = (id) => {
-	return api.get('/form-per-user', { id });
+  return api.get('/forms-per-user/', { id });
 };
 
-export const sendFeedback = (form_id, user_id, feefback) => {
-	return api.post('/feedbacks', {
-		form_id: form_id,
-		user_id: user_id,
-		description: feefback
-	})
+export const sendFeedback = (form_id, user_id, description) => {
+  return api.post('/feedbacks', { form_id, user_id, description });
 };
 
 export const getForm = (form_id) => {
-	return api.get(`/forms/${form_id}`);
+  return api.get(`/forms/${form_id}`);
 };
-
-

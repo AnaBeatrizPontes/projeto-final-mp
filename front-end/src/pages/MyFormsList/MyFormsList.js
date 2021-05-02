@@ -36,7 +36,6 @@ function PagesMyFormsList() {
 
   return (
     <div className="myFormsList">
-      <NavBar />
       <div className="myFormsList__input">
         <input
           type="search"
@@ -46,15 +45,11 @@ function PagesMyFormsList() {
         />
         <SearchIcon />
       </div>
-      {!(forms.length == 0) ? (
-        <div className="caixaDeForms">
-          {forms.map(function (form) {
-            return <FormCard key={form.id} form={form} />;
-          })}
-        </div>
-      ) : (
-        <h1>Voce nao possui quests</h1>
-      )}
+      <div className="caixaDeForms">
+        {forms.map((forms) => (
+          <FormCard form={forms} key={listID} />
+        ))}
+      </div>
     </div>
   );
 }

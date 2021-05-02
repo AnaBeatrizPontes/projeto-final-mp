@@ -1,7 +1,7 @@
 import React from 'react';
 
 const PagesNotFound = () => (
-  <div>
+  <div className="pagina">
     <h1>NotFound</h1>
   </div>
 );
