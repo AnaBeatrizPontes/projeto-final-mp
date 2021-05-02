@@ -8,7 +8,6 @@ import './MyFormsList.css';
 import { getFormPerUser } from '../../Utils/api';
 
 //ICONS
-import CircularProgress from '@material-ui/core/CircularProgress';
 import SearchIcon from '@material-ui/icons/Search';
 import { Button } from '../../components/Button/Button';
 

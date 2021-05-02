@@ -22,8 +22,7 @@ const FormCard = ({ form }) => {
       });
   };
 
-  //const qtdeRespostas = form.answers.length;
-  const qtdeRespostas = '2';
+  const qtdeRespostas = form.answers.length;
 
   const urlEdit = `http:localhost:3000/forms/${form.id}`;
   const urlCopy = form.link;
@@ -36,11 +35,18 @@ const FormCard = ({ form }) => {
         <a href={form.link} target="blank" className="card-box__link">
           <AssignmentOutlinedIcon style={{ fontSize: 20 }} />
         </a>
-        <a href={form.link} target="blank" className="card-box__answers">
-          <Badge badgeContent={qtdeRespostas} color="primary">
-            <MoveToInboxIcon style={{ fontSize: 20 }} />
-          </Badge>
-        </a>
+				<Badge
+					badgeContent={qtdeRespostas}
+					color="primary"
+					anchorOrigin={{
+    				vertical: 'center',
+    				horizontal: 'center',
+					}}
+				>
+					<a href={form.link} target="blank" className="card-box__answers">
+						<MoveToInboxIcon style={{ fontSize: 20 }} />
+					</a>
+        </Badge>
         <a href={urlEdit} target="blank" className="card-box__edit">
           <EditIcon style={{ fontSize: 20 }} />
         </a>

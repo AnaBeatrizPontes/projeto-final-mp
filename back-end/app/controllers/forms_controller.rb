@@ -2,13 +2,13 @@ class FormsController < ApplicationController
 	  	before_action :set_form, only: [:show, :update, :destroy]
 
 	def index
-		@forms = Form.includes(:questions).all
-        render json: @forms, include: [:questions]
+		@forms = Form.includes(:questions, :answers).all
+        render json: @forms, include: [:questions, :answers]
 	end
 
 	def show
-		@form = Form.includes(:questions).where(id: params[:id])
-        render json: @form, include: [:questions], status: :ok
+		@form = Form.includes(:questions, :answers).where(id: params[:id])
+        render json: @form, include: [:questions, :answers], status: :ok
 	end
 
 	def create
@@ -30,8 +30,8 @@ class FormsController < ApplicationController
 	end
 
 	def form_per_user
-		@forms = Form.includes(:questions).where(user_id: params[:user_id])
-		render json: @forms, include: [:questions], status: :ok
+		@forms = Form.includes(:questions, :answers).where(user_id: params[:user_id])
+		render json: @forms, include: [:questions, :answers], status: :ok
 	end
 
 	def copy_form
