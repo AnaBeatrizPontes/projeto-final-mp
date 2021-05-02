@@ -19,12 +19,12 @@ Login:
 
 
 MyFormsList:
-    ☐ Implementar request do botao excluir
+    ✔ Implementar request do botao excluir @done(21-05-02 17:21)
     ✔ Implementar answers badge count @done(21-04-30 20:27)
 
 all:
     ✔ Reformular nav bar @done(21-04-30 20:28)
-    ☐ Ajeitar css na resized screen
-
+    ✘ Ajeitar css na resized screen @cancelled(21-05-02 17:21)
+		☐ Adicionar lógica de enviar feedback após envio de resposta
 
 
