@@ -52,6 +52,7 @@ const RespostaQuestionario = (props) => {
                 >
                     {perguntas.map((pergunta) => (
                         <Pergunta
+                            id={pergunta.id}
                             tipo={pergunta.tipo}
                             mostrarResposta={props.ehResposta}
                             dadosPergunta={pergunta.dadosPergunta}

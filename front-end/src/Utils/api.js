@@ -45,13 +45,15 @@ export const getQuestionario = (questionarioId) => {
     link: "???",
     perguntas: [
       {
+        id: 1,
         descricao: "Você gosta?",
-        tipo: "respCurta",
+        tipo: "respostaCurta",
         dados: [],
       },
       {
+        id: 2,
         descricao: "Sim ou não?",
-        tipo: "multiplaEsc",
+        tipo: "multiplaEscolha",
         dados: [
           {
             opcao: "Sim",
@@ -64,53 +66,63 @@ export const getQuestionario = (questionarioId) => {
         ]
       },
       {
+        id: 3,
         descricao: "Você gosta?",
-        tipo: "respCurta",
+        tipo: "respostaCurta",
         dados: [],
       },
       {
+        id: 4,
         descricao: "Você gosta?",
-        tipo: "respCurta",
+        tipo: "respostaCurta",
         dados: [],
       },
       {
+        id: 5,
         descricao: "Você gosta?",
-        tipo: "respCurta",
+        tipo: "respostaCurta",
         dados: [],
       },
       {
+        id: 6,
         descricao: "Você gosta?",
-        tipo: "respCurta",
+        tipo: "respostaCurta",
         dados: [],
       },
       {
+        id: 7,
         descricao: "Você gosta?",
-        tipo: "respCurta",
+        tipo: "respostaCurta",
         dados: [],
       },
       {
+        id: 8,
         descricao: "Você gosta?",
-        tipo: "respCurta",
+        tipo: "respostaCurta",
         dados: [],
       },
       {
+        id: 9,
         descricao: "Você gosta?",
-        tipo: "respCurta",
+        tipo: "respostaCurta",
         dados: [],
       },
       {
+        id: 10,
         descricao: "Você gosta?",
-        tipo: "respCurta",
+        tipo: "respostaCurta",
         dados: [],
       },
       {
+        id: 11,
         descricao: "Você gosta?",
-        tipo: "respCurta",
+        tipo: "respostaCurta",
         dados: [],
       },
       {
+        id: 12,
         descricao: "Você gosta?",
-        tipo: "respCurta",
+        tipo: "respostaCurta",
         dados: [],
       },
     ],

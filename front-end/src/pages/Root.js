@@ -18,7 +18,11 @@ const Root = () => {
         <PrivateRoute exact path="/myforms" component={PagesMyFormsList} />
         <Route exact path="/register" component={PagesRegister} />
         <Route exact path="/login" component={PagesLogin} />
-        <PrivateRoute exact path="/respostaQuestionario" component={RespostaQuestionario} />
+        <PrivateRoute
+          exact path="/respostaQuestionario"
+          component={RespostaQuestionario}
+          ehResposta={false}
+        />
         <PrivateRoute component={PagesNotFound} />
       </Switch>
     </Router>
