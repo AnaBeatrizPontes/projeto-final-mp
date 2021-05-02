@@ -24,11 +24,23 @@ export const login = (email, password) => {
 };
 
 export const register = (email, password, firstName) => {
-  return api.post('/users', { email, password, firstName});
+  return api.post('/users', { email, password, firstName });
 };
 
 export const getFormPerUser = (id) => {
-	return api.get('/form-per-user', { user_id: id });
+	return api.get('/form-per-user', { id });
+};
+
+export const sendFeedback = (form_id, user_id, feefback) => {
+	return api.post('/feedbacks', {
+		form_id: form_id,
+		user_id: user_id,
+		description: feefback
+	})
+};
+
+export const getForm = (form_id) => {
+	return api.get(`/forms/${form_id}`);
 };
 
 
