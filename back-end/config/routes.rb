@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
 
   resources :forms
-  get '/forms-per-user/:user_id', to: 'forms#form_per_user'
+  get '/forms-per-user/', to: 'forms#form_per_user'
   resources :questions
+  resources :feedbacks
 end

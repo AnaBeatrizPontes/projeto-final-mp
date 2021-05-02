@@ -39,3 +39,11 @@ export const getFormPerUser = (user_id) => {
 export const deleteForm = (id) => {
   return api.delete(`/forms/${id}`);
 };
+
+export const sendFeedback = (form_id, user_id, description) => {
+  return api.post('/feedbacks', { form_id, user_id, description });
+};
+
+export const getForm = (form_id) => {
+  return api.get(`/forms/${form_id}`);
+};
