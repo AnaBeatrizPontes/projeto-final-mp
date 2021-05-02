@@ -8,7 +8,7 @@ const RespostaCurta = ({ mostrarResposta, resposta, dadosPergunta, id, descricao
     return (
         <>
             <TextField
-                className="respostaCurta"
+                className="textFieldPergunta"
                 id={id}
                 label={descricao}
                 value={mostrarResposta ? resposta : ""}
@@ -23,7 +23,17 @@ const RespostaCurta = ({ mostrarResposta, resposta, dadosPergunta, id, descricao
 const Paragrafo = ({ mostrarResposta, resposta, dadosPergunta, id, descricao }) => {
     return (
         <>
-            Paragrafo
+            <TextField
+                className="textFieldPergunta"
+                id={id}
+                label={descricao}
+                value={mostrarResposta ? resposta : ""}
+                multiline
+                rows={5}
+                variant="outlined"
+                disabled={mostrarResposta}
+                onChange={(e) => { }}
+            />
         </>
     );
 };

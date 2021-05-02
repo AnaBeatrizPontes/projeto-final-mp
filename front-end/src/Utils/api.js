@@ -51,6 +51,12 @@ export const getQuestionario = (questionarioId) => {
         dados: [],
       },
       {
+        id: 3,
+        descricao: "Você gosta? (resposta longa)",
+        tipo: "paragrafo",
+        dados: [],
+      },
+      {
         id: 2,
         descricao: "Sim ou não?",
         tipo: "multiplaEscolha",
@@ -64,66 +70,6 @@ export const getQuestionario = (questionarioId) => {
             valor: "n"
           },
         ]
-      },
-      {
-        id: 3,
-        descricao: "Você gosta?",
-        tipo: "respostaCurta",
-        dados: [],
-      },
-      {
-        id: 4,
-        descricao: "Você gosta?",
-        tipo: "respostaCurta",
-        dados: [],
-      },
-      {
-        id: 5,
-        descricao: "Você gosta?",
-        tipo: "respostaCurta",
-        dados: [],
-      },
-      {
-        id: 6,
-        descricao: "Você gosta?",
-        tipo: "respostaCurta",
-        dados: [],
-      },
-      {
-        id: 7,
-        descricao: "Você gosta?",
-        tipo: "respostaCurta",
-        dados: [],
-      },
-      {
-        id: 8,
-        descricao: "Você gosta?",
-        tipo: "respostaCurta",
-        dados: [],
-      },
-      {
-        id: 9,
-        descricao: "Você gosta?",
-        tipo: "respostaCurta",
-        dados: [],
-      },
-      {
-        id: 10,
-        descricao: "Você gosta?",
-        tipo: "respostaCurta",
-        dados: [],
-      },
-      {
-        id: 11,
-        descricao: "Você gosta?",
-        tipo: "respostaCurta",
-        dados: [],
-      },
-      {
-        id: 12,
-        descricao: "Você gosta?",
-        tipo: "respostaCurta",
-        dados: [],
       },
     ],
   };
