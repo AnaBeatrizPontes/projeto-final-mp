@@ -36,6 +36,7 @@ function PagesMyFormsList() {
 
   return (
     <div className="myFormsList">
+      <NavBar />
       <div className="myFormsList__input">
         <input
           type="search"
