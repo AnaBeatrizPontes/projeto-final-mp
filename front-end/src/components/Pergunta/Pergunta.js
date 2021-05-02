@@ -1,16 +1,26 @@
 import React from 'react';
 
+import TextField from "@material-ui/core/TextField";
+
 import './Pergunta.css'
 
-const RespostaCurta = ({ mostrarResposta, dadosPergunta, id }) => {
+const RespostaCurta = ({ mostrarResposta, resposta, dadosPergunta, id, descricao }) => {
     return (
         <>
-            Resposta Curta
+            <TextField
+                className="respostaCurta"
+                id={id}
+                label={descricao}
+                value={mostrarResposta ? resposta : ""}
+                variant="outlined"
+                disabled={mostrarResposta}
+                onChange={(e) => { }}
+            />
         </>
     );
 };
 
-const Paragrafo = ({ mostrarResposta, dadosPergunta, id }) => {
+const Paragrafo = ({ mostrarResposta, resposta, dadosPergunta, id, descricao }) => {
     return (
         <>
             Paragrafo
@@ -18,7 +28,7 @@ const Paragrafo = ({ mostrarResposta, dadosPergunta, id }) => {
     );
 };
 
-const MultiplaEscolha = ({ mostrarResposta, dadosPergunta, id }) => {
+const MultiplaEscolha = ({ mostrarResposta, resposta, dadosPergunta, id, descricao }) => {
     return (
         <>
             MultiplaEscolha
@@ -26,7 +36,7 @@ const MultiplaEscolha = ({ mostrarResposta, dadosPergunta, id }) => {
     );
 };
 
-const CaixasDeSelecao = ({ mostrarResposta, dadosPergunta, id }) => {
+const CaixasDeSelecao = ({ mostrarResposta, resposta, dadosPergunta, id, descricao }) => {
     return (
         <>
             CaixasDeSelecao
@@ -34,7 +44,7 @@ const CaixasDeSelecao = ({ mostrarResposta, dadosPergunta, id }) => {
     );
 };
 
-const PerguntaSelect = ({ mostrarResposta, dadosPergunta, id }) => {
+const PerguntaSelect = ({ mostrarResposta, resposta, dadosPergunta, id, descricao }) => {
     return (
         <>
             PerguntaSelect
@@ -42,7 +52,7 @@ const PerguntaSelect = ({ mostrarResposta, dadosPergunta, id }) => {
     );
 };
 
-const Horario = ({ mostrarResposta, dadosPergunta, id }) => {
+const Horario = ({ mostrarResposta, resposta, dadosPergunta, id, descricao }) => {
     return (
         <>
             Horario
@@ -50,7 +60,7 @@ const Horario = ({ mostrarResposta, dadosPergunta, id }) => {
     );
 };
 
-const Data = ({ mostrarResposta, dadosPergunta, id }) => {
+const Data = ({ mostrarResposta, resposta, dadosPergunta, id, descricao }) => {
     return (
         <>
             Data
@@ -58,13 +68,15 @@ const Data = ({ mostrarResposta, dadosPergunta, id }) => {
     );
 };
 
-const Pergunta = ({ tipo, mostrarResposta, dadosPergunta, id }) => {
+const Pergunta = ({ tipo, resposta, mostrarResposta, dadosPergunta, id, descricao }) => {
 
     const switchTiposDePerguntas = (tipo) => {
         switch (tipo) {
             case "respostaCurta":
                 return (
                     <RespostaCurta
+                        descricao={descricao}
+                        resposta={resposta}
                         mostrarResposta={mostrarResposta}
                         dadosPergunta={dadosPergunta}
                         id={id}
@@ -74,6 +86,8 @@ const Pergunta = ({ tipo, mostrarResposta, dadosPergunta, id }) => {
             case "paragrafo":
                 return (
                     <Paragrafo
+                        descricao={descricao}
+                        resposta={resposta}
                         mostrarResposta={mostrarResposta}
                         dadosPergunta={dadosPergunta}
                         id={id}
@@ -83,6 +97,7 @@ const Pergunta = ({ tipo, mostrarResposta, dadosPergunta, id }) => {
             case "multiplaEscolha":
                 return (
                     <MultiplaEscolha
+                        descricao={descricao}
                         mostrarResposta={mostrarResposta}
                         dadosPergunta={dadosPergunta}
                         id={id}
@@ -92,6 +107,8 @@ const Pergunta = ({ tipo, mostrarResposta, dadosPergunta, id }) => {
             case "caixasDeSelecao":
                 return (
                     <CaixasDeSelecao
+                        descricao={descricao}
+                        resposta={resposta}
                         mostrarResposta={mostrarResposta}
                         dadosPergunta={dadosPergunta}
                         id={id}
@@ -101,6 +118,8 @@ const Pergunta = ({ tipo, mostrarResposta, dadosPergunta, id }) => {
             case "perguntaSelect":
                 return (
                     <PerguntaSelect
+                        descricao={descricao}
+                        resposta={resposta}
                         mostrarResposta={mostrarResposta}
                         dadosPergunta={dadosPergunta}
                         id={id}
@@ -110,6 +129,8 @@ const Pergunta = ({ tipo, mostrarResposta, dadosPergunta, id }) => {
             case "horario":
                 return (
                     <Horario
+                        descricao={descricao}
+                        resposta={resposta}
                         mostrarResposta={mostrarResposta}
                         dadosPergunta={dadosPergunta}
                         id={id}
@@ -119,6 +140,8 @@ const Pergunta = ({ tipo, mostrarResposta, dadosPergunta, id }) => {
             case "data":
                 return (
                     <Data
+                        descricao={descricao}
+                        resposta={resposta}
                         mostrarResposta={mostrarResposta}
                         dadosPergunta={dadosPergunta}
                         id={id}
