@@ -4,11 +4,14 @@ import PagesLogin from './Login/Login';
 import PagesRegister from './Register/Register';
 import PagesNotFound from './NotFound';
 import PrivateRoute from './PrivateRoute';
+import PrivatePage from './PrivatePage';
+import NavBar from '../components/NavBar/NavBar';
 import HomepageRespondente from './HomepageRespondente/Homepage'
 import PagesMyFormsList from './MyFormsList/MyFormsList';
 import PageEdicao from './Edicao/Edicao'
 
 const Root = () => {
+
   return (
     <Router>
       <Switch>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import NavBarEdicao from '../Components/NavBarEdicao/NavBarEdicao';
+import NavBarEdicao from '../../components/NavBarEdicao/NavBarEdicao';
 import style from './Edicao.module.css';
 
 import TextField from '@material-ui/core/TextField';

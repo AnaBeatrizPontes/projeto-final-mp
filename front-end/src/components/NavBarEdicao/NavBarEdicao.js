@@ -5,8 +5,6 @@ import { useHistory } from 'react-router-dom';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import Button from '@material-ui/core/Button';
 
-import logo from '../../Login/logo.png';
-
 
 function NavBarEdicao(props) {
   const history = useHistory();

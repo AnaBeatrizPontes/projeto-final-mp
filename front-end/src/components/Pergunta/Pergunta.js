@@ -4,8 +4,10 @@ import './Pergunta.css'
 
 const Pergunta = ({ tipo, mostrarResposta, dadosPergunta }) => {
     return (
-        <div>
-            {/* <a></a> */}
+        <div
+            className="perguntaContainer"
+        >
+            Pergunta!!
         </div>
     );
 }

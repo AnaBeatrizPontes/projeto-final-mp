@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import FormCard from '../Components/FormCard/FormCard';
-import NavBar from '../Components/NavBar/NavBar';
+import FormCard from '../../components/FormCard/FormCard';
+import NavBar from '../../components/NavBar/NavBar';
 import 'normalize.css';
 import style from './MyFormsList.css';
 import axios from 'axios';
@@ -10,21 +10,36 @@ import SearchIcon from '@material-ui/icons/Search';
 function PagesMyFormsList() {
   const [forms, setForms] = useState([]);
   const [search, setSearch] = useState('');
+  const [listPosition, setListPosition] = useState(1);
+
+  const listID = () => setListPosition(listPosition + 1);
 
   const params = {};
   if (search) {
     params.title_like = search;
   }
 
-  useEffect(() => {
-    axios.get('http://localhost:5000/forms', { params }).then((resp) => {
-      setForms(resp.data);
-    });
-  }, [search]);
+  const { user_id } = useState(localStorage.getItem('id'));
+
+  //useEffect(() => {
+  //  getFormPerUser(user_id)
+  //    .then((res) => {
+  //      setForms(res.data);
+  //      console.log(forms);
+  //    })
+  //    .catch((err) => {
+  //      console.log(err);
+  //    });
+  //}, [search]);
+
+  //useEffect(() => {
+  //  axios.get('http://localhost:5000/forms', { params }).then((resp) => {
+  //    setForms(resp.data);
+  //  });
+  //}, [search]);
 
   return (
     <div className="myFormsList">
-      <NavBar />
       <div className="myFormsList__input">
         <input
           type="search"
@@ -34,11 +49,15 @@ function PagesMyFormsList() {
         />
         <SearchIcon />
       </div>
-      <div className="caixaDeForms">
-        {forms.map((forms) => (
-          <FormCard form={forms} />
-        ))}
-      </div>
+      {!(forms.length == 0) ? (
+        <div className="caixaDeForms">
+          {forms.map(function (form) {
+            return <FormCard key={form.id} form={form} />;
+          })}
+        </div>
+      ) : (
+        <h1>Voce nao possui quests</h1>
+      )}
     </div>
   );
 }

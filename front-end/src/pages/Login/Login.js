@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import logo from '../logo.png';
 
 import './Login.css';
-import logo from './logo.png';
+import 'normalize.css';
 
+//icons
 import MailIcon from '@material-ui/icons/Mail';
 import LockIcon from '@material-ui/icons/Lock';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 
+//API
 import { login } from '../../Utils/api';
 
 function PagesLogin() {
@@ -27,15 +30,15 @@ function PagesLogin() {
       .then((resp) => {
         const { data } = resp;
         if (data) {
-          console.log(data);
-          localStorage.setItem('token', data);
-          localStorage.setItem('usrName', email);
+          localStorage.setItem('token', data.token);
+          localStorage.setItem('usrName', data.user.name);
+          localStorage.setItem('id', data.user.id);
           history.push('/home');
         }
       })
       .catch((err) => {
-        alert('Email ou senha inválidos');
-        console.log(err.message);
+        alert(err);
+        console.log('ERRO:', err);
       });
   };
 
@@ -48,7 +51,7 @@ function PagesLogin() {
     <div className="back">
       <div className="login">
         <div className="login-logo">
-          <img src={logo} alt="Logo" />
+          <img src="https://picsum.photos/315/315" alt="Logo" />
         </div>
 
         <div className="login-right">

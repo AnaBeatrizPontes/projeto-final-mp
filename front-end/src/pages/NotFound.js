@@ -1,10 +1,10 @@
 import React from 'react';
-import NavBar from './Components/NavBar/NavBar';
+import NavBar from '../components/NavBar/NavBar';
 
 const PagesNotFound = () => (
-  <div className="pagina">
+  <div>
     <NavBar />
-    <h1>NotFound</h1>
+    <h1 className="card-box__title">NotFound</h1>
   </div>
 );
 

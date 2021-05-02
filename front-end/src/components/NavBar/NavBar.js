@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './NavBar.css';
 import { useHistory } from 'react-router-dom';
 
-import logo from '../../Login/logo.png';
+import logo from '../../pages/logo.png';
 import MenuIcon from '@material-ui/icons/Menu';
 import CloseIcon from '@material-ui/icons/Close';
 import { Button } from '../Button/Button';
@@ -54,7 +54,11 @@ function NavBar() {
           </div>
           <ul className={showMenu ? 'nav-menu active' : 'nav-menu'}>
             <li className="nav-item">
-              <Link to="/notfound" className="nav-links" onClick={closeMobileMenu}>
+              <Link
+                to="/notfound"
+                className="nav-links"
+                onClick={closeMobileMenu}
+              >
                 Home
               </Link>
             </li>

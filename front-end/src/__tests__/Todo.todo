@@ -1,0 +1,30 @@
+#Regras para testes e lista de tarefas
+
+Regras:
+    ☐ Apertar num botao sem preencher os inputs
+    ☐ Apertar um botao com os inputs incorretos
+    ☐ Ser redirecionado ao precionar o botao cadastrar
+
+Todo:
+    ✔ Ajeitar código para passar no Eslit/Prettier @done(21-04-27 00:01)
+    ✔ Arrumar as rotas para o back-end proprietario @done(21-04-30 19:41)
+    ☐ Testes de unidade para login
+    ☐ Testes de unidade para cadastro
+
+Login:
+    ✔ Arrumar logo @done(21-04-30 20:27)
+    ✔ Arrumar background @done(21-04-30 20:27)
+    ✔ Armazenar token e nome de forma correta @done(21-04-30 20:27)
+    ✔ Armazenar id de forma correta @done(21-04-30 20:27)
+
+
+MyFormsList:
+    ☐ Implementar request do botao excluir
+    ✔ Implementar answers badge count @done(21-04-30 20:27)
+
+all:
+    ✔ Reformular nav bar @done(21-04-30 20:28)
+    ☐ Ajeitar css na resized screen
+
+
+
