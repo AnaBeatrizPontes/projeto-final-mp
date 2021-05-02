@@ -34,6 +34,16 @@ class FormsController < ApplicationController
 		render json: @forms, include: [:questions], status: :ok
 	end
 
+	def copy_form
+    @form = Form.find(params[:id])
+    if @form.save
+    	@form.link = "http://localhost:3001/form/#%7B@form.id%7D"
+      render json: @form, status: :created, location: @form
+    else
+      render json: @form.errors, status: :unprocessable_entity
+    end
+  end
+
 	private
 
     def set_form

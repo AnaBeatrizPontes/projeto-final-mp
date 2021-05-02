@@ -18,7 +18,7 @@ function Feedbacks(props) {
   const [feedback, setFeedback] = useState('');
   // const user_id = localStorage.getItem('id');
   const user_id = '2';
-  const form_id = '33';
+  const form_id = '2';
   // const form_id = props.match.params.id;
   const [form, setForm] = useState('');
 
