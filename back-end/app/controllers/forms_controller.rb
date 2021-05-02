@@ -34,7 +34,6 @@ class FormsController < ApplicationController
 		render json: @forms, include: [:questions], status: :ok
 	end
 
-
 	private
 
     def set_form

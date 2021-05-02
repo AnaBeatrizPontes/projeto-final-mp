@@ -37,7 +37,7 @@ function PagesLogin() {
         }
       })
       .catch((err) => {
-        alert(err);
+        alert('Email e/ou senha inválidos');
         console.log('ERRO:', err);
       });
   };

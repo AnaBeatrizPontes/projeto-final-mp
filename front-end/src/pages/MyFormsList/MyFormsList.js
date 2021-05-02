@@ -32,7 +32,7 @@ function PagesMyFormsList() {
       .catch((err) => {
         console.log(err);
       });
-  }, [])
+  }, []);
 
   return (
     <div className="myFormsList">
@@ -48,20 +48,30 @@ function PagesMyFormsList() {
       </div>
       {!(forms.length == 0) ? (
         <div className="caixaDeForms">
-          {forms.filter((val) => {
-            if (search == '') {
-              return val;
-            } else if (val.title.toLowerCase().includes(search.toLowerCase())) {
-              return val;
-            }
-          }).map(function (form) {
-            return <FormCard key={form.id} form={form} />;
-          })}
+          {forms
+            .filter((val) => {
+              if (search == '') {
+                return val;
+              } else if (
+                val.title.toLowerCase().includes(search.toLowerCase())
+              ) {
+                return val;
+              }
+            })
+            .map(function (form) {
+              return <FormCard key={form.id} form={form} />;
+            })}
         </div>
       ) : (
         <div>
           <h1>Você não possui questionáios ainda</h1>
-          <Button className="caixaDeForms-btn" buttonStyle='btn--outline' buttonSize='btn--large'>Clique aqui para criar</Button>
+          <Button
+            className="caixaDeForms-btn"
+            buttonStyle="btn--outline"
+            buttonSize="btn--large"
+          >
+            Clique aqui para criar
+          </Button>
         </div>
       )}
     </div>

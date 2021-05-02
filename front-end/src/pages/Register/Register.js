@@ -74,7 +74,7 @@ function PagesRegister() {
             />
           </div>
 
-          {(flag && firstName.length < 1) && (
+          {flag && firstName.length < 1 && (
             <p className="Error-Message">Insira um nome válido</p>
           )}
 
@@ -88,7 +88,7 @@ function PagesRegister() {
             />
           </div>
 
-          {(flag && (email.length < 1)) && (
+          {flag && email.length < 1 && (
             <p className="Error-Message">Insira um email válido</p>
           )}
 
@@ -110,8 +110,10 @@ function PagesRegister() {
             </div>
           </div>
 
-          {(flag && (password.length < 8)) && (
-            <p className="Error-Message">A senha deve possuir ao menos 8 dígitos</p>
+          {flag && password.length < 8 && (
+            <p className="Error-Message">
+              A senha deve possuir ao menos 8 dígitos
+            </p>
           )}
 
           <div>
