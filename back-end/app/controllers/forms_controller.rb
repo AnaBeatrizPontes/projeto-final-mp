@@ -33,7 +33,8 @@ class FormsController < ApplicationController
 		@forms = Form.includes(:questions).where(user_id: params[:user_id])
 		render json: @forms, include: [:questions], status: :ok
 	end
-	
+
+
 	private
 
     def set_form

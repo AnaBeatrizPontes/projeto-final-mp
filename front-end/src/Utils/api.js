@@ -33,5 +33,9 @@ export const register = (email, password, firstName) => {
 };
 
 export const getFormPerUser = (user_id) => {
-  return api.get(`/forms-per-user/${user_id}`, { user_id: user_id });
+  return api.get(`/forms-per-user/${user_id}`);
+};
+
+export const deleteForm = (id) => {
+  return api.delete(`/forms/${id}`);
 };

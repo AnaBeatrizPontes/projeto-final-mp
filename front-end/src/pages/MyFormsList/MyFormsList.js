@@ -7,39 +7,32 @@ import './MyFormsList.css';
 //API
 import { getFormPerUser } from '../../Utils/api';
 
+//ICONS
+import CircularProgress from '@material-ui/core/CircularProgress';
 import SearchIcon from '@material-ui/icons/Search';
-import axios from 'axios';
+import { Button } from '../../components/Button/Button';
 
 function PagesMyFormsList() {
   const [forms, setForms] = useState([]);
   const [search, setSearch] = useState('');
-  const [listPosition, setListPosition] = useState(1);
-
-  const listID = () => setListPosition(listPosition + 1);
 
   const params = {};
   if (search) {
     params.title_like = search;
   }
 
-  const { user_id } = useState(localStorage.getItem('id'));
+  const user_id = localStorage.getItem('id');
 
-  //useEffect(() => {
-  //  getFormPerUser(user_id)
-  //    .then((res) => {
-  //      setForms(res.data);
-  //      console.log(forms);
-  //    })
-  //    .catch((err) => {
-  //      console.log(err);
-  //    });
-  //}, [search]);
-
-  //useEffect(() => {
-  //  axios.get('http://localhost:5000/forms', { params }).then((resp) => {
-  //    setForms(resp.data);
-  //  });
-  //}, [search]);
+  useEffect(() => {
+    getFormPerUser(user_id)
+      .then((res) => {
+        setForms(res.data);
+        console.log(forms);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [])
 
   return (
     <div className="myFormsList">
@@ -55,12 +48,21 @@ function PagesMyFormsList() {
       </div>
       {!(forms.length == 0) ? (
         <div className="caixaDeForms">
-          {forms.map(function (form) {
+          {forms.filter((val) => {
+            if (search == '') {
+              return val;
+            } else if (val.title.toLowerCase().includes(search.toLowerCase())) {
+              return val;
+            }
+          }).map(function (form) {
             return <FormCard key={form.id} form={form} />;
           })}
         </div>
       ) : (
-        <h1>Voce nao possui quests</h1>
+        <div>
+          <h1>Você não possui questionáios ainda</h1>
+          <Button className="caixaDeForms-btn" buttonStyle='btn--outline' buttonSize='btn--large'>Clique aqui para criar</Button>
+        </div>
       )}
     </div>
   );

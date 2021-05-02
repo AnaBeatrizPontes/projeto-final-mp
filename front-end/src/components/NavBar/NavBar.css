@@ -70,6 +70,7 @@
 .nav-links:hover {
   border-bottom: 4px solid #00924c;
   transition: all 0.2s ease-out;
+  text-decoration: none;
 }
 
 .nav-links-mobile {

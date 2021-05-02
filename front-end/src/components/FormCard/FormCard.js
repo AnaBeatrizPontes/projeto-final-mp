@@ -1,17 +1,32 @@
 import React from 'react';
 import './FormCard.css';
+
+//ICONS
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import EditIcon from '@material-ui/icons/Edit';
 import FileCopyIcon from '@material-ui/icons/FileCopy';
 import AssignmentOutlinedIcon from '@material-ui/icons/AssignmentOutlined';
 import MoveToInboxIcon from '@material-ui/icons/MoveToInbox';
 import { Badge } from '@material-ui/core';
+import { deleteForm } from '../../Utils/api';
 
 const FormCard = ({ form }) => {
-  const qtdeRespostas = form.answers.length;
+  const deletaForm = () => {
+    deleteForm(form.id)
+      .then(() => {
+        window.location.reload();
+      })
+      .catch((err) => {
+        alert('Erro ao deletar o questionário');
+        console.log('ERRO:', err);
+      });
+  };
+
+  //const qtdeRespostas = form.answers.length;
+  const qtdeRespostas = '2';
+
   const urlEdit = `http:localhost:3000/forms/${form.id}`;
   const urlCopy = form.link;
-  const urlDelete = form.link;
 
   return (
     <div className="card-box" key={form.id}>
@@ -32,9 +47,9 @@ const FormCard = ({ form }) => {
         <a href={urlCopy} target="blank" className="card-box__copy">
           <FileCopyIcon style={{ fontSize: 20 }} />
         </a>
-        <a href={form.link} target="blank" className="card-box__delete">
+        <button onClick={deletaForm} className="card-box__delete">
           <DeleteOutlineIcon style={{ fontSize: 20 }} />
-        </a>
+        </button>
       </footer>
     </div>
   );

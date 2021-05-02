@@ -16,11 +16,11 @@ function PagesRegister() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [showImage, setShowImage] = useState(false);
-
+  const [flag, setFlag] = useState(false);
   const history = useHistory();
 
   const mandaEsseTrecoDeVolta = () => {
-    history.push('/');
+    history.push('/login');
   };
 
   const mandaProBack = () => {
@@ -33,6 +33,7 @@ function PagesRegister() {
       })
       .catch((err) => {
         alert('Erro ao cadastrar, confira os dados inseridos');
+        setFlag(true);
         console.log(err.message);
       });
   };
@@ -58,6 +59,7 @@ function PagesRegister() {
           <div className="registerInputName">
             <AccountBoxIcon />
             <input
+              className="registerInput"
               type="name"
               placeholder="First name"
               value={firstName}
@@ -72,6 +74,10 @@ function PagesRegister() {
             />
           </div>
 
+          {(flag && firstName.length < 1) && (
+            <p className="Error-Message">Insira um nome válido</p>
+          )}
+
           <div className="registerInputEmail">
             <ContactMailIcon />
             <input
@@ -81,6 +87,10 @@ function PagesRegister() {
               onChange={(clickEvent) => setEmail(clickEvent.target.value)}
             />
           </div>
+
+          {(flag && (email.length < 1)) && (
+            <p className="Error-Message">Insira um email válido</p>
+          )}
 
           <div className="registerInputPassword">
             <LockIcon />
@@ -99,6 +109,11 @@ function PagesRegister() {
               )}
             </div>
           </div>
+
+          {(flag && (password.length < 8)) && (
+            <p className="Error-Message">A senha deve possuir ao menos 8 dígitos</p>
+          )}
+
           <div>
             <button onClick={mandaProBack} className="submitButton">
               Cadastrar
