@@ -66,6 +66,16 @@
     margin-right: 10px;
 }
 
+.register-user-type {
+    left: auto;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 20px;
+}
+
 .registerInputEmail {
     margin-top: 1rem;
     display: flex;
