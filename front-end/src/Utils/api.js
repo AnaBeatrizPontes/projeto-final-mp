@@ -23,12 +23,23 @@ export const login = (email, password) => {
   return api.post('/auth/login', { email, password });
 };
 
-export const register = (email, password, firstName) => {
+export const register = (email, password, firstName, value) => {
+  const userCreator = false;
+  const userAnswerer = false;
+
+  if (value == 'Reponder') {
+    userAnswerer = true;
+  } else {
+    userAnswerer = userCreator = true;
+  }
+
   return api.post('/users', {
     email: email,
     password: password,
     password_confirmation: password,
     name: firstName,
+    userAnswerer: userAnswerer,
+    userCreator: userCreator
   });
 };
 
