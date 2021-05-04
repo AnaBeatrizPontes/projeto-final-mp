@@ -10,10 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_29_200227) do
+ActiveRecord::Schema.define(version: 2021_05_02_195355) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "answers", force: :cascade do |t|
+    t.string "respostas"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.bigint "question_id"
+    t.bigint "form_id"
+    t.index ["form_id"], name: "index_answers_on_form_id"
+    t.index ["question_id"], name: "index_answers_on_question_id"
+    t.index ["user_id"], name: "index_answers_on_user_id"
+  end
+
+  create_table "feedbacks", force: :cascade do |t|
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.bigint "form_id"
+    t.index ["form_id"], name: "index_feedbacks_on_form_id"
+    t.index ["user_id"], name: "index_feedbacks_on_user_id"
+  end
 
   create_table "forms", force: :cascade do |t|
     t.string "title"
@@ -21,8 +43,8 @@ ActiveRecord::Schema.define(version: 2021_04_29_200227) do
     t.string "link"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "users_id"
-    t.index ["users_id"], name: "index_forms_on_users_id"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_forms_on_user_id"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -43,6 +65,11 @@ ActiveRecord::Schema.define(version: 2021_04_29_200227) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "forms", "users", column: "users_id"
+  add_foreign_key "answers", "forms"
+  add_foreign_key "answers", "questions"
+  add_foreign_key "answers", "users"
+  add_foreign_key "feedbacks", "forms"
+  add_foreign_key "feedbacks", "users"
+  add_foreign_key "forms", "users"
   add_foreign_key "questions", "forms", column: "forms_id"
 end

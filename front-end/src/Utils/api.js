@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const api = axios.create({
-  baseURL: 'http://localhost:8080/v1/api/',
+  baseURL: 'http://localhost:3000',
   headers: {
     'Content-Type': 'application/json',
   },
@@ -20,9 +20,30 @@ api.interceptors.request.use(
 );
 
 export const login = (email, password) => {
-  return api.post('/auth', { email, password });
+  return api.post('/auth/login', { email, password });
 };
 
-export const register = (email, password, firstName, lastName) => {
-  return api.post('/user', { email, password, firstName, lastName });
+export const register = (email, password, firstName) => {
+  return api.post('/users', {
+    email: email,
+    password: password,
+    password_confirmation: password,
+    name: firstName,
+  });
+};
+
+export const getFormPerUser = (user_id) => {
+  return api.get(`/forms-per-user/${user_id}`);
+};
+
+export const deleteForm = (id) => {
+  return api.delete(`/forms/${id}`);
+};
+
+export const sendFeedback = (form_id, user_id, description) => {
+  return api.post('/feedbacks', { form_id, user_id, description });
+};
+
+export const getForm = (form_id) => {
+  return api.get(`/forms/${form_id}`);
 };
