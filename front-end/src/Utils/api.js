@@ -71,6 +71,21 @@ export const getQuestionario = (questionarioId) => {
           },
         ]
       },
+      {
+        id: 2,
+        descricao: "Sim ou não? (de Schrödinger)",
+        tipo: "caixasDeSelecao",
+        dados: [
+          {
+            opcao: "Sim",
+            valor: "s"
+          },
+          {
+            opcao: "Não",
+            valor: "n"
+          },
+        ]
+      },
     ],
   };
 };

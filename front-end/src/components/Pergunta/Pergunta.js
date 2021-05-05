@@ -6,6 +6,8 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
+import FormGroup from '@material-ui/core/FormGroup';
+import Checkbox from '@material-ui/core/Checkbox';
 
 import './Pergunta.css'
 
@@ -49,7 +51,7 @@ const MultiplaEscolha = ({ mostrarResposta, resposta, dadosPergunta, id, descric
 
     const handleChange = (event) => {
         setSelecionado(event.target.value);
-        //change value on parent component
+        //TODO - manda selects valor para o componente pai
     }
 
     return (
@@ -74,9 +76,41 @@ const MultiplaEscolha = ({ mostrarResposta, resposta, dadosPergunta, id, descric
 };
 
 const CaixasDeSelecao = ({ mostrarResposta, resposta, dadosPergunta, id, descricao }) => {
+
+    const [selectsLigados, setSelects] = useState([]);
+
+    const handleChange = (event) => {
+        const valorAtual = event.target.name;
+        if (selectsLigados.includes(valorAtual, 0)) {
+            const newSelectsLigados = selectsLigados.filter(select => (select != valorAtual));
+            setSelects(newSelectsLigados);
+        } else {
+            setSelects([...selectsLigados, valorAtual]);
+        }
+        //TODO - manda selects valor para o componente pai
+    }
+
     return (
         <>
-            CaixasDeSelecao
+            <FormControl component="fieldset">
+                <FormLabel component="legend">{descricao}</FormLabel>
+                <FormGroup row>
+                    {
+                        dadosPergunta.map(itemCheckbox => (
+                            <FormControlLabel
+                                control={
+                                    <Checkbox
+                                        checked={selectsLigados.includes(itemCheckbox.valor, 0)}
+                                        onChange={handleChange}
+                                        name={itemCheckbox.valor}
+                                    />
+                                }
+                                label={itemCheckbox.opcao}
+                            />
+                        ))
+                    }
+                </FormGroup>
+            </FormControl>
         </>
     );
 };
