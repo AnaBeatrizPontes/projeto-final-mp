@@ -56,7 +56,7 @@ const RespostaQuestionario = (props) => {
                             resposta={pergunta.resposta}
                             id={pergunta.id}
                             tipo={pergunta.tipo}
-                            dadosPergunta={pergunta.dadosPergunta}
+                            dadosPergunta={pergunta.dados}
                             descricao={pergunta.descricao}
                         />
                     ))}

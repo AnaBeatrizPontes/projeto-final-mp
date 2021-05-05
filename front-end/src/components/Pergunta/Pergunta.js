@@ -1,6 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import TextField from "@material-ui/core/TextField";
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
 
 import './Pergunta.css'
 
@@ -39,10 +44,32 @@ const Paragrafo = ({ mostrarResposta, resposta, dadosPergunta, id, descricao }) 
 };
 
 const MultiplaEscolha = ({ mostrarResposta, resposta, dadosPergunta, id, descricao }) => {
+
+    const [selecionado, setSelecionado] = useState(null);
+
+    const handleChange = (event) => {
+        setSelecionado(event.target.value);
+        //change value on parent component
+    }
+
     return (
-        <>
-            MultiplaEscolha
-        </>
+        <div>
+            <FormControl component="fieldset">
+                <FormLabel component="legend">{descricao}</FormLabel>
+                <RadioGroup row aria-label={id} name={id} value={selecionado} onChange={handleChange}>
+                    {
+                        dadosPergunta.map(itemRadio => (
+                            <FormControlLabel
+                                value={itemRadio.valor}
+                                control={<Radio />}
+                                label={itemRadio.opcao}
+                            />
+                        ))
+                    }
+                    {/* <FormControlLabel value="disabled" disabled control={<Radio />} label="(Disabled option)" /> */}
+                </RadioGroup>
+            </FormControl>
+        </div>
     );
 };
 
