@@ -8,6 +8,7 @@ import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 import Checkbox from '@material-ui/core/Checkbox';
+import Select from '@material-ui/core/Select';
 
 import './Pergunta.css'
 
@@ -51,7 +52,7 @@ const MultiplaEscolha = ({ mostrarResposta, resposta, dadosPergunta, id, descric
 
     const handleChange = (event) => {
         setSelecionado(event.target.value);
-        //TODO - manda selects valor para o componente pai
+        //TODO - manda valor para o componente pai
     }
 
     return (
@@ -87,7 +88,7 @@ const CaixasDeSelecao = ({ mostrarResposta, resposta, dadosPergunta, id, descric
         } else {
             setSelects([...selectsLigados, valorAtual]);
         }
-        //TODO - manda selects valor para o componente pai
+        //TODO - manda valor para o componente pai
     }
 
     return (
@@ -116,9 +117,31 @@ const CaixasDeSelecao = ({ mostrarResposta, resposta, dadosPergunta, id, descric
 };
 
 const PerguntaSelect = ({ mostrarResposta, resposta, dadosPergunta, id, descricao }) => {
+
+    const [selecionado, setSelecionado] = useState(null);
+
+    const handleChange = (event) => {
+        setSelecionado(event.target.value);
+        //TODO - manda valor para o componente pai
+    }
+
     return (
         <>
-            PerguntaSelect
+            <Select
+                native
+                className="selectPerguntas"
+                onChange={() => { }}
+            >
+                {dadosPergunta.map(itemSelect => (
+                    <option
+                        className="optionSelectPerguntas"
+                        value={itemSelect.valor}
+                        key={itemSelect.valor}
+                    >
+                        {itemSelect.opcao}
+                    </option>
+                ))}
+            </Select>
         </>
     );
 };

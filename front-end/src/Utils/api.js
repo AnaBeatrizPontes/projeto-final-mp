@@ -57,6 +57,21 @@ export const getQuestionario = (questionarioId) => {
         dados: [],
       },
       {
+        id: 5,
+        descricao: "Sim ou não? (de Schrödinger)",
+        tipo: "perguntaSelect",
+        dados: [
+          {
+            opcao: "Sim",
+            valor: "s"
+          },
+          {
+            opcao: "Não",
+            valor: "n"
+          },
+        ]
+      },
+      {
         id: 2,
         descricao: "Sim ou não?",
         tipo: "multiplaEscolha",
@@ -72,7 +87,7 @@ export const getQuestionario = (questionarioId) => {
         ]
       },
       {
-        id: 2,
+        id: 4,
         descricao: "Sim ou não? (de Schrödinger)",
         tipo: "caixasDeSelecao",
         dados: [
