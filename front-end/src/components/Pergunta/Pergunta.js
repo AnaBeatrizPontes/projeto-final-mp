@@ -9,6 +9,12 @@ import FormLabel from '@material-ui/core/FormLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 import Checkbox from '@material-ui/core/Checkbox';
 import Select from '@material-ui/core/Select';
+import DateFnsUtils from '@date-io/date-fns';
+import {
+    MuiPickersUtilsProvider,
+    KeyboardTimePicker,
+    KeyboardDatePicker,
+} from '@material-ui/pickers';
 
 import './Pergunta.css'
 
@@ -147,17 +153,62 @@ const PerguntaSelect = ({ mostrarResposta, resposta, dadosPergunta, id, descrica
 };
 
 const Horario = ({ mostrarResposta, resposta, dadosPergunta, id, descricao }) => {
+
+    const [selectedDate, setSelectedDate] = useState(new Date());
+
+    const handleChange = (date) => {
+        setSelectedDate(date);
+        //TODO - manda valor para o componente pai
+    };
+
     return (
         <>
-            Horario
+            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                <KeyboardTimePicker
+                    style={{
+                        minWidth: "100%",
+                    }}
+                    margin="normal"
+                    label={descricao}
+                    value={selectedDate}
+                    onChange={handleChange}
+                    KeyboardButtonProps={{
+                        'aria-label': 'change time',
+                    }}
+                />
+            </MuiPickersUtilsProvider>
         </>
     );
 };
 
 const Data = ({ mostrarResposta, resposta, dadosPergunta, id, descricao }) => {
+    const [selectedDate, setSelectedDate] = useState(new Date());
+
+    const handleChange = (date) => {
+        setSelectedDate(date);
+        //TODO - manda valor para o componente pai
+    };
+
     return (
         <>
-            Data
+            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                <KeyboardDatePicker
+                    disableToolbar
+                    style={{
+                        width: "100%",
+                    }}
+                    variant="inline"
+                    format="dd/MM/yyyy"
+                    margin="normal"
+                    id="date-picker-inline"
+                    label={descricao}
+                    value={selectedDate}
+                    onChange={handleChange}
+                    KeyboardButtonProps={{
+                        'aria-label': 'change date',
+                    }}
+                />
+            </MuiPickersUtilsProvider>
         </>
     );
 };

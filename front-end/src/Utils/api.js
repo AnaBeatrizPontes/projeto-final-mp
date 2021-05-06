@@ -72,6 +72,18 @@ export const getQuestionario = (questionarioId) => {
         ]
       },
       {
+        id: 6,
+        descricao: "Qual o horário de nascimento para que o o Sol esteja no ascendente?",
+        tipo: "horario",
+        dados: []
+      },
+      {
+        id: 7,
+        descricao: "Qual a data de nascimento do Mike Tyson?",
+        tipo: "data",
+        dados: []
+      },
+      {
         id: 2,
         descricao: "Sim ou não?",
         tipo: "multiplaEscolha",
