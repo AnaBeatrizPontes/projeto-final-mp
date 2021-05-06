@@ -212,13 +212,20 @@ const PerguntaSelect = ({
     );
 };
 
-const Horario = ({ mostrarResposta, resposta, dadosPergunta, id, descricao, handleChangeResposta }) => {
+const Horario = ({
+    mostrarResposta,
+    resposta,
+    dadosPergunta,
+    id,
+    descricao,
+    handleChangeResposta
+}) => {
 
     const [selectedDate, setSelectedDate] = useState(new Date());
 
     const handleChange = (date) => {
         setSelectedDate(date);
-        //TODO - manda valor para o componente pai
+        handleChangeResposta(id, date);
     };
 
     return (
@@ -241,12 +248,19 @@ const Horario = ({ mostrarResposta, resposta, dadosPergunta, id, descricao, hand
     );
 };
 
-const Data = ({ mostrarResposta, resposta, dadosPergunta, id, descricao, handleChangeResposta }) => {
+const Data = ({
+    mostrarResposta,
+    resposta,
+    dadosPergunta,
+    id,
+    descricao,
+    handleChangeResposta
+}) => {
     const [selectedDate, setSelectedDate] = useState(new Date());
 
     const handleChange = (date) => {
         setSelectedDate(date);
-        //TODO - manda valor para o componente pai
+        handleChangeResposta(id, date);
     };
 
     return (
