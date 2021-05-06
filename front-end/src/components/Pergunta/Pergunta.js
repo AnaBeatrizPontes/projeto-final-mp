@@ -119,7 +119,14 @@ const MultiplaEscolha = ({
     );
 };
 
-const CaixasDeSelecao = ({ mostrarResposta, resposta, dadosPergunta, id, descricao, handleChangeResposta }) => {
+const CaixasDeSelecao = ({
+    mostrarResposta,
+    resposta,
+    dadosPergunta,
+    id,
+    descricao,
+    handleChangeResposta
+}) => {
 
     const [selectsLigados, setSelects] = useState([]);
 
@@ -128,10 +135,11 @@ const CaixasDeSelecao = ({ mostrarResposta, resposta, dadosPergunta, id, descric
         if (selectsLigados.includes(valorAtual, 0)) {
             const newSelectsLigados = selectsLigados.filter(select => (select != valorAtual));
             setSelects(newSelectsLigados);
+            handleChangeResposta(id, newSelectsLigados);
         } else {
             setSelects([...selectsLigados, valorAtual]);
+            handleChangeResposta(id, [...selectsLigados, valorAtual]);
         }
-        //TODO - manda valor para o componente pai
     }
 
     return (
