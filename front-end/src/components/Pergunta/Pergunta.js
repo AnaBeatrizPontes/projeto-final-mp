@@ -168,13 +168,20 @@ const CaixasDeSelecao = ({
     );
 };
 
-const PerguntaSelect = ({ mostrarResposta, resposta, dadosPergunta, id, descricao, handleChangeResposta }) => {
+const PerguntaSelect = ({
+    mostrarResposta,
+    resposta,
+    dadosPergunta,
+    id,
+    descricao,
+    handleChangeResposta
+}) => {
 
     const [selecionado, setSelecionado] = useState(null);
 
     const handleChange = (event) => {
         setSelecionado(event.target.value);
-        //TODO - manda valor para o componente pai
+        handleChangeResposta(id, event.target.value);
     }
 
     return (
@@ -184,6 +191,13 @@ const PerguntaSelect = ({ mostrarResposta, resposta, dadosPergunta, id, descrica
                 className="selectPerguntas"
                 onChange={handleChange}
             >
+                <option
+                    className="optionSelectPerguntas"
+                    value={"null"}
+                    key={"null"}
+                >
+                    Escolha uma opção
+                </option>
                 {dadosPergunta.map(itemSelect => (
                     <option
                         className="optionSelectPerguntas"
