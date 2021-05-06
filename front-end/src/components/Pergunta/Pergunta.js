@@ -18,41 +18,57 @@ import {
 
 import './Pergunta.css'
 
-const RespostaCurta = ({ mostrarResposta, resposta, dadosPergunta, id, descricao }) => {
+const RespostaCurta = ({ mostrarResposta, resposta, dadosPergunta, id, descricao, handleChangeResposta }) => {
+
+    const [valor, setValor] = useState(mostrarResposta ? resposta : "");
+
+    const handleChange = (e) => {
+        setValor(e.target.value);
+        handleChangeResposta(id, e.target.value);
+    }
+
     return (
         <>
             <TextField
                 className="textFieldPergunta"
                 id={id}
                 label={descricao}
-                value={mostrarResposta ? resposta : ""}
+                value={valor}
                 variant="outlined"
                 disabled={mostrarResposta}
-                onChange={(e) => { }}
+                onChange={handleChange}
             />
         </>
     );
 };
 
-const Paragrafo = ({ mostrarResposta, resposta, dadosPergunta, id, descricao }) => {
+const Paragrafo = ({ mostrarResposta, resposta, dadosPergunta, id, descricao, handleChangeResposta }) => {
+
+    const [valor, setValor] = useState(mostrarResposta ? resposta : "");
+
+    const handleChange = (e) => {
+        setValor(e.target.value);
+        handleChangeResposta(id, e.target.value);
+    }
+
     return (
         <>
             <TextField
                 className="textFieldPergunta"
                 id={id}
                 label={descricao}
-                value={mostrarResposta ? resposta : ""}
+                value={valor}
                 multiline
                 rows={5}
                 variant="outlined"
                 disabled={mostrarResposta}
-                onChange={(e) => { }}
+                onChange={handleChange}
             />
         </>
     );
 };
 
-const MultiplaEscolha = ({ mostrarResposta, resposta, dadosPergunta, id, descricao }) => {
+const MultiplaEscolha = ({ mostrarResposta, resposta, dadosPergunta, id, descricao, handleChangeResposta }) => {
 
     const [selecionado, setSelecionado] = useState(null);
 
@@ -69,6 +85,7 @@ const MultiplaEscolha = ({ mostrarResposta, resposta, dadosPergunta, id, descric
                     {
                         dadosPergunta.map(itemRadio => (
                             <FormControlLabel
+                                key={itemRadio.valor}
                                 value={itemRadio.valor}
                                 control={<Radio />}
                                 label={itemRadio.opcao}
@@ -82,7 +99,7 @@ const MultiplaEscolha = ({ mostrarResposta, resposta, dadosPergunta, id, descric
     );
 };
 
-const CaixasDeSelecao = ({ mostrarResposta, resposta, dadosPergunta, id, descricao }) => {
+const CaixasDeSelecao = ({ mostrarResposta, resposta, dadosPergunta, id, descricao, handleChangeResposta }) => {
 
     const [selectsLigados, setSelects] = useState([]);
 
@@ -110,6 +127,7 @@ const CaixasDeSelecao = ({ mostrarResposta, resposta, dadosPergunta, id, descric
                                         checked={selectsLigados.includes(itemCheckbox.valor, 0)}
                                         onChange={handleChange}
                                         name={itemCheckbox.valor}
+                                        key={itemCheckbox.valor}
                                     />
                                 }
                                 label={itemCheckbox.opcao}
@@ -122,7 +140,7 @@ const CaixasDeSelecao = ({ mostrarResposta, resposta, dadosPergunta, id, descric
     );
 };
 
-const PerguntaSelect = ({ mostrarResposta, resposta, dadosPergunta, id, descricao }) => {
+const PerguntaSelect = ({ mostrarResposta, resposta, dadosPergunta, id, descricao, handleChangeResposta }) => {
 
     const [selecionado, setSelecionado] = useState(null);
 
@@ -136,7 +154,7 @@ const PerguntaSelect = ({ mostrarResposta, resposta, dadosPergunta, id, descrica
             <Select
                 native
                 className="selectPerguntas"
-                onChange={() => { }}
+                onChange={handleChange}
             >
                 {dadosPergunta.map(itemSelect => (
                     <option
@@ -152,7 +170,7 @@ const PerguntaSelect = ({ mostrarResposta, resposta, dadosPergunta, id, descrica
     );
 };
 
-const Horario = ({ mostrarResposta, resposta, dadosPergunta, id, descricao }) => {
+const Horario = ({ mostrarResposta, resposta, dadosPergunta, id, descricao, handleChangeResposta }) => {
 
     const [selectedDate, setSelectedDate] = useState(new Date());
 
@@ -181,7 +199,7 @@ const Horario = ({ mostrarResposta, resposta, dadosPergunta, id, descricao }) =>
     );
 };
 
-const Data = ({ mostrarResposta, resposta, dadosPergunta, id, descricao }) => {
+const Data = ({ mostrarResposta, resposta, dadosPergunta, id, descricao, handleChangeResposta }) => {
     const [selectedDate, setSelectedDate] = useState(new Date());
 
     const handleChange = (date) => {
@@ -213,7 +231,7 @@ const Data = ({ mostrarResposta, resposta, dadosPergunta, id, descricao }) => {
     );
 };
 
-const Pergunta = ({ tipo, resposta, mostrarResposta, dadosPergunta, id, descricao }) => {
+const Pergunta = ({ tipo, resposta, mostrarResposta, dadosPergunta, id, descricao, handleChangeResposta }) => {
 
     const switchTiposDePerguntas = (tipo) => {
         switch (tipo) {
@@ -225,6 +243,7 @@ const Pergunta = ({ tipo, resposta, mostrarResposta, dadosPergunta, id, descrica
                         mostrarResposta={mostrarResposta}
                         dadosPergunta={dadosPergunta}
                         id={id}
+                        handleChangeResposta={handleChangeResposta}
                     />
                 )
                 break;
@@ -236,6 +255,7 @@ const Pergunta = ({ tipo, resposta, mostrarResposta, dadosPergunta, id, descrica
                         mostrarResposta={mostrarResposta}
                         dadosPergunta={dadosPergunta}
                         id={id}
+                        handleChangeResposta={handleChangeResposta}
                     />
                 )
                 break;
@@ -246,6 +266,7 @@ const Pergunta = ({ tipo, resposta, mostrarResposta, dadosPergunta, id, descrica
                         mostrarResposta={mostrarResposta}
                         dadosPergunta={dadosPergunta}
                         id={id}
+                        handleChangeResposta={handleChangeResposta}
                     />
                 )
                 break;
@@ -257,6 +278,7 @@ const Pergunta = ({ tipo, resposta, mostrarResposta, dadosPergunta, id, descrica
                         mostrarResposta={mostrarResposta}
                         dadosPergunta={dadosPergunta}
                         id={id}
+                        handleChangeResposta={handleChangeResposta}
                     />
                 )
                 break;
@@ -268,6 +290,7 @@ const Pergunta = ({ tipo, resposta, mostrarResposta, dadosPergunta, id, descrica
                         mostrarResposta={mostrarResposta}
                         dadosPergunta={dadosPergunta}
                         id={id}
+                        handleChangeResposta={handleChangeResposta}
                     />
                 )
                 break;
@@ -279,6 +302,7 @@ const Pergunta = ({ tipo, resposta, mostrarResposta, dadosPergunta, id, descrica
                         mostrarResposta={mostrarResposta}
                         dadosPergunta={dadosPergunta}
                         id={id}
+                        handleChangeResposta={handleChangeResposta}
                     />
                 )
                 break;
@@ -290,6 +314,7 @@ const Pergunta = ({ tipo, resposta, mostrarResposta, dadosPergunta, id, descrica
                         mostrarResposta={mostrarResposta}
                         dadosPergunta={dadosPergunta}
                         id={id}
+                        handleChangeResposta={handleChangeResposta}
                     />
                 )
                 break;

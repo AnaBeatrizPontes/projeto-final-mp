@@ -13,14 +13,36 @@ import './RespostaQuestionario.css';
 const RespostaQuestionario = (props) => {
 
     const [questionario, setQuestionario] = useState({});
+    const [respostas, setRespostas] = useState([]);
 
     const history = useHistory();
 
     useConstructor(() => {
         const questionarioId = 1; //props.questionarioId;
-        const questionario = getQuestionario(questionarioId);
-        setQuestionario(questionario);
+        const currentQuestionario = getQuestionario(questionarioId);
+        setQuestionario(currentQuestionario);
+
+        const respostasIniciais = currentQuestionario.perguntas.map(pergunta => {
+            return {
+                id: pergunta.id,
+                resposta: null,
+            };
+        });
+
+        setRespostas(respostasIniciais);
+
     });
+
+    const handleChangeResposta = (perguntaId, resposta) => {
+        const newRespostas = respostas.map(respostaItem => {
+            if (respostaItem.id == perguntaId) {
+                return { id: perguntaId, resposta }
+            } else {
+                return respostaItem
+            }
+        });
+        setRespostas(newRespostas);
+    }
 
     const handleSubmit = () => {
 
@@ -45,13 +67,13 @@ const RespostaQuestionario = (props) => {
                     {titulo}
                 </Typography>
                 <Typography
-                    variant="title"
+                    variant="inherit"
                 >
                     Criador: {userName}
                 </Typography>
                 <br />
                 <Typography
-                    variant="title"
+                    variant="inherit"
                 >
                     {descricao}
                 </Typography>
@@ -66,6 +88,8 @@ const RespostaQuestionario = (props) => {
                             tipo={pergunta.tipo}
                             dadosPergunta={pergunta.dados}
                             descricao={pergunta.descricao}
+                            handleChangeResposta={handleChangeResposta}
+                            key={pergunta.id}
                         />
                     ))}
                 </div>
