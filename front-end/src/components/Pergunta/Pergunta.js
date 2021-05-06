@@ -267,11 +267,9 @@ const Data = ({
         <>
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
                 <KeyboardDatePicker
-                    disableToolbar
                     style={{
                         width: "100%",
                     }}
-                    variant="inline"
                     format="dd/MM/yyyy"
                     margin="normal"
                     id="date-picker-inline"
