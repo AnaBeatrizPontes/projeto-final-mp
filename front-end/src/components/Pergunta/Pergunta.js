@@ -285,7 +285,15 @@ const Data = ({
     );
 };
 
-const Pergunta = ({ tipo, resposta, mostrarResposta, dadosPergunta, id, descricao, handleChangeResposta }) => {
+const Pergunta = ({
+    tipo,
+    resposta,
+    mostrarResposta,
+    dadosPergunta,
+    id,
+    descricao,
+    handleChangeResposta
+}) => {
 
     const switchTiposDePerguntas = (tipo) => {
         switch (tipo) {
