@@ -18,7 +18,14 @@ import {
 
 import './Pergunta.css'
 
-const RespostaCurta = ({ mostrarResposta, resposta, dadosPergunta, id, descricao, handleChangeResposta }) => {
+const RespostaCurta = ({
+    mostrarResposta,
+    resposta,
+    dadosPergunta,
+    id,
+    descricao,
+    handleChangeResposta
+}) => {
 
     const [valor, setValor] = useState(mostrarResposta ? resposta : "");
 
@@ -42,7 +49,13 @@ const RespostaCurta = ({ mostrarResposta, resposta, dadosPergunta, id, descricao
     );
 };
 
-const Paragrafo = ({ mostrarResposta, resposta, dadosPergunta, id, descricao, handleChangeResposta }) => {
+const Paragrafo = ({
+    mostrarResposta,
+    resposta,
+    dadosPergunta,
+    id, descricao,
+    handleChangeResposta
+}) => {
 
     const [valor, setValor] = useState(mostrarResposta ? resposta : "");
 
@@ -68,13 +81,20 @@ const Paragrafo = ({ mostrarResposta, resposta, dadosPergunta, id, descricao, ha
     );
 };
 
-const MultiplaEscolha = ({ mostrarResposta, resposta, dadosPergunta, id, descricao, handleChangeResposta }) => {
+const MultiplaEscolha = ({
+    mostrarResposta,
+    resposta,
+    dadosPergunta,
+    id,
+    descricao,
+    handleChangeResposta
+}) => {
 
     const [selecionado, setSelecionado] = useState(null);
 
     const handleChange = (event) => {
         setSelecionado(event.target.value);
-        //TODO - manda valor para o componente pai
+        handleChangeResposta(id, event.target.value);
     }
 
     return (
