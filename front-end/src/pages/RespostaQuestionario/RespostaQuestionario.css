@@ -13,7 +13,6 @@ body {
 
 .containerQuestionario{
     font-family: 'Roboto Slab';
-    height: 100vh;
     width: 100%;
     background: linear-gradient(180deg, #11283b 0%, white 80%);
     padding: 30px

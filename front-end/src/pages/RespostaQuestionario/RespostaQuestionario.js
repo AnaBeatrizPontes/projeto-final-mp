@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 
 import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
+import { useHistory } from 'react-router-dom';
 
 import Pergunta from '../../components/Pergunta/Pergunta';
 import useConstructor from '../../Utils/useConstructor';
@@ -12,11 +14,17 @@ const RespostaQuestionario = (props) => {
 
     const [questionario, setQuestionario] = useState({});
 
+    const history = useHistory();
+
     useConstructor(() => {
         const questionarioId = 1; //props.questionarioId;
         const questionario = getQuestionario(questionarioId);
         setQuestionario(questionario);
     });
+
+    const handleSubmit = () => {
+
+    }
 
     const descricao = questionario.descricao || "Descrição++";
     const titulo = questionario.titulo || "Título++";
@@ -61,6 +69,24 @@ const RespostaQuestionario = (props) => {
                         />
                     ))}
                 </div>
+                <Button
+                    variant="contained"
+                    color="default"
+                    onClick={() => {
+                        history.push("/")
+                    }}
+                >
+                    Voltar para home
+                </Button>
+                <Button
+                    style={{
+                        float: "right",
+                    }}
+                    variant="contained"
+                    color="primary"
+                    onClick={handleSubmit}>
+                    Enviar
+                </Button>
             </div>
         </div>
     );
