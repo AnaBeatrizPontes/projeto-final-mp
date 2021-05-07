@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import './Feedbacks.css';
 
 //API
-import { sendFeedback, getForm } from '../../Utils/api';
+import { sendFeedback, getFormById } from '../../Utils/api';
 
 import NavBar from "../../components/NavBar/NavBar";
 
@@ -17,13 +17,13 @@ import NavBar from "../../components/NavBar/NavBar";
 function Feedbacks(props) {
   const [feedback, setFeedback] = useState('');
   // const user_id = localStorage.getItem('id');
-  const user_id = '2';
-  const form_id = '2';
+  const user_id = '1';
+  const form_id = '1';
   // const form_id = props.match.params.id;
-  const [form, setForm] = useState('');
+  const [form, setForm] = useState([]);
 
   useEffect(() => {
-    getForm(form_id)
+    getFormById(form_id)
       .then((res) => {
         setForm(res);
         console.log(res);
@@ -46,26 +46,26 @@ function Feedbacks(props) {
       });
   };
 
-	return (
-		<>
-		<NavBar />
-		<div className="all">
-      <h1 className="title">Feedback sobre o questionário {form.name}</h1>
-      <textarea
-        id="outlined-basic"
-        variant="outlined"
-        className="feedback_input"
-        value={feedback}
-        onChange={(event) => setFeedback(event.target.value)}
-      />
-      <button
-        className="button"
-        onClick={() => send(form_id, user_id, feedback)}
-      >
-        <div className="button_text">Enviar Feedback</div>
-      </button>
-			</div>
-			</>
+  return (
+    <>
+      <NavBar />
+      <div className="all">
+        <h1 className="title">Feedback sobre o questionário {form.title}</h1>
+        <textarea
+          id="outlined-basic"
+          variant="outlined"
+          className="feedback_input"
+          value={feedback}
+          onChange={(event) => setFeedback(event.target.value)}
+        />
+        <button
+          className="button"
+          onClick={() => send(form_id, user_id, feedback)}
+        >
+          <div className="button_text">Enviar Feedback</div>
+        </button>
+      </div>
+    </>
   );
 }
 

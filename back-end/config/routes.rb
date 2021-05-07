@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   get '/forms-per-user/:user_id', to: 'forms#form_per_user'
   resources :questions
   resources :feedbacks
+  get '/forms/:id', to: 'forms#show'
 end

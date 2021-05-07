@@ -9,6 +9,7 @@ import AssignmentOutlinedIcon from '@material-ui/icons/AssignmentOutlined';
 import MoveToInboxIcon from '@material-ui/icons/MoveToInbox';
 import { Badge } from '@material-ui/core';
 import { deleteForm } from '../../Utils/api';
+import { useHistory } from 'react-router';
 
 const FormCard = ({ form }) => {
   const deletaForm = () => {
@@ -22,9 +23,17 @@ const FormCard = ({ form }) => {
       });
   };
 
+  const history = useHistory();
+
   const qtdeRespostas = form.answers.length;
 
-  const urlEdit = `http:localhost:3000/forms/${form.id}`;
+  const aux = form.answers;
+
+  const listaRespostas = () => {
+    history.push(`/answers/${form.id}`, { params: aux });
+  }
+
+  const urlEdit = `http:localhost:3001/forms/${form.id}`;
   const urlCopy = form.link;
 
   return (
@@ -35,17 +44,17 @@ const FormCard = ({ form }) => {
         <a href={form.link} target="blank" className="card-box__link">
           <AssignmentOutlinedIcon style={{ fontSize: 20 }} />
         </a>
-				<Badge
-					badgeContent={qtdeRespostas}
-					color="primary"
-					anchorOrigin={{
-    				vertical: 'center',
-    				horizontal: 'center',
-					}}
-				>
-					<a href={form.link} target="blank" className="card-box__answers">
-						<MoveToInboxIcon style={{ fontSize: 20 }} />
-					</a>
+        <Badge
+          badgeContent={qtdeRespostas}
+          color="primary"
+          anchorOrigin={{
+            vertical: 'center',
+            horizontal: 'center',
+          }}
+        >
+          <button onClick={listaRespostas} className="card-box__answers">
+            <MoveToInboxIcon style={{ fontSize: 20 }} />
+          </button>
         </Badge>
         <a href={urlEdit} target="blank" className="card-box__edit">
           <EditIcon style={{ fontSize: 20 }} />

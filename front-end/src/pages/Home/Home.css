@@ -1,0 +1,12 @@
+.pagesHome {
+  margin-top: 5rem;
+}
+
+.homeForms {
+  display: flex;
+  overflow-x: auto;
+}
+
+.homeForms::-webkit-scrollbar{
+  width: 0px;
+}

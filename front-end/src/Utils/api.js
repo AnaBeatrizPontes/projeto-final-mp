@@ -23,23 +23,12 @@ export const login = (email, password) => {
   return api.post('/auth/login', { email, password });
 };
 
-export const register = (email, password, firstName, value) => {
-  const userCreator = false;
-  const userAnswerer = false;
-
-  if (value == 'Reponder') {
-    userAnswerer = true;
-  } else {
-    userAnswerer = userCreator = true;
-  }
-
+export const register = (email, password, firstName) => {
   return api.post('/users', {
     email: email,
     password: password,
     password_confirmation: password,
-    name: firstName,
-    userAnswerer: userAnswerer,
-    userCreator: userCreator
+    name: firstName
   });
 };
 
@@ -51,10 +40,10 @@ export const deleteForm = (id) => {
   return api.delete(`/forms/${id}`);
 };
 
-export const sendFeedback = (form_id, user_id, description) => {
-  return api.post('/feedbacks', { form_id, user_id, description });
+export const getFormById = (id) => {
+  return api.get(`/forms/${id}`);
 };
 
-export const getForm = (form_id) => {
-  return api.get(`/forms/${form_id}`);
+export const sendFeedback = (form_id, user_id, description) => {
+  return api.post('/feedbacks', { form_id, user_id, description });
 };

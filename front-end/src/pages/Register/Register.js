@@ -28,7 +28,7 @@ function PagesRegister() {
   const history = useHistory();
 
   //teste para checkbox
-  const [value, setValue] = React.useState('');
+  const [value, setValue] = useState('Responder');
 
   const handleChange = (event) => {
     setValue(event.target.value);
@@ -39,7 +39,7 @@ function PagesRegister() {
   };
 
   const mandaProBack = () => {
-    register(email, password, firstName, value)
+    register(email, password, firstName)
       .then((resp) => {
         const { data } = resp;
         if (data) {

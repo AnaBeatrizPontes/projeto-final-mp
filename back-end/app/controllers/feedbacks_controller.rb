@@ -29,7 +29,11 @@ class FeedbacksController < ApplicationController
 
 	def destroy
     	@feedback.destroy
-  	end
+  end
+
+	# def feedback_per_user
+	# 	@feedbacks = Feedback.includes()
+	# end
 
 	private
 

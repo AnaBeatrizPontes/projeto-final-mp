@@ -49,6 +49,9 @@ body {
 }
 
 .caixaDeForms {
+  display: flex;
+  flex-direction: column;
+  height: 83vh;
   margin-top: 1rem;
-  width: 100%;
+  overflow-y: auto;
 }

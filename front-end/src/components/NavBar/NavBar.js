@@ -25,7 +25,7 @@ function NavBar() {
           </Link>
           <ul className="nav-menu">
             <li className="nav-item">
-              <Link to="/notfound" className="nav-links">
+              <Link to="/home" className="nav-links">
                 Home
               </Link>
             </li>
