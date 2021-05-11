@@ -10,7 +10,7 @@ function PagesHome() {
   const name = localStorage.getItem('usrName');
   const user_id = localStorage.getItem('id');
   const [forms, setForms] = useState([]);
-
+  console.log(user_id);
   useEffect(() => {
     getFormPerUser(user_id)
       .then((res) => {
@@ -30,7 +30,9 @@ function PagesHome() {
         {!(forms.length == 0) ? (
           <div className="homeForms">
             {forms.map(function (form) {
-              return <HomepageCard className="item" key={form.id} form={form} />;
+              return (
+                <HomepageCard className="item" key={form.id} form={form} />
+              );
             })}
           </div>
         ) : (
@@ -42,7 +44,9 @@ function PagesHome() {
         {!(forms.length == 0) ? (
           <div className="homeForms">
             {forms.map(function (form) {
-              return <HomepageCard className="item" key={form.id} form={form} />;
+              return (
+                <HomepageCard className="item" key={form.id} form={form} />
+              );
             })}
           </div>
         ) : (

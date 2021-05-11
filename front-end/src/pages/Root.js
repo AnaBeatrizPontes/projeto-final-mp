@@ -8,9 +8,8 @@ import PagesNotFound from './NotFound';
 import PrivateRoute from './PrivateRoute';
 import PagesMyFormsList from './MyFormsList/MyFormsList';
 import Feedbacks from './Feedbacks/Feedbacks';
-import PagesHome from './Home/Home'
-import PagesAnswersList from './AnswersList/AnswersList'
-
+import PagesHome from './Home/Home';
+import PagesAnswersList from './AnswersList/AnswersList';
 
 const Root = () => {
   return (

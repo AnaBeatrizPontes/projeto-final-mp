@@ -10,7 +10,6 @@ import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
-import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
@@ -18,10 +17,10 @@ import AssignmentOutlinedIcon from '@material-ui/icons/AssignmentOutlined';
 
 import { useHistory } from 'react-router-dom';
 
-
 const useStyles = makeStyles((theme) => ({
   root: {
     minWidth: 345,
+    maxWidth: 345,
     margin: 10,
   },
   media: {
@@ -52,15 +51,15 @@ export default function HomepageCard({ form }) {
 
   const openForm = () => {
     if (form.link == null) {
-      alert('Link inválido')
-      return
+      alert('Link inválido');
+      return;
     }
     history.push(form.link);
-  }
+  };
 
   const showLink = () => {
-    alert(form.link)
-  }
+    alert(form.link);
+  };
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -74,21 +73,15 @@ export default function HomepageCard({ form }) {
             {name[0]}
           </Avatar>
         }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
         title={name}
       />
       <CardContent>
-
         <Typography variant="body1" color="textPrimary" component="p">
           {form.title}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton onClick={openForm} aria-label="add to favorites">
+        <IconButton href={form.link} target="blank" aria-label="open form">
           <AssignmentOutlinedIcon />
         </IconButton>
         <IconButton onClick={showLink} aria-label="share">
@@ -108,9 +101,7 @@ export default function HomepageCard({ form }) {
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography paragraph>Description:</Typography>
-          <Typography paragraph>
-            {form.description}
-          </Typography>
+          <Typography paragraph>{form.description}</Typography>
         </CardContent>
       </Collapse>
     </Card>

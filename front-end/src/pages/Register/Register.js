@@ -11,7 +11,8 @@ import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import ContactMailIcon from '@material-ui/icons/ContactMail';
 
 //teste para checkbox
-import { FormControlLabel, FormControl, FormGroup, Checkbox, RadioGroup } from '@material-ui/core';
+import { FormControlLabel, FormGroup, RadioGroup } from '@material-ui/core';
+
 import CreateIcon from '@material-ui/icons/Create';
 import CreateTwoToneIcon from '@material-ui/icons/CreateTwoTone';
 import QuestionAnswerOutlinedIcon from '@material-ui/icons/QuestionAnswerOutlined';
@@ -22,7 +23,6 @@ function PagesRegister() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
   const [showImage, setShowImage] = useState(false);
   const [flag, setFlag] = useState(false);
   const history = useHistory();
@@ -84,18 +84,45 @@ function PagesRegister() {
             <FormGroup className="register-user-type">
               <RadioGroup name="UserType" value={value} onChange={handleChange}>
                 <FormControlLabel
-                  control={<Radio icon={<QuestionAnswerOutlinedIcon style={{ fontSize: 20 }} />} checkedIcon={<QuestionAnswerIcon style={{ color: "#00924c", fontSize: 20 }} />} name="checkedA" />}
+                  control={
+                    <Radio
+                      icon={
+                        <QuestionAnswerOutlinedIcon style={{ fontSize: 20 }} />
+                      }
+                      checkedIcon={
+                        <QuestionAnswerIcon
+                          style={{
+                            color: '#00924c',
+                            fontSize: 20,
+                          }}
+                        />
+                      }
+                      name="checkedA"
+                    />
+                  }
                   value="Responder"
                   label="Responder"
                 />
                 <FormControlLabel
-                  control={<Radio icon={<CreateTwoToneIcon style={{ fontSize: 20 }} />} checkedIcon={<CreateIcon style={{ color: "#00924c", fontSize: 20 }} />} name="checkedB" />}
+                  control={
+                    <Radio
+                      icon={<CreateTwoToneIcon style={{ fontSize: 20 }} />}
+                      checkedIcon={
+                        <CreateIcon
+                          style={{
+                            color: '#00924c',
+                            fontSize: 20,
+                          }}
+                        />
+                      }
+                      name="checkedB"
+                    />
+                  }
                   value="CriarEresponder"
                   label="Criar e Responder"
                 />
               </RadioGroup>
             </FormGroup>
-
           </div>
           {flag && firstName.length < 1 && (
             <p className="Error-Message">Insira um nome válido</p>

@@ -3,19 +3,60 @@ import AnswererCard from '../../components/AnswererCard/AnswererCard';
 import NavBar from '../../components/NavBar/NavBar';
 import 'normalize.css';
 import './AnswersList.css';
-import axios from 'axios';
 import useConstructor from '../../Utils/useConstructor';
 
+//import axios from 'axios';
 //API
 import { getFormById } from '../../Utils/api';
 import { useParams } from 'react-router';
 
 function PagesAnswersList() {
+  const initialValue = {
+    id: '',
+    title: '',
+    description: '',
+    link: null,
+    created_at: '',
+    updated_at: '',
+    user_id: null,
+    questions: [
+      {
+        id: '',
+        description: '',
+        form_id: '',
+        created_at: '',
+        updated_at: '',
+        forms_id: null,
+      },
+    ],
+    answers: [
+      {
+        id: '',
+        respostas: '',
+        created_at: '',
+        updated_at: '',
+        user_id: '',
+        question_id: '',
+        form_id: '',
+      },
+    ],
+  };
   const { id } = useParams();
-  const [form, setForm] = useState({});
+  const [form, setForm] = useState(initialValue);
+
+  //useConstructor(() => {
+  //  axios.get(`http://localhost:3000/forms/${id}`)
+  //    .then((res) => {
+  //      setForm(res.data[0]);
+  //      console.log(res.data[0]);
+  //    })
+  //    .catch((err) => {
+  //      console.log(err);
+  //    });
+  //});
 
   useConstructor(() => {
-    axios.get(`http://localhost:3000/forms/${id}`)
+    getFormById(id)
       .then((res) => {
         setForm(res.data[0]);
       })
@@ -24,36 +65,21 @@ function PagesAnswersList() {
       });
   });
 
-  //useConstructor(() => {
-  //  getFormById(id)
-  //    .then((res) => {
-  //      setForm(res.data);
-  //    })
-  //    .catch((err) => {
-  //      console.log(err);
-  //    });
-  //});
-
-  console.log(form);
-
   return (
     <div className="myFormsList">
       <NavBar />
-      <div className="myFormsList__input">
-        {/*!(form.answers.length == 0) ? (
-          <div className="caixaDeForms">
-            {form.answers
-              .map(function (answer) {
-                return <AnswererCard key={form.answer.id} answer={answer} />;
-              })}
-          </div>
-        ) : (
-          <div>
-            <h1>Este quest ainda nao possui respostas</h1>
-          </div>
-        )*/
-          <h1>{form.answers[0].respostas}</h1>
-        }
+      <div className="caixaDeRespondentes">
+        {form.answers.map(function (answer) {
+          return (
+            <>
+              <AnswererCard
+                key={answer.id}
+                answer={answer}
+                className="caixaDeRespondentes-item"
+              />
+            </>
+          );
+        })}
       </div>
     </div>
   );

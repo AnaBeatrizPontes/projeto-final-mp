@@ -8,11 +8,13 @@ import { Button } from '../Button/Button';
 
 function NavBar() {
   const history = useHistory();
+  const creator = localStorage.getItem('creator');
 
   const logOut = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('usrName');
     localStorage.removeItem('id');
+    localStorage.removeItem('creator');
     history.push('/');
   };
 
@@ -29,11 +31,13 @@ function NavBar() {
                 Home
               </Link>
             </li>
-            <li className="nav-item">
-              <Link to="/myforms" className="nav-links">
-                My Forms
-              </Link>
-            </li>
+            {creator == 'true' && (
+              <li className="nav-item">
+                <Link to="/myforms" className="nav-links">
+                  My Forms
+                </Link>
+              </li>
+            )}
             <li className="nav-item">
               <Link to="/notfound" className="nav-links">
                 {localStorage.getItem('usrName')}

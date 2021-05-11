@@ -28,7 +28,7 @@ export const register = (email, password, firstName) => {
     email: email,
     password: password,
     password_confirmation: password,
-    name: firstName
+    name: firstName,
   });
 };
 
@@ -44,6 +44,14 @@ export const getFormById = (id) => {
   return api.get(`/forms/${id}`);
 };
 
+export const getUserById = (id) => {
+  return api.get(`/users/${id}`);
+};
+
 export const sendFeedback = (form_id, user_id, description) => {
   return api.post('/feedbacks', { form_id, user_id, description });
+};
+
+export const getMyAnswers = () => {
+  return api.get('/answers');
 };

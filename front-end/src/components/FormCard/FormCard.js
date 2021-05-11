@@ -9,7 +9,8 @@ import AssignmentOutlinedIcon from '@material-ui/icons/AssignmentOutlined';
 import MoveToInboxIcon from '@material-ui/icons/MoveToInbox';
 import { Badge } from '@material-ui/core';
 import { deleteForm } from '../../Utils/api';
-import { useHistory } from 'react-router';
+
+import { useHistory } from 'react-router-dom';
 
 const FormCard = ({ form }) => {
   const deletaForm = () => {
@@ -27,13 +28,15 @@ const FormCard = ({ form }) => {
 
   const qtdeRespostas = form.answers.length;
 
-  const aux = form.answers;
-
   const listaRespostas = () => {
-    history.push(`/answers/${form.id}`, { params: aux });
-  }
+    if (form.answers.length == 0) {
+      alert('O form ainda não possui respostas');
+      return;
+    }
+    history.push(`/answers/${form.id}`);
+  };
 
-  const urlEdit = `http:localhost:3001/forms/${form.id}`;
+  const urlEdit = form.link;
   const urlCopy = form.link;
 
   return (
@@ -44,18 +47,18 @@ const FormCard = ({ form }) => {
         <a href={form.link} target="blank" className="card-box__link">
           <AssignmentOutlinedIcon style={{ fontSize: 20 }} />
         </a>
-        <Badge
-          badgeContent={qtdeRespostas}
-          color="primary"
-          anchorOrigin={{
-            vertical: 'center',
-            horizontal: 'center',
-          }}
-        >
-          <button onClick={listaRespostas} className="card-box__answers">
+        <button onClick={listaRespostas} className="card-box__answers">
+          <Badge
+            badgeContent={qtdeRespostas}
+            color="primary"
+            anchorOrigin={{
+              vertical: 'top',
+              horizontal: 'right',
+            }}
+          >
             <MoveToInboxIcon style={{ fontSize: 20 }} />
-          </button>
-        </Badge>
+          </Badge>
+        </button>
         <a href={urlEdit} target="blank" className="card-box__edit">
           <EditIcon style={{ fontSize: 20 }} />
         </a>

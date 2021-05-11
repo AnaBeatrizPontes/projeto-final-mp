@@ -6,7 +6,7 @@ import './Feedbacks.css';
 //API
 import { sendFeedback, getFormById } from '../../Utils/api';
 
-import NavBar from "../../components/NavBar/NavBar";
+import NavBar from '../../components/NavBar/NavBar';
 
 //////Adicionar logo após o usuário enviar a resposta
 //const sendToFeedbackPage = (form_id) => {

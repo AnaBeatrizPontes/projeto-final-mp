@@ -65,6 +65,7 @@
   color: white;
   text-decoration: none;
   background-color: grey;
+  cursor: pointer;
 }
 
 .card-box__delete{

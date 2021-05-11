@@ -10,6 +10,9 @@ Todo:
     ✔ Arrumar as rotas para o back-end proprietario @done(21-04-30 19:41)
     ☐ Testes de unidade para login
     ☐ Testes de unidade para cadastro
+    ☐ Testes de unidade para home
+    ☐ Testes de unidade para MyFormsList
+    ☐ Criar pagina de perfil do user (metodo put)
 
 Login:
     ✔ Arrumar logo @done(21-04-30 20:27)
@@ -19,12 +22,18 @@ Login:
 
 
 MyFormsList:
-    ☐ Implementar request do botao excluir
+    ✔ Implementar request do botao excluir @done(21-05-10 15:46)
     ✔ Implementar answers badge count @done(21-04-30 20:27)
+
+AnswererList:
+    ☐ Overlay de respostas
+    ☐ Rota para pagina de visualizacao de uma resposta especifica
+    ☐ rota para feedback de cada usuario
+    ☐ Nome pego por ID para colocar na listagem
 
 all:
     ✔ Reformular nav bar @done(21-04-30 20:28)
-    ☐ Ajeitar css na resized screen
+    ✘ Ajeitar css na resized screen @cancelled(21-05-10 15:46)
 
 
 

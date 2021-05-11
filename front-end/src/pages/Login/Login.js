@@ -33,6 +33,7 @@ function PagesLogin() {
           localStorage.setItem('token', data.token);
           localStorage.setItem('usrName', data.user.name);
           localStorage.setItem('id', data.user.id);
+          localStorage.setItem('creator', data.user.creator);
           history.push('/home');
         }
       })
