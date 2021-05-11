@@ -3,7 +3,7 @@ class FormsController < ApplicationController
 
 	def index
 		@forms = Form.includes(:questions, :answers).all
-        render json: @forms, include: [:questions, :answers]
+    	render json: @forms, include: [:questions, :answers]
 	end
 
 	def show
@@ -15,6 +15,7 @@ class FormsController < ApplicationController
 		@form = Form.new(form_params)
 		if @form.save
 			@form.link = "http://localhost:3001/form/#{@form.id}"
+			@form.save
 			render json: @form, status: :created, location: @form
 		else
 			render json: @form.errors, status: :unprocessable_entity

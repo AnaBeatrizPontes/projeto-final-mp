@@ -8,7 +8,7 @@ class FeedbacksController < ApplicationController
 
 	def show
     	render json: @feedback
-  	end
+  end
 
 	def create
     	@feedback = Feedback.new(feedback_params)
@@ -17,7 +17,7 @@ class FeedbacksController < ApplicationController
     	else
       		render json: @feedback.errors, status: :unprocessable_entity
     	end
-  	end
+  end
 
 	def update
     	if @feedback.update(feedback_params)
@@ -25,15 +25,21 @@ class FeedbacksController < ApplicationController
     	else
       		render json: @feedback.errors, status: :unprocessable_entity
     	end
-  	end
+  end
 
 	def destroy
     	@feedback.destroy
   end
 
-	# def feedback_per_user
-	# 	@feedbacks = Feedback.includes()
-	# end
+	def feedback_per_form_and_user
+		@feedback = Feedback.where(user_id: params[:user_id], form_id: params[:form_id])
+		render json: @feedback
+	end
+
+	def feedbacks_per_form
+		@feedbacks = Feedback.where(form_id: params[:form_id])
+		render json: @feedbacks
+	end
 
 	private
 
