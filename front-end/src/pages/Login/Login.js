@@ -34,6 +34,7 @@ function PagesLogin() {
           localStorage.setItem('usrName', data.user.name);
           localStorage.setItem('id', data.user.id);
           localStorage.setItem('creator', data.user.creator);
+          localStorage.setItem('answerer', data.user.answerer);
           history.push('/home');
         }
       })
@@ -54,7 +55,6 @@ function PagesLogin() {
         <div className="login-logo">
           <img src={logo} alt="Logo" />
         </div>
-
         <div className="login-right">
           <h1>Acessar App</h1>
           <div className="loginInputEmail">
@@ -93,7 +93,6 @@ function PagesLogin() {
           <div>
             <h4>Não tenho conta</h4>
           </div>
-
           <div>
             <button onClick={mandaRegistrar} className="submitButton">
               Cadastrar

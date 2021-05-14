@@ -17,7 +17,7 @@ import NavBar from '../../components/NavBar/NavBar';
 function Feedbacks(props) {
   const [feedback, setFeedback] = useState('');
   // const user_id = localStorage.getItem('id');
-  const user_id = '1';
+  const user_id = '2';
   const form_id = '1';
   // const form_id = props.match.params.id;
   const [form, setForm] = useState([]);

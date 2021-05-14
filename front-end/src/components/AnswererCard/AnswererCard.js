@@ -4,20 +4,22 @@ import Avatar from '@material-ui/core/Avatar';
 import './AnswererCard.css';
 
 //api
-import { getUserById, getFeedback } from '../../Utils/api';
+import { getUserById, getFeedbacksById } from '../../Utils/api';
 
 //ICONS
 import AssignmentOutlinedIcon from '@material-ui/icons/AssignmentOutlined';
 import FeedbackIcon from '@material-ui/icons/Feedback';
 
+//MODAL
+import TransitionsModal from '../Modal/Modal';
+
 const AnswererCard = ({ answer }) => {
   const [name, setName] = useState('');
   const user_id = answer.user_id;
+  const form_id = answer.form_id;
   const [aux, setAux] = useState(false);
-
+  const [feedback, setFeedback] = useState({});
   const data = new Date(answer.created_at);
-
-  console.log(user_id);
 
   useEffect(() => {
     getUserById(user_id)
@@ -30,7 +32,14 @@ const AnswererCard = ({ answer }) => {
   }, []);
 
   const listaFeedback = () => {
-    setAux(!aux);
+    getFeedbacksById(form_id, user_id)
+      .then((resp) => {
+        setAux(!aux);
+        setFeedback(resp.data[0]);
+      })
+      .catch((err) => {
+        console.log('ERROR: ', err);
+      });
   };
 
   return (
@@ -49,7 +58,7 @@ const AnswererCard = ({ answer }) => {
           <FeedbackIcon style={{ fontSize: 20 }} />
         </button>
       </footer>
-      {aux && <h1>Feedback</h1>}
+      {aux && <TransitionsModal text={feedback.description} />}
     </div>
   );
 };

@@ -23,7 +23,7 @@ function PagesHome() {
   }, []);
 
   return (
-    <div>
+    <div className="myFormsList">
       <NavBar />
       <div className="pagesHome">
         <h1>Questionários atribuídos a ti:</h1>

@@ -10,6 +10,7 @@ import PagesMyFormsList from './MyFormsList/MyFormsList';
 import Feedbacks from './Feedbacks/Feedbacks';
 import PagesHome from './Home/Home';
 import PagesAnswersList from './AnswersList/AnswersList';
+import PagesProfile from './Profile/Profile';
 
 const Root = () => {
   return (
@@ -20,6 +21,7 @@ const Root = () => {
         <Route exact path="/register" component={PagesRegister} />
         <Route exact path="/login" component={PagesLogin} />
         <PrivateRoute exact path="/feedbacks/:id" component={Feedbacks} />
+        <PrivateRoute exact path="/profile" component={PagesProfile} />
         <PrivateRoute exact path="/home" component={PagesHome} />
         <PrivateRoute component={PagesNotFound} />
       </Switch>

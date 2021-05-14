@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import './Register.css';
-import { register } from '../../Utils/api';
+import { getUserById, updateProfile } from '../../Utils/api';
+import NavBar from '../../components/NavBar/NavBar';
 
 //Icones
 import LockIcon from '@material-ui/icons/Lock';
@@ -19,35 +19,46 @@ import QuestionAnswerOutlinedIcon from '@material-ui/icons/QuestionAnswerOutline
 import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
 import Radio from '@material-ui/core/Radio';
 
-function PagesRegister() {
+function PagesProfile() {
+  const user_id = localStorage.getItem('id');
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [firstName, setFirstName] = useState('');
+
+  useEffect(() => {
+    getUserById(user_id)
+      .then((res) => {
+        setFirstName(res.data.name);
+        setEmail(res.data.email);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   const [showImage, setShowImage] = useState(false);
   const [flag, setFlag] = useState(false);
   const history = useHistory();
 
   //teste para checkbox
-  const [value, setValue] = useState('false');
+  const initialValue = localStorage.getItem('creator');
+  const [value, setValue] = useState(initialValue);
 
   const handleChange = (event) => {
     setValue(event.target.value);
   };
 
-  const mandaEsseTrecoDeVolta = () => {
-    history.push('/login');
-  };
-
   const mandaProBack = () => {
-    register(email, password, firstName, value)
+    updateProfile(email, password, firstName, value, user_id)
       .then((resp) => {
-        const { data } = resp;
-        if (data) {
-          history.push('/');
-        }
+        console.log(resp);
+        localStorage.setItem('usrName', resp.data.name);
+        localStorage.setItem('creator', resp.data.creator);
+        window.location.reload();
       })
       .catch((err) => {
-        alert('Erro ao cadastrar, confira os dados inseridos');
+        alert('Erro ao atualizar, confira os dados inseridos');
         setFlag(true);
         console.log(err.message);
       });
@@ -59,24 +70,17 @@ function PagesRegister() {
   };
 
   return (
-    <div className="back">
+    <div className="myFormsList">
+      <NavBar />
       <div className="register">
         <div className="register-box">
-          <button
-            type="button"
-            onClick={mandaEsseTrecoDeVolta}
-            className="backButton"
-          >
-            Login
-          </button>
-          <h1 className="register-titulo">Registrar no App</h1>
+          <h1 className="register-titulo">O que mudou?</h1>
 
           <div className="registerInputName">
             <AccountBoxIcon />
             <input
               className="registerInput"
               type="name"
-              placeholder="First name"
               value={firstName}
               onChange={(clickEvent) => setFirstName(clickEvent.target.value)}
             />
@@ -168,7 +172,7 @@ function PagesRegister() {
 
           <div>
             <button onClick={mandaProBack} className="submitButton">
-              Cadastrar
+              Atualizar
             </button>
           </div>
         </div>
@@ -177,4 +181,4 @@ function PagesRegister() {
   );
 }
 
-export default PagesRegister;
+export default PagesProfile;

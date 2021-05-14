@@ -15,6 +15,7 @@ function NavBar() {
     localStorage.removeItem('usrName');
     localStorage.removeItem('id');
     localStorage.removeItem('creator');
+    localStorage.removeItem('answerer');
     history.push('/');
   };
 
@@ -39,7 +40,7 @@ function NavBar() {
               </li>
             )}
             <li className="nav-item">
-              <Link to="/notfound" className="nav-links">
+              <Link to="/profile" className="nav-links">
                 {localStorage.getItem('usrName')}
               </Link>
             </li>
