@@ -2,8 +2,8 @@ class FeedbacksController < ApplicationController
 	before_action :set_feedback, only: [:show, :update, :destroy]
 
 	def index
-    	@feedbacks = Feedback.all
-    	render json: @feedbacks
+			@feedbacks = Feedback.all
+			render json: @feedbacks
 	end
 
 	def show
@@ -43,11 +43,11 @@ class FeedbacksController < ApplicationController
 
 	private
 
-    def set_feedback
-      @feedback = Feedback.find(params[:id])
-    end
+	def set_feedback
+		@feedback = Feedback.find(params[:id])
+	end
 
-    def feedback_params
-      params.require(:feedback).permit(:description, :form_id, :user_id)
-    end
+	def feedback_params
+		params.require(:feedback).permit(:description, :form_id, :user_id)
+	end
 end

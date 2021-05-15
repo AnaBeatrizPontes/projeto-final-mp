@@ -10,6 +10,9 @@ Todo:
     ✔ Arrumar as rotas para o back-end proprietario @done(21-04-30 19:41)
     ☐ Testes de unidade para login
     ☐ Testes de unidade para cadastro
+    ☐ Testes de unidade para home
+    ☐ Testes de unidade para MyFormsList
+    ☐ Criar pagina de perfil do user (metodo put)
 
 Login:
     ✔ Arrumar logo @done(21-04-30 20:27)
@@ -19,12 +22,44 @@ Login:
 
 
 MyFormsList:
-    ☐ Implementar request do botao excluir
+    ✔ Implementar request do botao excluir @done(21-05-10 15:46)
     ✔ Implementar answers badge count @done(21-04-30 20:27)
+
+AnswererList:
+    ☐ Overlay de respostas
+    ☐ Rota para pagina de visualizacao de uma resposta especifica
+    ☐ rota para feedback de cada usuario
+    ☐ Nome pego por ID para colocar na listagem
 
 all:
     ✔ Reformular nav bar @done(21-04-30 20:28)
-    ☐ Ajeitar css na resized screen
+    ✘ Ajeitar css na resized screen @cancelled(21-05-10 15:46)
 
-
-
+UX|UI:
+    ☐ DIMINUIR qtde de forms na tela (!= do tamanho)
+    ☐ filtro de forms respondidos
+    ✔ tela de login e cadastro @done(21-05-13 12:09)
+    ☐ mensagem de boas vindas
+    ☐ idioma base do quest
+    ☐ filtro e grupo de pesguntas.
+        I.e: aluno da unb? (x)sim ()nao
+            qual curso?
+    ☐ mais de uma pagina por quest, sendo isso definido pelo user
+    ☐ simbolo de ajuda para responder a questao (acessibility)
+    ☐ pergunta do tipo matriz 
+    ☐ ordem aleatoria
+        tirar viez de resposta
+    ☐ limite de tempo
+        o que acontece se o tempo acabar
+    ☐ pre visualizar quets
+    ☐ reorganizar pesguntas e grupos
+    ☐ permitir navegacao inversa
+        pode mudar as respostas?
+    ☐ quem responde tem acesso ao csv?
+    ☐ descricao dos botoes
+    ☐ outra pessoa editar o quest
+        tipo fazer em dupla/grupo um questionario
+    ☐ tempo pra expirar um quest?
+        habilitar ou desabilitar um quest
+        abrir pra teste
+    ☐ tornar aleatorio ordem de perguntas e quais perguntas
