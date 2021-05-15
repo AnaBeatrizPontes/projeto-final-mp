@@ -49,12 +49,15 @@ export const getQuestionario = (questionarioId) => {
         descricao: "Você gosta?",
         tipo: "respostaCurta",
         dados: [],
+        resposta: "Gosta e acha bom!",
       },
       {
         id: 3,
         descricao: "Você gosta? (resposta longa)",
         tipo: "paragrafo",
         dados: [],
+        dados: [],
+        resposta: "Gosta e acha bom!",
       },
       {
         id: 5,
@@ -69,7 +72,8 @@ export const getQuestionario = (questionarioId) => {
             opcao: "Não",
             valor: "n"
           },
-        ]
+        ],
+        resposta: "s",
       },
       {
         id: 6,
@@ -96,7 +100,8 @@ export const getQuestionario = (questionarioId) => {
             opcao: "Não",
             valor: "n"
           },
-        ]
+        ],
+        resposta: "s"
       },
       {
         id: 4,
@@ -111,7 +116,8 @@ export const getQuestionario = (questionarioId) => {
             opcao: "Não",
             valor: "n"
           },
-        ]
+        ],
+        resposta: ["s"],
       },
     ],
   };

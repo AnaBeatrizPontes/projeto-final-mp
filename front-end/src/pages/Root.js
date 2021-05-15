@@ -21,7 +21,7 @@ const Root = () => {
         <PrivateRoute
           exact path="/respostaQuestionario"
           component={RespostaQuestionario}
-          ehResposta={false}
+          ehResposta={true}
         />
         <PrivateRoute component={PagesNotFound} />
       </Switch>

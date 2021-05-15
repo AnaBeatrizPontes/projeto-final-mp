@@ -40,7 +40,7 @@ const RespostaCurta = ({
                 className="textFieldPergunta"
                 id={id}
                 label={descricao}
-                value={valor}
+                value={mostrarResposta ? resposta : valor}
                 variant="outlined"
                 disabled={mostrarResposta}
                 onChange={handleChange}
@@ -57,7 +57,7 @@ const Paragrafo = ({
     handleChangeResposta
 }) => {
 
-    const [valor, setValor] = useState(mostrarResposta ? resposta : "");
+    const [valor, setValor] = useState("");
 
     const handleChange = (e) => {
         setValor(e.target.value);
@@ -70,7 +70,7 @@ const Paragrafo = ({
                 className="textFieldPergunta"
                 id={id}
                 label={descricao}
-                value={valor}
+                value={mostrarResposta ? resposta : valor}
                 multiline
                 rows={5}
                 variant="outlined"
@@ -101,7 +101,7 @@ const MultiplaEscolha = ({
         <div>
             <FormControl component="fieldset">
                 <FormLabel component="legend">{descricao}</FormLabel>
-                <RadioGroup row aria-label={id} name={id} value={selecionado} onChange={handleChange}>
+                <RadioGroup row aria-label={id} name={id} value={mostrarResposta ? resposta : selecionado} onChange={handleChange}>
                     {
                         dadosPergunta.map(itemRadio => (
                             <FormControlLabel
@@ -109,6 +109,7 @@ const MultiplaEscolha = ({
                                 value={itemRadio.valor}
                                 control={<Radio />}
                                 label={itemRadio.opcao}
+                                disabled={mostrarResposta}
                             />
                         ))
                     }
@@ -128,7 +129,7 @@ const CaixasDeSelecao = ({
     handleChangeResposta
 }) => {
 
-    const [selectsLigados, setSelects] = useState([]);
+    const [selectsLigados, setSelects] = useState(resposta);
 
     const handleChange = (event) => {
         const valorAtual = event.target.name;
@@ -156,6 +157,7 @@ const CaixasDeSelecao = ({
                                         onChange={handleChange}
                                         name={itemCheckbox.valor}
                                         key={itemCheckbox.valor}
+                                        disabled={mostrarResposta}
                                     />
                                 }
                                 label={itemCheckbox.opcao}
@@ -177,7 +179,7 @@ const PerguntaSelect = ({
     handleChangeResposta
 }) => {
 
-    const [selecionado, setSelecionado] = useState(null);
+    const [selecionado, setSelecionado] = useState(resposta);
 
     const handleChange = (event) => {
         setSelecionado(event.target.value);
@@ -190,6 +192,8 @@ const PerguntaSelect = ({
                 native
                 className="selectPerguntas"
                 onChange={handleChange}
+                disabled={mostrarResposta}
+                value={selecionado}
             >
                 <option
                     className="optionSelectPerguntas"
@@ -288,7 +292,7 @@ const Data = ({
 const Pergunta = ({
     tipo,
     resposta,
-    mostrarResposta,
+    mostrarResposta = true,
     dadosPergunta,
     id,
     descricao,
@@ -329,6 +333,7 @@ const Pergunta = ({
                         dadosPergunta={dadosPergunta}
                         id={id}
                         handleChangeResposta={handleChangeResposta}
+                        resposta={resposta}
                     />
                 )
                 break;
