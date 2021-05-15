@@ -12,7 +12,10 @@ function NavBar() {
   const logOut = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('usrName');
-    localStorage.removeItem('id');
+		localStorage.removeItem('id');
+		localStorage.removeItem('creator');
+		localStorage.removeItem('answerer');
+		localStorage.removeItem('admin');
     history.push('/');
   };
 

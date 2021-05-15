@@ -32,7 +32,10 @@ function PagesLogin() {
         if (data) {
           localStorage.setItem('token', data.token);
           localStorage.setItem('usrName', data.user.name);
-          localStorage.setItem('id', data.user.id);
+					localStorage.setItem('id', data.user.id);
+					localStorage.setItem('creator', data.user.creator);
+					localStorage.setItem('answerer', data.user.answerer);
+					localStorage.setItem('admin', data.user.admin);
           history.push('/home');
         }
       })

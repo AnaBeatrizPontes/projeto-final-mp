@@ -24,7 +24,6 @@ export const login = (email, password) => {
 };
 
 export const register = (email, password, firstName, answerer, creator) => {
-	console.log("USERES",answerer, creator)
   return api.post('/users', {
     email: email,
     password: password,
@@ -49,4 +48,8 @@ export const sendFeedback = (form_id, user_id, description) => {
 
 export const getForm = (form_id) => {
   return api.get(`/forms/${form_id}`);
+};
+
+export const getUser = (user_id) => {
+	return api.get(`/users/${user_id}`);
 };
