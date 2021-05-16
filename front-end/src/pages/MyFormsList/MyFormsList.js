@@ -26,7 +26,6 @@ function PagesMyFormsList() {
     getFormPerUser(user_id)
       .then((res) => {
         setForms(res.data);
-        console.log(forms);
       })
       .catch((err) => {
         console.log(err);

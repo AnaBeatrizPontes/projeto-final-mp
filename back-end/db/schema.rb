@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_02_195355) do
+ActiveRecord::Schema.define(version: 2021_05_16_051136) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,15 @@ ActiveRecord::Schema.define(version: 2021_05_02_195355) do
     t.index ["form_id"], name: "index_answers_on_form_id"
     t.index ["question_id"], name: "index_answers_on_question_id"
     t.index ["user_id"], name: "index_answers_on_user_id"
+  end
+
+  create_table "assignments", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "form_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["form_id"], name: "index_assignments_on_form_id"
+    t.index ["user_id"], name: "index_assignments_on_user_id"
   end
 
   create_table "feedbacks", force: :cascade do |t|
@@ -63,11 +72,16 @@ ActiveRecord::Schema.define(version: 2021_05_02_195355) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "admin", default: false
+    t.boolean "creator", default: false
+    t.boolean "answerer", default: false
   end
 
   add_foreign_key "answers", "forms"
   add_foreign_key "answers", "questions"
   add_foreign_key "answers", "users"
+  add_foreign_key "assignments", "forms"
+  add_foreign_key "assignments", "users"
   add_foreign_key "feedbacks", "forms"
   add_foreign_key "feedbacks", "users"
   add_foreign_key "forms", "users"
