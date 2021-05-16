@@ -2,13 +2,13 @@ class FormsController < ApplicationController
 	  	before_action :set_form, only: [:show, :update, :destroy]
 
 	def index
-		@forms = Form.all
-        render json: @forms
+		@forms = Form.includes(:questions).all
+        render json: @forms, include: [:questions]
 	end
 
 	def show
-		@form = Form.find(params[:id])
-        render json: @form
+		@form = Form.includes(:questions).where(id: params[:id])
+        render json: @form, include: [:questions], status: :ok
 	end
 
 	def create
@@ -21,6 +21,29 @@ class FormsController < ApplicationController
 		end
 	end
 
+	def destroy
+		if @form.destroy
+				render status: :ok
+		else
+				render json: { errors: 'Não foi possivel deletar o questionario' }, status: :unprocessable_entity
+		end
+	end
+
+	def form_per_user
+		@forms = Form.includes(:questions).where(user_id: params[:user_id])
+		render json: @forms, include: [:questions], status: :ok
+	end
+
+	def copy_form
+    @form = Form.find(params[:id])
+    if @form.save
+    	@form.link = "http://localhost:3001/form/#%7B@form.id%7D"
+      render json: @form, status: :created, location: @form
+    else
+      render json: @form.errors, status: :unprocessable_entity
+    end
+  end
+
 	private
 
     def set_form
@@ -28,7 +51,7 @@ class FormsController < ApplicationController
     end
  
     def form_params
-      params.require(:form).permit(:title, :description, :link)
+      params.require(:form).permit(:title, :description, :link, :user_id)
     end
 	
 	

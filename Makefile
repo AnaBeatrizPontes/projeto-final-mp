@@ -1,5 +1,5 @@
 make:
-	- PORT=3006 yarn --cwd ./front-end/ start 
+	- PORT=3001 yarn --cwd ./front-end/ start 
 back:
 	- cd back-end/ && rails s 
 setup-front:

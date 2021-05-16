@@ -162,4 +162,9 @@
     cursor: pointer;
     margin-right: 10px;
 }
-  
+
+.Error-Message {
+    color: rgb(168, 72, 72);
+    align-items: center;
+    justify-content: center;
+}

@@ -1,21 +1,23 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import logo from '../logo.png';
 
 import './Login.css';
-import logo from './logo.png';
+import 'normalize.css';
 
+//icons
 import MailIcon from '@material-ui/icons/Mail';
 import LockIcon from '@material-ui/icons/Lock';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 
+//API
 import { login } from '../../Utils/api';
 
 function PagesLogin() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showImage, setShowImage] = useState(false);
-  const [errInput, setErrInput] = useState(false);
 
   const history = useHistory();
 
@@ -28,14 +30,15 @@ function PagesLogin() {
       .then((resp) => {
         const { data } = resp;
         if (data) {
-          localStorage.setItem('token', data);
+          localStorage.setItem('token', data.token);
+          localStorage.setItem('usrName', data.user.name);
+          localStorage.setItem('id', data.user.id);
           history.push('/home');
         }
       })
       .catch((err) => {
-        setErrInput(true);
-        alert('Email ou senha inválidos');
-        console.log(err.message);
+        alert('Email e/ou senha inválidos');
+        console.log('ERRO:', err);
       });
   };
 
@@ -82,7 +85,7 @@ function PagesLogin() {
           </div>
 
           <div>
-            <button onClick={mandaProBack} className="mailButton">
+            <button onClick={mandaProBack} className="submitButton">
               Entrar
             </button>
           </div>
@@ -91,7 +94,7 @@ function PagesLogin() {
           </div>
 
           <div>
-            <button onClick={mandaRegistrar} className="passButton">
+            <button onClick={mandaRegistrar} className="submitButton">
               Cadastrar
             </button>
           </div>

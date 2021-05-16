@@ -16,15 +16,15 @@ function PagesRegister() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [showImage, setShowImage] = useState(false);
-
+  const [flag, setFlag] = useState(false);
   const history = useHistory();
 
   const mandaEsseTrecoDeVolta = () => {
-    history.push('/');
+    history.push('/login');
   };
 
   const mandaProBack = () => {
-    register(email, password, firstName, lastName)
+    register(email, password, firstName)
       .then((resp) => {
         const { data } = resp;
         if (data) {
@@ -33,6 +33,7 @@ function PagesRegister() {
       })
       .catch((err) => {
         alert('Erro ao cadastrar, confira os dados inseridos');
+        setFlag(true);
         console.log(err.message);
       });
   };
@@ -51,18 +52,20 @@ function PagesRegister() {
             onClick={mandaEsseTrecoDeVolta}
             className="backButton"
           >
-            Voltar
+            Login
           </button>
           <h1 className="register-titulo">Registrar no App</h1>
 
           <div className="registerInputName">
             <AccountBoxIcon />
             <input
+              className="registerInput"
               type="name"
               placeholder="First name"
               value={firstName}
               onChange={(clickEvent) => setFirstName(clickEvent.target.value)}
             />
+
             <input
               type="name"
               placeholder="Last name"
@@ -70,6 +73,10 @@ function PagesRegister() {
               onChange={(clickEvent) => setLastName(clickEvent.target.value)}
             />
           </div>
+
+          {flag && firstName.length < 1 && (
+            <p className="Error-Message">Insira um nome válido</p>
+          )}
 
           <div className="registerInputEmail">
             <ContactMailIcon />
@@ -80,6 +87,10 @@ function PagesRegister() {
               onChange={(clickEvent) => setEmail(clickEvent.target.value)}
             />
           </div>
+
+          {flag && email.length < 1 && (
+            <p className="Error-Message">Insira um email válido</p>
+          )}
 
           <div className="registerInputPassword">
             <LockIcon />
@@ -98,8 +109,15 @@ function PagesRegister() {
               )}
             </div>
           </div>
+
+          {flag && password.length < 8 && (
+            <p className="Error-Message">
+              A senha deve possuir ao menos 8 dígitos
+            </p>
+          )}
+
           <div>
-            <button onClick={mandaProBack} className="registerButton">
+            <button onClick={mandaProBack} className="submitButton">
               Cadastrar
             </button>
           </div>
