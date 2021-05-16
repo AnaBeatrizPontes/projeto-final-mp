@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
@@ -14,6 +14,9 @@ import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import AssignmentOutlinedIcon from '@material-ui/icons/AssignmentOutlined';
+
+//Utils
+import { getFormById } from '../../Utils/api';
 
 import { useHistory } from 'react-router-dom';
 
@@ -42,7 +45,22 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function HomepageCard({ form }) {
+export default function HomepageCard({ form_id }) {
+  const [form, setForm] = useState({});
+  const formID = form_id;
+  console.log('FORM ID AQUI', form_id);
+
+  useEffect(() => {
+    getFormById(formID)
+      .then((res) => {
+        setForm(res.data);
+        console.log('FORME AQUI', form);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [formID, form]);
+
   const history = useHistory();
   const name = localStorage.getItem('usrName');
 

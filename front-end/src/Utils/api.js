@@ -74,5 +74,17 @@ export const getMyAnswers = () => {
 };
 
 export const getUser = (user_id) => {
-	return api.get(`/users/${user_id}`);
+  return api.get(`/users/${user_id}`);
+};
+
+export const getAllUsers = () => {
+  return api.get(`/users`);
+};
+
+export const userToForm = (form_id, user_id) => {
+  return api.post(`/assignments`, { form_id, user_id });
+};
+
+export const getAssignPerUser = (user_id) => {
+  return api.get(`/form-assign-to-user/${user_id}`);
 };

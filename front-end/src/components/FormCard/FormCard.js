@@ -1,6 +1,9 @@
 import React from 'react';
 import './FormCard.css';
 
+//Components
+import AssignForms from '../AssignForms/AssignForms';
+
 //ICONS
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import EditIcon from '@material-ui/icons/Edit';
@@ -44,6 +47,9 @@ const FormCard = ({ form }) => {
       <h1 className="card-box__title">{form.title}</h1>
       <span className="card-box__info">{form.description}</span>
       <footer className="card-box__footer">
+        <a>
+          <AssignForms formId={form.id} />
+        </a>
         <a href={form.link} target="blank" className="card-box__link">
           <AssignmentOutlinedIcon style={{ fontSize: 20 }} />
         </a>

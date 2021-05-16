@@ -31,52 +31,32 @@ function PagesRegister() {
   const [value, setValue] = useState('false');
 
   const handleChange = (event) => {
-		setValue(event.target.value);
-		// setaRole(value);
-		async => {
-			if (value == 'Responder') {
-				setCreator(false);
-				setAnswerer(true);
-				console.log("DENTRO 1 SET CREATOR", creator);
-				console.log("DENTRO 1 SET ANSER", answerer);
-			}
-			else if (value == 'CriarEresponder') {
-				setCreator(true);
-				setAnswerer(true);
-				console.log("DENTRO 2 SET CREATOR", creator);
-				console.log("DENTRO 2 SET ANSER", answerer);
-			}
-			else {
-				console.log("DEU RUIM");
-			}
-		}
-	};
+    setValue(event.target.value);
+    // setaRole(value);
+    (async) => {
+      if (value == 'Responder') {
+        setCreator(false);
+        setAnswerer(true);
+        console.log('DENTRO 1 SET CREATOR', creator);
+        console.log('DENTRO 1 SET ANSER', answerer);
+      } else if (value == 'CriarEresponder') {
+        setCreator(true);
+        setAnswerer(true);
+        console.log('DENTRO 2 SET CREATOR', creator);
+        console.log('DENTRO 2 SET ANSER', answerer);
+      } else {
+        console.log('DEU RUIM');
+      }
+    };
+  };
 
-	console.log("VALEU", value);
-	
-	// const setaRole = (value) => {
-	// 	if (value == 'Responder') {
-	// 		setCreator(false);
-	// 		setAnswerer(true);
-	// 		console.log("DENTRO 1 SET CREATOR", creator);
-	// 		console.log("DENTRO 1 SET ANSER", answerer);
-	// 	}
-	// 	else if (value == 'CriarEresponder') {
-	// 		setCreator(true);
-	// 		setAnswerer(true);
-	// 		console.log("DENTRO 2 SET CREATOR", creator);
-	// 		console.log("DENTRO 2 SET ANSER", answerer);
-	// 	}
-	// 	else {
-	// 		console.log("DEU RUIM");
-	// 	}
-	// };
+  console.log('VALEU', value);
 
   const mandaEsseTrecoDeVolta = () => {
     history.push('/login');
   };
 
-	const mandaProBack = () => {
+  const mandaProBack = () => {
     register(email, password, firstName, answerer, creator)
       .then((resp) => {
         const { data } = resp;

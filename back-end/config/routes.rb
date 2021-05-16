@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   resources :answers
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :users
   post '/auth/login', to: 'authentication#login'
 #   get '/*a', to: 'application#not_found'
@@ -10,4 +9,6 @@ Rails.application.routes.draw do
   resources :feedbacks
   get '/feedback-per-user-and-form/:user_id/:form_id', to: 'feedbacks#feedback_per_form_and_user'
   get '/feedbacks-per-form', to: 'feedbacks#feedbacks_per_form'
+	resources :assignments
+	get '/form-assign-to-user/:user_id', to: 'assignments#assignment_per_user'
 end
