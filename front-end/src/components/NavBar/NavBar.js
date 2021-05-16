@@ -27,7 +27,7 @@ function NavBar() {
       <nav className="navbar">
         {admin == 'true' ? (
           <div className="navbar-container">
-            <Link to="" className="navbar-logo">
+            <Link to="/home" className="navbar-logo">
               <img src={logo} className="navbar-logo" alt="Logo" />
             </Link>
             <ul className="nav-menu">

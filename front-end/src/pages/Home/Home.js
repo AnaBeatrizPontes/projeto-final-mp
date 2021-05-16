@@ -30,25 +30,26 @@ function PagesHome() {
         <>
           <NavBar />
           <div className="pagesHome">
-            <h1>Bem vindo admiro</h1>
+            <h1>Você está logado como admin</h1>
+            <p>Utilize o menu superior</p>
           </div>
         </>
       ) : (
-    <div className="myFormsList">
-      <NavBar />
-      <div className="pagesHome">
-        <h1>Questionários atribuídos a ti:</h1>
-        {!(assigns.length == 0) ? (
-          <div className="homeForms">
-            {assigns.map(function (assign) {
-              return (
-                <HomepageCard
-                  className="item"
-                  key={assign.form_id}
-                  form_id={assign.form_id}
-                />
-              );
-            })}
+        <div className="myFormsList">
+          <NavBar />
+          <div className="pagesHome">
+            <h1>Questionários atribuídos a ti:</h1>
+            {!(assigns.length == 0) ? (
+              <div className="homeForms">
+                {assigns.map(function (assign) {
+                  return (
+                    <HomepageCard
+                      className="item"
+                      key={assign.form_id}
+                      form_id={assign.form_id}
+                    />
+                  );
+                })}
               </div>
             ) : (
               <div>

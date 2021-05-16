@@ -43,8 +43,8 @@ const UserCard = ({ user }) => {
   return (
     <div className="card-box">
       {name == undefined ? history.go() : null}
-      <Avatar card-box__avatar>{name[0]}</Avatar>
-      <div className="card-box__name__date">
+      <Avatar className="card-box__title">{name[0]}</Avatar>
+      <div className="card-box__info">
         <h1 className="card-box__info">{name}</h1>
       </div>
       <footer className="card-box__footer">

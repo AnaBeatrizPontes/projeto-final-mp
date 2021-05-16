@@ -52,7 +52,7 @@ function AssignForms({ formId }) {
       .catch((err) => {
         console.log(err);
         alert(
-          'Não foi possivel atribuir este quetionario a este usuário, tente novamente mais tarde'
+          'Não foi possivel atribuir este questionario a este usuário, tente novamente mais tarde'
         );
       });
   };
@@ -61,8 +61,8 @@ function AssignForms({ formId }) {
 
   return (
     <div className="body">
-      <button onClick={handleClickOpen('paper')}>
-        <PersonAddIcon style={{ fontSize: 26.5 }} />
+      <button className="card-box__edit" onClick={handleClickOpen('paper')}>
+        <PersonAddIcon style={{ fontSize: 20 }} />
       </button>
       <Dialog open={open} onClose={handleClose}>
         <DialogContent dividers={false}>

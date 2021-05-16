@@ -1,4 +1,4 @@
-make:
+front:
 	- PORT=3001 yarn --cwd ./front-end/ start 
 back:
 	- cd back-end/ && rails s 

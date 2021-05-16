@@ -40,8 +40,7 @@ const FormCard = ({ form }) => {
     history.push(`/answers/${form.id}`);
   };
 
-  const urlEdit = form.link;
-  const urlCopy = () => {
+  const notReady = () => {
     alert('Funcao em implementação');
   }
 
@@ -66,17 +65,15 @@ const FormCard = ({ form }) => {
               <MoveToInboxIcon style={{ fontSize: 20 }} />
             </Badge>
           </button>
-          <a href={urlEdit} target="blank" className="card-box__edit">
+          <button onClick={notReady} target="blank" className="card-box__edit">
             <EditIcon style={{ fontSize: 20 }} />
-          </a>
+          </button>
         </div>
-        <div>
-          <button onClick={urlCopy} target="blank" className="card-box__copy">
+        <div className="card-box__footer2">
+          <button onClick={notReady} target="blank" className="card-box__copy">
             <FileCopyIcon style={{ fontSize: 20 }} />
-					</button>
-          <a>
-            <AssignForms formId={form.id} />
-        	</a>
+          </button>
+          <AssignForms formId={form.id} />
           <button onClick={deletaForm} className="card-box__delete">
             <DeleteOutlineIcon style={{ fontSize: 20 }} />
           </button>

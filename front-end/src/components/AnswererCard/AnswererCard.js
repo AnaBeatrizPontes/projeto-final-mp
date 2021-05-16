@@ -43,14 +43,14 @@ const AnswererCard = ({ answer }) => {
   };
 
   return (
-    <div className="card-box">
+    <div className="answer-box">
       {name == undefined ? history.go() : null}
-      <Avatar card-box__avatar>{name[0]}</Avatar>
+      <Avatar className="card-box__title">{name[0]}</Avatar>
       <div className="card-box__name__date">
         <h1 className="card-box__info">{name}</h1>
         <span>{data.toLocaleString('pt-br')}</span>
       </div>
-      <footer className="card-box__footer">
+      <footer className="answer-box__footer">
         <a href={answer.link} target="blank" className="card-box__link">
           <AssignmentOutlinedIcon style={{ fontSize: 20 }} />
         </a>
