@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   get '/feedbacks-per-form', to: 'feedbacks#feedbacks_per_form'
 	resources :assignments
 	get '/form-assign-to-user/:user_id', to: 'assignments#assignment_per_user'
+	get '/answers-per-user/:user_id', to: 'answers#answer_per_user'
 end

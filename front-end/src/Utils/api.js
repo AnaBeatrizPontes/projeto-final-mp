@@ -179,3 +179,7 @@ export const getQuestionario = (questionarioId) => {
     ],
   };
 };
+
+export const getAnswersPerUser = (user_id) => {
+	return api.get(`/answers-per-user/${user_id}`);
+};
