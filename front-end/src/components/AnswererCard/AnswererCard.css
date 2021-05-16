@@ -1,0 +1,14 @@
+.card-box__name__date{
+  display: flex;
+  flex-direction: column;
+  margin-right: 25%;
+  margin-left: 25%;
+}
+
+.card-box__name__date span{
+  font-size: 16px;
+}
+
+.card-box__name__date h1{
+  font-size: 20px;
+}

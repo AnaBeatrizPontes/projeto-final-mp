@@ -16,6 +16,8 @@ body {
   height: 100vh;
   width: 100%;
   background: linear-gradient(180deg, #11283b 0%, white 80%);
+
+
 }
 
 .myFormsList svg{
@@ -49,6 +51,9 @@ body {
 }
 
 .caixaDeForms {
+  display: flex;
+  flex-direction: column;
+  height: 83vh;
   margin-top: 1rem;
-  width: 100%;
+  overflow-y: auto;
 }

@@ -3,7 +3,9 @@ import Card from '../../components/Card/Card';
 import { useEffect, useState } from 'react';
 import MaisAtribuidos from '../../components/MaisAtribuidos/MaisAtribuidos';
 import Opcoes from '../../components/Opcoes/Opcoes';
-function App(props) {
+
+function Homepage(props) {
+
   const [objeto, setObjeto] = useState([]);
   const [user, setUser] = useState();
   const [showAtribuidos, setShowAtribuidos] = useState(false);
@@ -46,10 +48,10 @@ function App(props) {
     }
   }
 
-  function handleClick(){
-    if(showOpcoes){
+  function handleClick() {
+    if (showOpcoes) {
       setShowOpcoes(false);
-    }else{
+    } else {
       setShowOpcoes(true);
     }
   }
@@ -60,10 +62,10 @@ function App(props) {
         <MaisAtribuidos obj={all} onClose={() => setShowAtribuidos(false)} />
       ) : null}
       <header>
-        <img src="./assents/logo.png" alt="Logo" className={style.logo} />
+        <img src="./assets/logo.png" alt="Logo" className={style.logo} />
         <div className={style.info}>
           <button className={style.opcao}>
-            {showOpcoes ? <img src="./assents/seta-cima.svg" className={style.seta} onClick={handleClick}/> : <img src="./assents/seta-baixo.svg" className={style.seta} onClick={handleClick}/>}
+            {showOpcoes ? <img src="./assets/seta-cima.svg" className={style.seta} onClick={handleClick} /> : <img src="./assents/seta-baixo.svg" className={style.seta} onClick={handleClick} />}
             {showOpcoes ? <Opcoes /> : null}
           </button>
           <h2 className={style.tituloBranco}>Jhon Borges</h2>
@@ -88,7 +90,7 @@ function App(props) {
                 href="#"
                 className={style.mostrar_formulario_atribuido}
               >
-                <img src="./assents/olho.svg" className={style.olho} />
+                <img src="./assets/olho.svg" className={style.olho} />
                 <h2>Ver mais...</h2>
               </a>
             </div>
@@ -116,4 +118,4 @@ function App(props) {
   );
 }
 
-export default App;
+export default Homepage;

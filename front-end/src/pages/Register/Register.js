@@ -10,21 +10,36 @@ import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import ContactMailIcon from '@material-ui/icons/ContactMail';
 
+//teste para checkbox
+import { FormControlLabel, FormGroup, RadioGroup } from '@material-ui/core';
+
+import CreateIcon from '@material-ui/icons/Create';
+import CreateTwoToneIcon from '@material-ui/icons/CreateTwoTone';
+import QuestionAnswerOutlinedIcon from '@material-ui/icons/QuestionAnswerOutlined';
+import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
+import Radio from '@material-ui/core/Radio';
+
 function PagesRegister() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
   const [showImage, setShowImage] = useState(false);
   const [flag, setFlag] = useState(false);
   const history = useHistory();
+
+  //teste para checkbox
+  const [value, setValue] = useState('false');
+
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
 
   const mandaEsseTrecoDeVolta = () => {
     history.push('/login');
   };
 
   const mandaProBack = () => {
-    register(email, password, firstName)
+    register(email, password, firstName, value)
       .then((resp) => {
         const { data } = resp;
         if (data) {
@@ -66,14 +81,49 @@ function PagesRegister() {
               onChange={(clickEvent) => setFirstName(clickEvent.target.value)}
             />
 
-            <input
-              type="name"
-              placeholder="Last name"
-              value={lastName}
-              onChange={(clickEvent) => setLastName(clickEvent.target.value)}
-            />
+            <FormGroup className="register-user-type">
+              <RadioGroup name="UserType" value={value} onChange={handleChange}>
+                <FormControlLabel
+                  control={
+                    <Radio
+                      icon={
+                        <QuestionAnswerOutlinedIcon style={{ fontSize: 20 }} />
+                      }
+                      checkedIcon={
+                        <QuestionAnswerIcon
+                          style={{
+                            color: '#00924c',
+                            fontSize: 20,
+                          }}
+                        />
+                      }
+                      name="checkedA"
+                    />
+                  }
+                  value="false"
+                  label="Responder"
+                />
+                <FormControlLabel
+                  control={
+                    <Radio
+                      icon={<CreateTwoToneIcon style={{ fontSize: 20 }} />}
+                      checkedIcon={
+                        <CreateIcon
+                          style={{
+                            color: '#00924c',
+                            fontSize: 20,
+                          }}
+                        />
+                      }
+                      name="checkedB"
+                    />
+                  }
+                  value="true"
+                  label="Criar e Responder"
+                />
+              </RadioGroup>
+            </FormGroup>
           </div>
-
           {flag && firstName.length < 1 && (
             <p className="Error-Message">Insira um nome válido</p>
           )}

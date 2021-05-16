@@ -10,7 +10,6 @@ import './MyFormsList.css';
 import { getFormPerUser } from '../../Utils/api';
 
 //ICONS
-import CircularProgress from '@material-ui/core/CircularProgress';
 import SearchIcon from '@material-ui/icons/Search';
 import { Button } from '../../components/Button/Button';
 
@@ -29,7 +28,6 @@ function PagesMyFormsList() {
     getFormPerUser(user_id)
       .then((res) => {
         setForms(res.data);
-        console.log(forms);
       })
       .catch((err) => {
         console.log(err);
@@ -38,6 +36,7 @@ function PagesMyFormsList() {
 
   return (
     <div className="myFormsList">
+      <NavBar />
       <div className="myFormsList__input">
         <input
           type="search"
