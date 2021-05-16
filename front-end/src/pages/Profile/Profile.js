@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { getUserById, updateProfile } from '../../Utils/api';
 import NavBar from '../../components/NavBar/NavBar';
+import { useParams } from 'react-router';
 
 //Icones
 import LockIcon from '@material-ui/icons/Lock';
@@ -20,7 +21,7 @@ import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
 import Radio from '@material-ui/core/Radio';
 
 function PagesProfile() {
-  const user_id = localStorage.getItem('id');
+  const { user_id } = useParams();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
