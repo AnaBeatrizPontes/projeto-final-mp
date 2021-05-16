@@ -46,20 +46,20 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function HomepageCard({ form_id }) {
-  const [form, setForm] = useState({});
+  const [form, setForm] = useState([]);
   const formID = form_id;
   console.log('FORM ID AQUI', form_id);
 
   useEffect(() => {
     getFormById(formID)
       .then((res) => {
-        setForm(res.data);
+        setForm(res.data[0]);
         console.log('FORME AQUI', form);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, [formID, form]);
+  }, []);
 
   const history = useHistory();
   const name = localStorage.getItem('usrName');

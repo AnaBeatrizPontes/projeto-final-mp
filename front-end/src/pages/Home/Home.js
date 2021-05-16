@@ -21,7 +21,7 @@ function PagesHome() {
       .catch((err) => {
         console.log(err);
       });
-  }, [user_id, assigns]);
+  }, []);
 
   return (
     <div className="myFormsList">
