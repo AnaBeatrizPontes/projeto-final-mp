@@ -13,8 +13,10 @@ import PagesAnswersList from './AnswersList/AnswersList';
 import PagesProfile from './Profile/Profile';
 import PagesAllFormsList from './AdminPages/AllFormsList'
 import PagesAllUsersList from './AdminPages/AllUsers';
+import RespostaQuestionario from './RespostaQuestionario/RespostaQuestionario';
 
 const Root = () => {
+
   return (
     <Router>
       <Switch>
@@ -27,6 +29,10 @@ const Root = () => {
         <PrivateRoute exact path="/feedbacks/:id" component={Feedbacks} />
         <PrivateRoute exact path="/profile/:user_id" component={PagesProfile} />
         <PrivateRoute exact path="/home" component={PagesHome} />
+        <PrivateRoute
+          exact path="/respostaQuestionario"
+          component={RespostaQuestionario}
+        />
         <PrivateRoute component={PagesNotFound} />
       </Switch>
     </Router>
