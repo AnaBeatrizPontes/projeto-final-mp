@@ -85,7 +85,7 @@ export const getQuestionario = (questionarioId) => {
         id: 7,
         descricao: "Qual a data de nascimento do Mike Tyson?",
         tipo: "data",
-        dados: []
+        dados: [],
       },
       {
         id: 2,

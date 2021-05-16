@@ -292,7 +292,7 @@ const Data = ({
 const Pergunta = ({
     tipo,
     resposta,
-    mostrarResposta = true,
+    mostrarResposta,
     dadosPergunta,
     id,
     descricao,
