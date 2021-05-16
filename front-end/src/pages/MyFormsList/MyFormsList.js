@@ -1,4 +1,6 @@
+/* eslint-disable prettier/prettier */
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import FormCard from '../../components/FormCard/FormCard';
 import NavBar from '../../components/NavBar/NavBar';
 import 'normalize.css';
@@ -71,6 +73,7 @@ function PagesMyFormsList() {
           >
             Clique aqui para criar
           </Button>
+          <Link to="/create">CRIAR</Link>
         </div>
       )}
     </div>
