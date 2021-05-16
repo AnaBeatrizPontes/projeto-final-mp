@@ -45,6 +45,16 @@ export const updateProfile = (email, password, firstName, creator, id) => {
   });
 };
 
+
+export const sendQuestion = (resposta, idForm, idUser, idQuestion) => {
+  return api.post('/answers', {
+    respostas: resposta,
+    form_id: idForm,
+    user_id: idUser,
+    question_id: idQuestion
+  });
+};
+
 export const getFormPerUser = (user_id) => {
   return api.get(`/forms-per-user/${user_id}`);
 };

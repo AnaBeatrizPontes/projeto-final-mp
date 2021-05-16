@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 
 import Pergunta from '../../components/Pergunta/Pergunta';
 import useConstructor from '../../Utils/useConstructor';
-import { getQuestionario } from '../../Utils/api';
+import { getQuestionario,sendQuestion } from '../../Utils/api';
 
 import './RespostaQuestionario.css';
 
@@ -45,7 +45,8 @@ const RespostaQuestionario = (props) => {
     }
 
     const handleSubmit = () => {
-
+        sendQuestion(respostas,1,1,1);
+        sendQuestion(respostas,1,1,2);
     }
 
     const descricao = questionario.descricao || "Descrição++";

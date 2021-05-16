@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :answers
-  resources :users
+  resources :users,  params: :_user
   post '/auth/login', to: 'authentication#login'
 #   get '/*a', to: 'application#not_found'
   resources :forms

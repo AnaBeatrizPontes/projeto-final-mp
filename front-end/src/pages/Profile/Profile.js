@@ -57,6 +57,7 @@ function PagesProfile() {
         localStorage.setItem('usrName', resp.data.name);
         localStorage.setItem('creator', resp.data.creator);
         window.location.reload();
+        history.push('/home');
       })
       .catch((err) => {
         alert('Erro ao atualizar, confira os dados inseridos');
