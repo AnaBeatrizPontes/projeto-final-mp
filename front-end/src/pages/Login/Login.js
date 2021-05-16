@@ -35,6 +35,7 @@ function PagesLogin() {
           localStorage.setItem('id', data.user.id);
           localStorage.setItem('creator', data.user.creator);
           localStorage.setItem('answerer', data.user.answerer);
+          localStorage.setItem('admin', data.user.admin);
           history.push('/home');
         }
       })

@@ -69,6 +69,14 @@ export const getFeedbacksById = (form_id, user_id) => {
   return api.get(`/feedback-per-user-and-form/${user_id}/${form_id}`);
 };
 
-export const getMyAnswers = () => {
-  return api.get('/answers');
+export const getAllForms = () => {
+  return api.get('/forms/');
+};
+
+export const getAllUsers = () => {
+  return api.get('/users/');
+};
+
+export const deleteUser = (id) => {
+  return api.delete(`/users/${id}`);
 };

@@ -11,17 +11,21 @@ import Feedbacks from './Feedbacks/Feedbacks';
 import PagesHome from './Home/Home';
 import PagesAnswersList from './AnswersList/AnswersList';
 import PagesProfile from './Profile/Profile';
+import PagesAllFormsList from './AdminPages/AllFormsList'
+import PagesAllUsersList from './AdminPages/AllUsers';
 
 const Root = () => {
   return (
     <Router>
       <Switch>
         <PrivateRoute exact path="/myforms" component={PagesMyFormsList} />
+        <PrivateRoute exact path="/allforms" component={PagesAllFormsList} />
+        <PrivateRoute exact path="/allusers" component={PagesAllUsersList} />
         <PrivateRoute exact path="/answers/:id" component={PagesAnswersList} />
         <Route exact path="/register" component={PagesRegister} />
         <Route exact path="/login" component={PagesLogin} />
         <PrivateRoute exact path="/feedbacks/:id" component={Feedbacks} />
-        <PrivateRoute exact path="/profile" component={PagesProfile} />
+        <PrivateRoute exact path="/profile/:user_id" component={PagesProfile} />
         <PrivateRoute exact path="/home" component={PagesHome} />
         <PrivateRoute component={PagesNotFound} />
       </Switch>
