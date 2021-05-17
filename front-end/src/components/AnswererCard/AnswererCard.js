@@ -48,7 +48,7 @@ const AnswererCard = ({ answer }) => {
 
   const mostraResposta = () => {
     history.push(`/formRespondido/${form_id}/${user_id}`);
-  }
+  };
 
   return (
     <div className="answer-box">
@@ -62,7 +62,11 @@ const AnswererCard = ({ answer }) => {
             <span>{data.toLocaleString('pt-br')}</span>
           </div>
           <footer className="answer-box__footer">
-            <button onClick={mostraResposta} target="blank" className="card-box__link">
+            <button
+              onClick={mostraResposta}
+              target="blank"
+              className="card-box__link"
+            >
               <AssignmentOutlinedIcon style={{ fontSize: 20 }} />
             </button>
             <button onClick={listaFeedback} className="card-box__link">

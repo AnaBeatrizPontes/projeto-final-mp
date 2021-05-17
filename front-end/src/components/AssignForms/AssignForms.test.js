@@ -5,9 +5,11 @@ import AssignForms from './AssignForms';
 
 configure({ adapter: new Adapter() });
 describe('AssignForms', () => {
+  //estes valores devem existir no BD
+  const form_id = 23;
+  const user_id = 1;
 
   it('render component with no errors', () => {
-    shallow(<AssignForms />);
+    shallow(<AssignForms form_id={form_id} user_id={user_id} />);
   });
-
 });

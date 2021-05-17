@@ -14,7 +14,7 @@ function Feedbacks(props) {
   const user_id = localStorage.getItem('id');
   const form_id = props.match.params.id;
   const [form, setForm] = useState([]);
-	const history = useHistory();
+  const history = useHistory();
 
   useEffect(() => {
     getFormById(form_id)
@@ -32,8 +32,8 @@ function Feedbacks(props) {
     sendFeedback(form_id, user_id, feedback)
       .then((res) => {
         console.log(res);
-				alert('Feedback enviado com sucesso');
-				history.push('/home');
+        alert('Feedback enviado com sucesso');
+        history.push('/home');
       })
       .catch((err) => {
         console.log(err);

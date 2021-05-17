@@ -1,18 +1,18 @@
 #Regras para testes e lista de tarefas
 
 Regras:
-    ☐ Apertar num botao sem preencher os inputs
-    ☐ Apertar um botao com os inputs incorretos
-    ☐ Ser redirecionado ao precionar o botao cadastrar
-
+    ✔ Apertar num botao sem preencher os inputs @done(21-05-17 14:52)
+    ✔ Apertar um botao com os inputs incorretos @done(21-05-17 14:52)
+    ✔ Ser redirecionado ao precionar o botao cadastrar @done(21-05-17 14:52)
+    
 Todo:
     ✔ Ajeitar código para passar no Eslit/Prettier @done(21-04-27 00:01)
     ✔ Arrumar as rotas para o back-end proprietario @done(21-04-30 19:41)
-    ☐ Testes de unidade para login
-    ☐ Testes de unidade para cadastro
-    ☐ Testes de unidade para home
-    ☐ Testes de unidade para MyFormsList
-    ☐ Criar pagina de perfil do user (metodo put)
+    ✔ Testes de unidade para login @done(21-05-17 14:52)
+    ✔ Testes de unidade para cadastro @done(21-05-17 14:52)
+    ✔ Testes de unidade para home @done(21-05-17 14:52)
+    ✔ Testes de unidade para MyFormsList @done(21-05-17 14:52)
+    ✔ Criar pagina de perfil do user (metodo put) @done(21-05-17 11:02)
 
 Login:
     ✔ Arrumar logo @done(21-04-30 20:27)
@@ -26,18 +26,18 @@ MyFormsList:
     ✔ Implementar answers badge count @done(21-04-30 20:27)
 
 AnswererList:
-    ☐ Overlay de respostas
-    ☐ Rota para pagina de visualizacao de uma resposta especifica
-    ☐ rota para feedback de cada usuario
-    ☐ Nome pego por ID para colocar na listagem
+    ✔ Overlay de respostas @done(21-05-17 11:02)
+    ✔ Rota para pagina de visualizacao de uma resposta especifica @done(21-05-17 11:02)
+    ✔ rota para feedback de cada usuario @done(21-05-17 11:02)
+    ✔ Nome pego por ID para colocar na listagem @done(21-05-17 11:02)
 
 all:
     ✔ Reformular nav bar @done(21-04-30 20:28)
     ✘ Ajeitar css na resized screen @cancelled(21-05-10 15:46)
 
 UX|UI:
-    ☐ DIMINUIR qtde de forms na tela (!= do tamanho)
-    ☐ filtro de forms respondidos
+    ✔ DIMINUIR qtde de forms na tela (!= do tamanho) @done(21-05-17 11:01)
+    ✔ filtro de forms respondidos @done(21-05-17 11:01)
     ✔ tela de login e cadastro @done(21-05-13 12:09)
     ☐ mensagem de boas vindas
     ☐ idioma base do quest

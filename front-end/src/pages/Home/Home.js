@@ -31,7 +31,7 @@ function PagesHome() {
         setForms(res.data);
       })
       .catch((err) => {
-        console.log("Não foi possivel pegar os forms", err);
+        console.log(err);
       });
   }, []);
 
@@ -40,13 +40,13 @@ function PagesHome() {
     forms.map((ques) => {
       const vetorDeIds = vetorUnico.map((q) => {
         return q.form_id;
-      })
+      });
       if (!vetorDeIds.includes(ques.form_id, 0)) {
         vetorUnico = [...vetorUnico, ques];
       }
-    })
+    });
     return vetorUnico;
-  }
+  };
 
   return (
     <>
@@ -85,7 +85,11 @@ function PagesHome() {
               <div className="homeForms">
                 {turnUnic().map(function (form) {
                   return (
-                    <HomepageCardRespondido className="item" key={form.form_id} form_id={form.form_id} />
+                    <HomepageCardRespondido
+                      className="item"
+                      key={form.form_id}
+                      form_id={form.form_id}
+                    />
                   );
                 })}
               </div>

@@ -10,7 +10,6 @@ import useConstructor from '../../Utils/useConstructor';
 import { getFormById, getUserById, sendAnswers } from '../../Utils/api';
 
 const FormRespondido = (props) => {
-
   const initalValue = {
     id: null,
     title: '',
@@ -20,11 +19,11 @@ const FormRespondido = (props) => {
     updated_at: '',
     user_id: null,
     questions: [],
-    answers: []
-  }
+    answers: [],
+  };
 
   const [respostas, setRespostas] = useState([]);
-  const [currentQuestionario, setCurrentQuestionario] = useState(initalValue)
+  const [currentQuestionario, setCurrentQuestionario] = useState(initalValue);
   const [userName, setUserName] = useState('');
 
   const history = useHistory();
@@ -42,70 +41,55 @@ const FormRespondido = (props) => {
           .catch((err) => {
             console.log('ERRO NO GETuSER', err);
           });
-      }).catch((err) => {
+      })
+      .catch((err) => {
         console.log(err);
       });
   });
 
   useEffect(() => {
-    const respostasIniciais = currentQuestionario.questions.map(pergunta => {
+    const respostasIniciais = currentQuestionario.questions.map((pergunta) => {
       return {
         id: pergunta.id,
         resposta: null,
       };
     });
     setRespostas(respostasIniciais);
-  }, [currentQuestionario])
+  }, [currentQuestionario]);
 
   const handleChangeResposta = (perguntaId, resposta) => {
-    const newRespostas = respostas.map(respostaItem => {
+    const newRespostas = respostas.map((respostaItem) => {
       if (respostaItem.id == perguntaId) {
-        return { id: perguntaId, resposta }
+        return { id: perguntaId, resposta };
       } else {
-        return respostaItem
+        return respostaItem;
       }
     });
     setRespostas(newRespostas);
-  }
+  };
 
   const perguntas = currentQuestionario.questions || [];
   const descricao = currentQuestionario.description || 'Descrição++';
   const titulo = currentQuestionario.title || 'Título++';
 
   return (
-    <div
-      className="containerQuestionario"
-    >
-      <div
-        className="questionario"
-      >
-        <Typography
-          className="tituloQuestionario"
-          variant="h4"
-        >
+    <div className="containerQuestionario">
+      <div className="questionario">
+        <Typography className="tituloQuestionario" variant="h4">
           {titulo}
         </Typography>
-        <Typography
-          variant="inherit"
-        >
-          Criador: {userName}
-        </Typography>
+        <Typography variant="inherit">Criador: {userName}</Typography>
         <br />
-        <Typography
-          variant="inherit"
-        >
-          {descricao}
-        </Typography>
-        <div
-          className="containerPerguntas"
-        >
+        <Typography variant="inherit">{descricao}</Typography>
+        <div className="containerPerguntas">
           {perguntas.map((pergunta) => (
-            < Pergunta
+            <Pergunta
               mostrarResposta={true}
               resposta={
-                currentQuestionario.answers.filter(ques => (
-                  (ques.question_id == pergunta.id) && (ques.user_id == user_id)
-                ))[0].respostas
+                currentQuestionario.answers.filter(
+                  (ques) =>
+                    ques.question_id == pergunta.id && ques.user_id == user_id
+                )[0].respostas
               }
               id={pergunta.id}
               tipo={pergunta.ques_type}
@@ -120,7 +104,7 @@ const FormRespondido = (props) => {
           variant="contained"
           color="default"
           onClick={() => {
-            history.push("/home")
+            history.push('/home');
           }}
         >
           Voltar para home
@@ -128,7 +112,6 @@ const FormRespondido = (props) => {
       </div>
     </div>
   );
-
 };
 
 export default FormRespondido;

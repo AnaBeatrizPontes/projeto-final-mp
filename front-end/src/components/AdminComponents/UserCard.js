@@ -17,7 +17,7 @@ const UserCard = ({ user }) => {
 
   const profileLink = () => {
     history.push(`/profile/${user_id}`);
-  }
+  };
 
   useEffect(() => {
     getUserById(user_id)

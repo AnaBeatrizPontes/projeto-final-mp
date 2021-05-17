@@ -15,9 +15,8 @@ import { Button } from '../../components/Button/Button';
 
 function PagesMyFormsList() {
   const [forms, setForms] = useState([]);
-	const [search, setSearch] = useState('');
-	
-	const history = useHistory();
+  const [search, setSearch] = useState('');
+  const history = useHistory();
 
   const params = {};
   if (search) {
@@ -36,9 +35,9 @@ function PagesMyFormsList() {
       });
   }, []);
 
-	const fazForm = () => {
-		history.push('/create');
-	};
+  const fazForm = () => {
+    history.push('/create');
+  };
 
   return (
     <div className="myFormsList">

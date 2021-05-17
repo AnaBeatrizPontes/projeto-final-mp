@@ -35,13 +35,13 @@ const FormCard = ({ form }) => {
     form.answers.map((ques) => {
       const vetorDeIds = vetorUnico.map((q) => {
         return q.user_id;
-      })
+      });
       if (!vetorDeIds.includes(ques.user_id, 0)) {
         vetorUnico = [...vetorUnico, ques];
       }
-    })
+    });
     return vetorUnico;
-  }
+  };
 
   const qtdeRespostas = turnUnic().length;
 
@@ -55,7 +55,7 @@ const FormCard = ({ form }) => {
 
   const notReady = () => {
     alert('Funcao em implementação');
-  }
+  };
 
   return (
     <div className="card-box" key={form.id}>

@@ -70,30 +70,29 @@ function PagesAnswersList() {
     form.answers.map((ques) => {
       const vetorDeIds = vetorUnico.map((q) => {
         return q.user_id;
-      })
+      });
       if (!vetorDeIds.includes(ques.user_id, 0)) {
         vetorUnico = [...vetorUnico, ques];
       }
-    })
+    });
     return vetorUnico;
-  }
+  };
 
   return (
     <div className="myFormsList">
       <NavBar />
       <div className="caixaDeRespondentes">
-        {turnUnic()
-          .map(function (answer) {
-            return (
-              <>
-                <AnswererCard
-                  key={answer.id}
-                  answer={answer}
-                  className="caixaDeRespondentes-item"
-                />
-              </>
-            );
-          })}
+        {turnUnic().map(function (answer) {
+          return (
+            <>
+              <AnswererCard
+                key={answer.id}
+                answer={answer}
+                className="caixaDeRespondentes-item"
+              />
+            </>
+          );
+        })}
       </div>
     </div>
   );

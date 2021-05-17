@@ -55,11 +55,10 @@ export default function HomepageCardRespondido({ form_id }) {
     getFormById(formID)
       .then((res) => {
         setForm(res.data[0]);
-        getUserById(res.data[0].user_id)
-          .then((res) => {
-            setName(res.data.name);
-            console.log('user AQUI', name);
-          })
+        getUserById(res.data[0].user_id).then((res) => {
+          setName(res.data.name);
+          console.log('user AQUI', name);
+        });
       })
       .catch((err) => {
         console.log(err);
@@ -80,7 +79,6 @@ export default function HomepageCardRespondido({ form_id }) {
   //}, []);
 
   const history = useHistory();
-
 
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
@@ -121,7 +119,11 @@ export default function HomepageCardRespondido({ form_id }) {
             </Typography>
           </CardContent>
           <CardActions disableSpacing>
-            <IconButton onClick={openForm} target="blank" aria-label="open form">
+            <IconButton
+              onClick={openForm}
+              target="blank"
+              aria-label="open form"
+            >
               <AssignmentOutlinedIcon />
             </IconButton>
             <IconButton onClick={showLink} aria-label="share">
