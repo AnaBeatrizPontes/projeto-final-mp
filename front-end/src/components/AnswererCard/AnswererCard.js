@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import './AnswererCard.css';
 
@@ -44,21 +45,26 @@ const AnswererCard = ({ answer }) => {
 
   return (
     <div className="answer-box">
-      {name == undefined ? history.go() : null}
-      <Avatar className="card-box__title">{name[0]}</Avatar>
-      <div className="card-box__name__date">
-        <h1 className="card-box__info">{name}</h1>
-        <span>{data.toLocaleString('pt-br')}</span>
-      </div>
-      <footer className="answer-box__footer">
-        <a href={answer.link} target="blank" className="card-box__link">
-          <AssignmentOutlinedIcon style={{ fontSize: 20 }} />
-        </a>
-        <button onClick={listaFeedback} className="card-box__link">
-          <FeedbackIcon style={{ fontSize: 20 }} />
-        </button>
-      </footer>
-      {aux && <TransitionsModal text={feedback.description} />}
+      {name == undefined ? (
+        <CircularProgress />
+      ) : (
+        <>
+          <Avatar className="card-box__title">{name[0]}</Avatar>
+          <div className="card-box__name__date">
+            <h1 className="card-box__info">{name}</h1>
+            <span>{data.toLocaleString('pt-br')}</span>
+          </div>
+          <footer className="answer-box__footer">
+            <a href={answer.link} target="blank" className="card-box__link">
+              <AssignmentOutlinedIcon style={{ fontSize: 20 }} />
+            </a>
+            <button onClick={listaFeedback} className="card-box__link">
+              <FeedbackIcon style={{ fontSize: 20 }} />
+            </button>
+          </footer>
+          {aux && <TransitionsModal text={feedback.description} />}
+        </>
+      )}
     </div>
   );
 };

@@ -12,11 +12,11 @@ import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 import AssignmentOutlinedIcon from '@material-ui/icons/AssignmentOutlined';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 //Utils
-import { getFormById } from '../../Utils/api';
+import { getFormById, getUserById } from '../../Utils/api';
 
 import { useHistory } from 'react-router-dom';
 
@@ -48,21 +48,38 @@ const useStyles = makeStyles((theme) => ({
 export default function HomepageCard({ form_id }) {
   const [form, setForm] = useState([]);
   const formID = form_id;
-  console.log('FORM ID AQUI', form_id);
+  const [name, setName] = useState('');
 
   useEffect(() => {
     getFormById(formID)
       .then((res) => {
         setForm(res.data[0]);
-        console.log('FORME AQUI', form);
+        getUserById(res.data[0].user_id)
+          .then((res) => {
+            setName(res.data.name);
+            console.log('user AQUI', name);
+          })
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
 
+  console.log('FORME AQUI', form.user_id);
+
+  //useEffect(() => {
+  //  getUserById(form.user_id)
+  //    .then((res) => {
+  //      setName(res.data.name);
+  //      console.log('user AQUI', name);
+  //    })
+  //    .catch((err) => {
+  //      console.log(err);
+  //    });
+  //}, []);
+
   const history = useHistory();
-  const name = localStorage.getItem('usrName');
+
 
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
@@ -84,44 +101,50 @@ export default function HomepageCard({ form_id }) {
   };
 
   return (
-    <Card className={classes.root}>
-      <CardHeader
-        avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
-            {name[0]}
-          </Avatar>
-        }
-        title={name}
-      />
-      <CardContent>
-        <Typography variant="body1" color="textPrimary" component="p">
-          {form.title}
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-        <IconButton href={form.link} target="blank" aria-label="open form">
-          <AssignmentOutlinedIcon />
-        </IconButton>
-        <IconButton onClick={showLink} aria-label="share">
-          <ShareIcon />
-        </IconButton>
-        <IconButton
-          className={clsx(classes.expand, {
-            [classes.expandOpen]: expanded,
-          })}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </IconButton>
-      </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography paragraph>Description:</Typography>
-          <Typography paragraph>{form.description}</Typography>
-        </CardContent>
-      </Collapse>
-    </Card>
+    <>
+      {name.length == 0 ? (
+        <CircularProgress />
+      ) : (
+        <Card className={classes.root}>
+          <CardHeader
+            avatar={
+              <Avatar aria-label="recipe" className={classes.avatar}>
+                {name[0]}
+              </Avatar>
+            }
+            title={name}
+          />
+          <CardContent>
+            <Typography variant="body1" color="textPrimary" component="p">
+              {form.title}
+            </Typography>
+          </CardContent>
+          <CardActions disableSpacing>
+            <IconButton onClick={openForm} target="blank" aria-label="open form">
+              <AssignmentOutlinedIcon />
+            </IconButton>
+            <IconButton onClick={showLink} aria-label="share">
+              <ShareIcon />
+            </IconButton>
+            <IconButton
+              className={clsx(classes.expand, {
+                [classes.expandOpen]: expanded,
+              })}
+              onClick={handleExpandClick}
+              aria-expanded={expanded}
+              aria-label="show more"
+            >
+              <ExpandMoreIcon />
+            </IconButton>
+          </CardActions>
+          <Collapse in={expanded} timeout="auto" unmountOnExit>
+            <CardContent>
+              <Typography paragraph>Description:</Typography>
+              <Typography paragraph>{form.description}</Typography>
+            </CardContent>
+          </Collapse>
+        </Card>
+      )}
+    </>
   );
 }

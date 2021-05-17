@@ -3,6 +3,7 @@ import FormCard from '../../components/FormCard/FormCard';
 import NavBar from '../../components/NavBar/NavBar';
 import 'normalize.css';
 import './MyFormsList.css';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
 
 //API
 import { getFormPerUser } from '../../Utils/api';
@@ -32,9 +33,17 @@ function PagesMyFormsList() {
       });
   }, []);
 
+  const fazForm = () => {
+    //botao de criar
+    alert('apertado');
+  }
+
   return (
     <div className="myFormsList">
       <NavBar />
+      <button onClick={fazForm} className="myFormsList__add">
+        <AddCircleIcon /> Criar Forms
+      </button>
       <div className="myFormsList__input">
         <input
           type="search"
@@ -67,6 +76,7 @@ function PagesMyFormsList() {
             className="caixaDeForms-btn"
             buttonStyle="btn--outline"
             buttonSize="btn--large"
+            onClick={fazForm}
           >
             Clique aqui para criar
           </Button>
