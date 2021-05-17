@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_16_204743) do
+ActiveRecord::Schema.define(version: 2021_05_17_182026) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,10 @@ ActiveRecord::Schema.define(version: 2021_05_16_204743) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "forms_id"
     t.string "ques_type"
+    t.string "option_one"
+    t.string "option_two"
+    t.string "option_three"
+    t.string "option_four"
     t.index ["form_id"], name: "index_questions_on_form_id"
     t.index ["forms_id"], name: "index_questions_on_forms_id"
   end
