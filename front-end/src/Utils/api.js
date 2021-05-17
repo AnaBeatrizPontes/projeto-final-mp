@@ -98,6 +98,17 @@ export const sendAnswers = (form_id, user_id, question_id, respostas) => {
   });
 };
 
+export const createForm = (title, description, user_id) => {
+	return api.post(`/forms`, { title, description, user_id });
+};
+
+export const createQuestion = (quesDescription, formId, quesType) => {
+	return api.post(`/questions`, {
+		description: quesDescription,
+		form_id: formId.form_id,
+		ques_type: quesType,
+	});
+}
 export const getAnswersPerUser = (user_id) => {
 	return api.get(`/answers-per-user/${user_id}`);
 };

@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import FormCard from '../../components/FormCard/FormCard';
 import NavBar from '../../components/NavBar/NavBar';
 import 'normalize.css';
 import './MyFormsList.css';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
-
+import { useHistory } from 'react-router-dom';
 //API
 import { getFormPerUser } from '../../Utils/api';
 
@@ -14,7 +15,9 @@ import { Button } from '../../components/Button/Button';
 
 function PagesMyFormsList() {
   const [forms, setForms] = useState([]);
-  const [search, setSearch] = useState('');
+	const [search, setSearch] = useState('');
+	
+	const history = useHistory();
 
   const params = {};
   if (search) {
@@ -33,10 +36,9 @@ function PagesMyFormsList() {
       });
   }, []);
 
-  const fazForm = () => {
-    //botao de criar
-    alert('apertado');
-  }
+	const fazForm = () => {
+		history.push('/create');
+	};
 
   return (
     <div className="myFormsList">
@@ -78,7 +80,9 @@ function PagesMyFormsList() {
             buttonSize="btn--large"
             onClick={fazForm}
           >
-            Clique aqui para criar
+            <Link to="/create" className="link">
+              Clique aqui para criar
+            </Link>
           </Button>
         </div>
       )}

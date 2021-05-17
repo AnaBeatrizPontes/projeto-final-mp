@@ -15,6 +15,7 @@ import PagesAllFormsList from './AdminPages/AllFormsList'
 import PagesAllUsersList from './AdminPages/AllUsers';
 import RespostaQuestionario from './RespostaQuestionario/RespostaQuestionario';
 import FormRespondido from './FormRespondido/FormRespondido';
+import CreateMyForms from './Create/Create';
 
 const Root = () => {
 
@@ -22,6 +23,7 @@ const Root = () => {
     <Router>
       <Switch>
         <PrivateRoute exact path="/myforms" component={PagesMyFormsList} />
+        <PrivateRoute exact path="/create" component={CreateMyForms} />
         <PrivateRoute exact path="/allforms" component={PagesAllFormsList} />
         <PrivateRoute exact path="/allusers" component={PagesAllUsersList} />
         <PrivateRoute exact path="/answers/:id" component={PagesAnswersList} />
