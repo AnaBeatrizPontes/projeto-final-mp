@@ -38,6 +38,12 @@ class AnswersController < ApplicationController
     @answer.destroy
   end
 
+	def answer_per_user
+		@answers = Answer.where(user_id: params[:user_id])
+		render json: @answers, status: :ok
+	end
+	
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_answer

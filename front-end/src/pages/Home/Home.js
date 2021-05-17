@@ -4,7 +4,7 @@ import HomepageCard from '../../components/HomepageCard/HomepageCard';
 
 import './Home.css';
 
-import { getFormPerUser, getAssignPerUser } from '../../Utils/api';
+import { getAssignPerUser, getAnswersPerUser } from '../../Utils/api';
 
 function PagesHome() {
   const admin = localStorage.getItem('admin');
@@ -22,7 +22,17 @@ function PagesHome() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+	}, []);
+	
+	useEffect(() => {
+		getAnswersPerUser(user_id)
+			.then((res) => {
+				setForms(res.data);
+			})
+			.catch((err) => {
+				console.log("Não foi possivel pegar os forms", err);
+			});
+	}, []);
 
   return (
     <>
@@ -60,7 +70,7 @@ function PagesHome() {
               <div className="homeForms">
                 {forms.map(function (form) {
                   return (
-                    <HomepageCard className="item" key={form.id} form={form} />
+                    <HomepageCard className="item" key={form.form_id} form_id={form.form_id} />
                   );
                 })}
               </div>
