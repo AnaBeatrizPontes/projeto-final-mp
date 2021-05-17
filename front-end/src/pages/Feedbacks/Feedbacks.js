@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
 //CSS
 import './Feedbacks.css';
@@ -8,19 +9,12 @@ import { sendFeedback, getFormById } from '../../Utils/api';
 
 import NavBar from '../../components/NavBar/NavBar';
 
-//////Adicionar logo após o usuário enviar a resposta
-//const sendToFeedbackPage = (form_id) => {
-//  history.push('/feedback/${form_id}')
-//}
-//////
-
 function Feedbacks(props) {
   const [feedback, setFeedback] = useState('');
-  // const user_id = localStorage.getItem('id');
-  const user_id = '2';
-  const form_id = '1';
-  // const form_id = props.match.params.id;
+  const user_id = localStorage.getItem('id');
+  const form_id = props.match.params.id;
   const [form, setForm] = useState([]);
+	const history = useHistory();
 
   useEffect(() => {
     getFormById(form_id)
@@ -38,7 +32,8 @@ function Feedbacks(props) {
     sendFeedback(form_id, user_id, feedback)
       .then((res) => {
         console.log(res);
-        alert('Feedback enviado com sucesso');
+				alert('Feedback enviado com sucesso');
+				history.push('/home');
       })
       .catch((err) => {
         console.log(err);

@@ -72,20 +72,21 @@ const RespostaQuestionario = (props) => {
 
 
     const handleSubmit = () => {
-        respostas.map(function (resposta) {
-            if (!resposta.resposta) {
-                alert('Preencha os campos');
-                return;
-            }
-            sendAnswers(currentQuestionario.id, user_id, resposta.id, resposta.resposta)
-                .then((res1) => {
-                    console.log('Resposta enviada', resposta.resposta);
-                    alert('Resposta enviada');
-                })
-                .catch((err) => {
-                    console.log('ERRO pra mandar resposta', err);
-                });
-        })
+			respostas.map(function (resposta) {
+				if (!resposta.resposta) {
+					alert('Preencha os campos');
+					return;
+				}
+				sendAnswers(currentQuestionario.id, user_id, resposta.id, resposta.resposta)
+					.then((res1) => {
+						console.log('Resposta enviada', resposta.resposta);
+						alert('Resposta enviada');
+					})
+					.catch((err) => {
+						console.log('ERRO pra mandar resposta', err);
+					});
+			});
+			history.push(`/feedbacks/${id}`);
     }
 
     const perguntas = currentQuestionario.questions || [];
