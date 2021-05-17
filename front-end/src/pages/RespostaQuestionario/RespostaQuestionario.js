@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import { useHistory } from 'react-router-dom';
+import { useParams } from 'react-router';
 
 import Pergunta from '../../components/Pergunta/Pergunta';
 import useConstructor from '../../Utils/useConstructor';
@@ -16,18 +17,27 @@ const RespostaQuestionario = (props) => {
     const [respostas, setRespostas] = useState([]);
 
     const history = useHistory();
+    const { id } = useParams();
 
     useConstructor(() => {
-        const questionarioId = 1; //props.questionarioId;
-        const currentQuestionario = getQuestionario(questionarioId);
+
+        const currentQuestionario = null;
+        getQuestionario(id)
+            .then((res) => {
+                currentQuestionario = res.data
+            }).catch((err) => {
+                console.log(err);
+            });
+
         const userName = "anonymous";
-        getUserById(user_id)
+        getUserById(currentQuestionario.user_id)
             .then((res) => {
                 userName = res.data.name;
             })
             .catch((err) => {
                 console.log(err);
             });
+
         setQuestionario({
             perguntas: currentQuestionario.questions,
             descricao: currentQuestionario.description,
