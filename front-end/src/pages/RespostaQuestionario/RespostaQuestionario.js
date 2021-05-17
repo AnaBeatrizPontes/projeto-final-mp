@@ -12,6 +12,7 @@ import { getFormById, getUserById, sendAnswers } from '../../Utils/api';
 import './RespostaQuestionario.css';
 
 const RespostaQuestionario = (props) => {
+
     const initalValue = {
         id: null,
         title: '',
@@ -120,7 +121,7 @@ const RespostaQuestionario = (props) => {
                 >
                     {perguntas.map((pergunta) => (
                         <Pergunta
-                            mostrarResposta={props.ehResposta}
+                            mostrarResposta={false}
                             resposta={pergunta.resposta}
                             id={pergunta.id}
                             tipo={pergunta.ques_type}

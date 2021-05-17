@@ -14,6 +14,7 @@ import PagesProfile from './Profile/Profile';
 import PagesAllFormsList from './AdminPages/AllFormsList'
 import PagesAllUsersList from './AdminPages/AllUsers';
 import RespostaQuestionario from './RespostaQuestionario/RespostaQuestionario';
+import FormRespondido from './FormRespondido/FormRespondido';
 
 const Root = () => {
 
@@ -33,6 +34,7 @@ const Root = () => {
           exact path="/form/:id"
           component={RespostaQuestionario}
         />
+        <PrivateRoute exact path="/formRespondido/:id" component={FormRespondido} />
         <PrivateRoute component={PagesNotFound} />
       </Switch>
     </Router>
