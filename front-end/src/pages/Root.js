@@ -30,7 +30,7 @@ const Root = () => {
         <PrivateRoute exact path="/profile/:user_id" component={PagesProfile} />
         <PrivateRoute exact path="/home" component={PagesHome} />
         <PrivateRoute
-          exact path="/respostaQuestionario"
+          exact path="/form/:id"
           component={RespostaQuestionario}
         />
         <PrivateRoute component={PagesNotFound} />
