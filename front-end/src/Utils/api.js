@@ -179,3 +179,15 @@ export const getQuestionario = (questionarioId) => {
     ],
   };
 };
+
+export const createForm = (title, description, user_id) => {
+	return api.post(`/forms`, { title, description, user_id });
+};
+
+export const createQuestion = (quesDescription, formId, quesType) => {
+	return api.post(`/questions`, {
+		description: quesDescription,
+		form_id: formId,
+		ques_type: quesType,
+	});
+}

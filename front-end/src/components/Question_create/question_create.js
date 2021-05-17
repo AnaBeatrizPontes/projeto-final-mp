@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import React, { useState, useEffect } from 'react'
 import 'normalize.css'
 import './question_create.css'
@@ -92,7 +91,8 @@ export default function question_create() {
       <div className="Principal">
         <div className="Title_box">
           <div className="Title">
-            <input type="text" placeholder="Questionário sem titulo" className="Title_design" required />
+							<input type="text" placeholder="Questionário sem titulo" className="Title_design" required 
+							/>
             <input type="text" placeholder="Descrição do questionario" className="Description" required />
           </div>
         </div>

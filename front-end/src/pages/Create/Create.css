@@ -14,6 +14,8 @@ body {
 
 .Principal {
   width: 100%;
+	display: flex;
+	flex-direction: column;
 }
 
 .Second {
@@ -172,4 +174,8 @@ body {
 
 .Adciona_Question {
   padding-top: 20px;
+}
+
+.create_form{
+	align-self: center;
 }
