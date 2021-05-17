@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { useHistory } from 'react-router-dom';
 
 import './AnswererCard.css';
 
@@ -21,6 +22,8 @@ const AnswererCard = ({ answer }) => {
   const [aux, setAux] = useState(false);
   const [feedback, setFeedback] = useState({});
   const data = new Date(answer.created_at);
+
+  const history = useHistory();
 
   useEffect(() => {
     getUserById(user_id)
@@ -43,6 +46,10 @@ const AnswererCard = ({ answer }) => {
       });
   };
 
+  const mostraResposta = () => {
+    history.push(`/formRespondido/${form_id}/${user_id}`);
+  }
+
   return (
     <div className="answer-box">
       {name == undefined ? (
@@ -55,9 +62,9 @@ const AnswererCard = ({ answer }) => {
             <span>{data.toLocaleString('pt-br')}</span>
           </div>
           <footer className="answer-box__footer">
-            <a href={answer.link} target="blank" className="card-box__link">
+            <button onClick={mostraResposta} target="blank" className="card-box__link">
               <AssignmentOutlinedIcon style={{ fontSize: 20 }} />
-            </a>
+            </button>
             <button onClick={listaFeedback} className="card-box__link">
               <FeedbackIcon style={{ fontSize: 20 }} />
             </button>

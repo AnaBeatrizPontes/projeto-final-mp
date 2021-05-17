@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import NavBar from '../../components/NavBar/NavBar';
 import HomepageCard from '../../components/HomepageCard/HomepageCard';
+import HomepageCardRespondido from '../../components/HomepageCard/HomepageCardRespondido';
 
 import './Home.css';
 
@@ -33,6 +34,19 @@ function PagesHome() {
         console.log("Não foi possivel pegar os forms", err);
       });
   }, []);
+
+  const turnUnic = () => {
+    var vetorUnico = [];
+    forms.map((ques) => {
+      const vetorDeIds = vetorUnico.map((q) => {
+        return q.form_id;
+      })
+      if (!vetorDeIds.includes(ques.form_id, 0)) {
+        vetorUnico = [...vetorUnico, ques];
+      }
+    })
+    return vetorUnico;
+  }
 
   return (
     <>
@@ -69,9 +83,9 @@ function PagesHome() {
             <h1>Questionários Respondidos:</h1>
             {!(forms.length == 0) ? (
               <div className="homeForms">
-                {forms.map(function (form) {
+                {turnUnic().map(function (form) {
                   return (
-                    <HomepageCard className="item" key={form.form_id} form_id={form.form_id} />
+                    <HomepageCardRespondido className="item" key={form.form_id} form_id={form.form_id} />
                   );
                 })}
               </div>

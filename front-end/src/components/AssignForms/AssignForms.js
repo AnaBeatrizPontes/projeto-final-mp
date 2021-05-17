@@ -57,8 +57,6 @@ function AssignForms({ formId }) {
       });
   };
 
-  console.log('Usuarios aqui', users);
-
   return (
     <div className="body">
       <button className="card-box__edit" onClick={handleClickOpen('paper')}>

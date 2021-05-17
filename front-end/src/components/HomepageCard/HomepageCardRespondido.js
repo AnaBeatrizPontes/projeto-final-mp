@@ -45,10 +45,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function HomepageCard({ form_id }) {
+export default function HomepageCardRespondido({ form_id }) {
   const [form, setForm] = useState([]);
   const formID = form_id;
   const [name, setName] = useState('');
+  const user_id = localStorage.getItem('id');
 
   useEffect(() => {
     getFormById(formID)
@@ -89,7 +90,7 @@ export default function HomepageCard({ form_id }) {
       alert('Link inválido');
       return;
     }
-    history.push(`/form/${form_id}`);
+    history.push(`/formRespondido/${form_id}/${user_id}`);
   };
 
   const showLink = () => {
