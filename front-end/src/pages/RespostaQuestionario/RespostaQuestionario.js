@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
@@ -7,7 +7,7 @@ import { useParams } from 'react-router';
 
 import Pergunta from '../../components/Pergunta/Pergunta';
 import useConstructor from '../../Utils/useConstructor';
-import { getFormById, getUserById } from '../../Utils/api';
+import { getFormById, getUserById, sendAnswers } from '../../Utils/api';
 
 import './RespostaQuestionario.css';
 
@@ -27,6 +27,7 @@ const RespostaQuestionario = (props) => {
     const [respostas, setRespostas] = useState([]);
     const [currentQuestionario, setCurrentQuestionario] = useState(initalValue)
     const [userName, setUserName] = useState('');
+    const user_id = localStorage.getItem('id');
 
     const history = useHistory();
     const { id } = useParams();
@@ -35,7 +36,6 @@ const RespostaQuestionario = (props) => {
         getFormById(id)
             .then((res) => {
                 setCurrentQuestionario(res.data[0]);
-                console.log('TA AQUIIIIIIIIIII', res.data[0]);
                 getUserById(res.data[0].user_id)
                     .then((res1) => {
                         setUserName(res1.data.name);
@@ -46,17 +46,17 @@ const RespostaQuestionario = (props) => {
             }).catch((err) => {
                 console.log(err);
             });
+    });
 
+    useEffect(() => {
         const respostasIniciais = currentQuestionario.questions.map(pergunta => {
             return {
                 id: pergunta.id,
                 resposta: null,
             };
         });
-
         setRespostas(respostasIniciais);
-
-    });
+    }, [currentQuestionario])
 
     const handleChangeResposta = (perguntaId, resposta) => {
         const newRespostas = respostas.map(respostaItem => {
@@ -69,8 +69,22 @@ const RespostaQuestionario = (props) => {
         setRespostas(newRespostas);
     }
 
-    const handleSubmit = () => {
 
+    const handleSubmit = () => {
+        respostas.map(function (resposta) {
+            if (!resposta.resposta) {
+                alert('Preencha os campos');
+                return;
+            }
+            sendAnswers(currentQuestionario.id, user_id, resposta.id, resposta.resposta)
+                .then((res1) => {
+                    console.log('Resposta enviada', resposta.resposta);
+                    alert('Resposta enviada');
+                })
+                .catch((err) => {
+                    console.log('ERRO pra mandar resposta', err);
+                });
+        })
     }
 
     const perguntas = currentQuestionario.questions || [];

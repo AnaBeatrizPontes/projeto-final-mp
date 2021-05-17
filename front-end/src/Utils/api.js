@@ -81,10 +81,6 @@ export const deleteUser = (id) => {
   return api.delete(`/users/${id}`);
 };
 
-export const getUser = (user_id) => {
-  return api.get(`/users/${user_id}`);
-};
-
 export const userToForm = (form_id, user_id) => {
   return api.post(`/assignments`, { form_id, user_id });
 };
@@ -93,89 +89,11 @@ export const getAssignPerUser = (user_id) => {
   return api.get(`/form-assign-to-user/${user_id}`);
 };
 
-export const getQuestionario = (questionarioId) => {
-  return api.get(`/forms/${questionarioId}`);
-  // return {
-  //   titulo: "Questionario de teste",
-  //   descricao: "Este é um questionário de testes que eu criei para testes. Estou apenas testando!!",
-  //   userName: "rafael.barbosa",
-  //   link: "???",
-  //   perguntas: [
-  //     {
-  //       id: 1,
-  //       descricao: "Você gosta?",
-  //       tipo: "respostaCurta",
-  //       dados: [],
-  //       resposta: "Gosta e acha bom!",
-  //     },
-  //     {
-  //       id: 3,
-  //       descricao: "Você gosta? (resposta longa)",
-  //       tipo: "paragrafo",
-  //       dados: [],
-  //       dados: [],
-  //       resposta: "Gosta e acha bom!",
-  //     },
-  //     {
-  //       id: 5,
-  //       descricao: "Sim ou não? (de Schrödinger)",
-  //       tipo: "perguntaSelect",
-  //       dados: [
-  //         {
-  //           opcao: "Sim",
-  //           valor: "s"
-  //         },
-  //         {
-  //           opcao: "Não",
-  //           valor: "n"
-  //         },
-  //       ],
-  //       resposta: "s",
-  //     },
-  //     {
-  //       id: 6,
-  //       descricao: "Qual o horário de nascimento para que o o Sol esteja no ascendente?",
-  //       tipo: "horario",
-  //       dados: []
-  //     },
-  //     {
-  //       id: 7,
-  //       descricao: "Qual a data de nascimento do Mike Tyson?",
-  //       tipo: "data",
-  //       dados: [],
-  //     },
-  //     {
-  //       id: 2,
-  //       descricao: "Sim ou não?",
-  //       tipo: "multiplaEscolha",
-  //       dados: [
-  //         {
-  //           opcao: "Sim",
-  //           valor: "s"
-  //         },
-  //         {
-  //           opcao: "Não",
-  //           valor: "n"
-  //         },
-  //       ],
-  //       resposta: "s"
-  //     },
-  //     {
-  //       id: 4,
-  //       descricao: "Sim ou não? (de Schrödinger)",
-  //       tipo: "caixasDeSelecao",
-  //       dados: [
-  //         {
-  //           opcao: "Sim",
-  //           valor: "s"
-  //         },
-  //         {
-  //           opcao: "Não",
-  //           valor: "n"
-  //         },
-  //       ],
-  //       resposta: ["s"],
-  //     },
-  //   ],
-  // };
+export const sendAnswers = (form_id, user_id, question_id, respostas) => {
+  return api.post('/answers/', {
+    form_id: form_id,
+    user_id: user_id,
+    question_id: question_id,
+    respostas: respostas,
+  });
 };
