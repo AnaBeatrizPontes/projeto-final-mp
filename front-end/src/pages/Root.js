@@ -15,6 +15,7 @@ import PagesProfile from './Profile/Profile';
 import PagesAllFormsList from './AdminPages/AllFormsList'
 import PagesAllUsersList from './AdminPages/AllUsers';
 import RespostaQuestionario from './RespostaQuestionario/RespostaQuestionario';
+import CreateMyForms from './Create/Create';
 
 const Root = () => {
 

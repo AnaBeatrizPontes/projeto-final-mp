@@ -49,7 +49,7 @@ const options = [
 ];
 
 function CreateMyForms() {
-  const [value, setValue] = useState();
+  const [value, setValue] = useState('');
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [selectedIndex, setSelectedIndex] = React.useState(1);
@@ -59,7 +59,20 @@ function CreateMyForms() {
   };
 
   const handleMenuItemClick = (event, index) => {
-    setValue(index);
+    switch (index){
+      case 0:
+        setValue(0);
+        break;
+      case 1:
+        setValue(1);
+        break;
+      case 2:
+        setValue(2);
+        break;
+      case 3:
+        setValue(3);
+        break;
+    }
     setSelectedIndex(index);
     console.log(value);
   };
@@ -166,22 +179,89 @@ function CreateMyForms() {
       </div>
     </div>
 
+    <div className="Second">
+      <div className="Question_box">
+        <div className="Question">
+          <input type="text" placeholder="Pergunta sem titulo" className="Question_design" required />
+        </div>
+    
+        <div className={classes.root}>
+          <List component="nav" aria-label="Device settings">
+            <ListItem
+              button
+              aria-haspopup="true"
+              aria-controls="lock-menu"
+              aria-label="tipos de resposta"
+              onClick={handleClickListItem}
+            >
+              <ListItemText primary="Tipos de resposta" secondary={options[selectedIndex]} />
+            </ListItem>
+          </List>
+
+          <Menu
+            id="lock-menu"
+            anchorEl={anchorEl}
+            keepMounted
+            open={Boolean(anchorEl)}
+            onClose={handleClose}
+          >
+            {options.map((option, index) => (
+              <MenuItem
+                key={option}
+                selected={index === selectedIndex}
+                onClick={(event) => handleMenuItemClick(event, index)}
+              >
+              {option}
+              </MenuItem>
+            ))}
+          </Menu>
+        </div>
+    
+        {value==0 && (
+          <div id="op_selected">
+            <input type="radio" id="opçao_1" name="marcar" value="opcao_1"/>
+            <label for="opcao_1"><input type="text" className="opcao" placeholder="Opção 1"/></label><br/><br/>
+            <input type="radio" id="opçao_2" name="marcar" value="opcao_2"/>
+            <label for="opcao_2"><input type="text" className="opcao" placeholder="Opção 2"/></label><br/><br/>
+            <input type="radio" id="opçao_3" name="marcar" value="opcao_3"/>
+            <label for="opcao_3"><input type="text" className="opcao" placeholder="Opção 3"/></label><br/><br/>
+            <input type="radio" id="opçao_4" name="marcar" value="opcao_4"/>
+            <label for="opcao_4"><input type="text" className="opcao" placeholder="Opção 4"/></label><br/><br/>
+          </div>        
+        )}
+    
+        {value==1 && (
+          <div id="op_multiple">
+            <input type="checkbox" id="opçao_1" name="marcar" value="opcao_1"/>
+            <label for="opcao_1"><input type="text" className="opcao" placeholder="Opção 1"/></label><br/><br/>
+            <input type="checkbox" id="opçao_2" name="marcar" value="opcao_2"/>
+            <label for="opcao_2"><input type="text" className="opcao" placeholder="Opção 2"/></label><br/><br/>
+            <input type="checkbox" id="opçao_3" name="marcar" value="opcao_3"/>
+            <label for="opcao_3"><input type="text" className="opcao" placeholder="Opção 3"/></label><br/><br/>
+            <input type="checkbox" id="opçao_4" name="marcar" value="opcao_4"/>
+            <label for="opcao_4"><input type="text" className="opcao" placeholder="Opção 4"/></label><br/><br/>
+          </div>
+        )}
+    
+        {value==2 && (
+          <div id="op_short">
+            <input type="text" className="Resposta_curta" placeholder="Resposta curta"/><br/><br/>
+          </div>
+        )}
+        
+        {value==3 &&(
+          <div id="op_long">
+            <input type="text" className="Resposta_longa" placeholder="Paragrafo"/><br/><br/>
+          </div>
+        )}
+      </div>
+    </div>
+
     <div className="Adciona_Question" align="center">
         <Fab color="primary" aria-label="add" onClick={add_question}>
           <AddIcon />
         </Fab>
     </div>
-
-    <div>
-      {
-        /*pergunta.map(function(per) {
-          return (
-            
-          );
-        })*/
-      }
-    </div>
-    
     </>
   );
 }

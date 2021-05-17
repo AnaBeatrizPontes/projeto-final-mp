@@ -70,9 +70,10 @@ function PagesMyFormsList() {
             buttonStyle="btn--outline"
             buttonSize="btn--large"
           >
-            Clique aqui para criar
+            <Link to="/create" className="link">
+              Clique aqui para criar
+            </Link>
           </Button>
-          <Link to="/create">CRIAR</Link>
         </div>
       )}
     </div>
