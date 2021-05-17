@@ -46,7 +46,7 @@ const AnswererCard = ({ answer }) => {
   };
 
   const mostraResposta = () => {
-    history.push(`/formRespondido/${form_id}`);
+    history.push(`/formRespondido/${form_id}/${user_id}`);
   }
 
   return (

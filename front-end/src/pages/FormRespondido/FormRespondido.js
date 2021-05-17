@@ -26,10 +26,10 @@ const FormRespondido = (props) => {
   const [respostas, setRespostas] = useState([]);
   const [currentQuestionario, setCurrentQuestionario] = useState(initalValue)
   const [userName, setUserName] = useState('');
-  const user_id = localStorage.getItem('id');
 
   const history = useHistory();
   const { id } = useParams();
+  const { user_id } = useParams();
 
   useConstructor(() => {
     getFormById(id)
@@ -68,24 +68,6 @@ const FormRespondido = (props) => {
     setRespostas(newRespostas);
   }
 
-
-  const handleSubmit = () => {
-    respostas.map(function (resposta) {
-      if (!resposta.resposta) {
-        alert('Preencha os campos');
-        return;
-      }
-      sendAnswers(currentQuestionario.id, user_id, resposta.id, resposta.resposta)
-        .then((res1) => {
-          console.log('Resposta enviada', resposta.resposta);
-          alert('Resposta enviada');
-        })
-        .catch((err) => {
-          console.log('ERRO pra mandar resposta', err);
-        });
-    })
-  }
-
   const perguntas = currentQuestionario.questions || [];
   const descricao = currentQuestionario.description || 'Descrição++';
   const titulo = currentQuestionario.title || 'Título++';
@@ -121,7 +103,9 @@ const FormRespondido = (props) => {
             < Pergunta
               mostrarResposta={true}
               resposta={
-                currentQuestionario.answers.filter(ques => (ques.question_id == pergunta.id))[0].respostas
+                currentQuestionario.answers.filter(ques => (
+                  (ques.question_id == pergunta.id) && (ques.user_id == user_id)
+                ))[0].respostas
               }
               id={pergunta.id}
               tipo={pergunta.ques_type}

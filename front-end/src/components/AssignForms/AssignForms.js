@@ -57,8 +57,6 @@ function AssignForms({ formId }) {
       });
   };
 
-  console.log('Usuarios aqui', users);
-
   return (
     <div className="body">
       <button onClick={handleClickOpen('paper')}>

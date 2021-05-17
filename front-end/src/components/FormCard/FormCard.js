@@ -30,7 +30,20 @@ const FormCard = ({ form }) => {
 
   const history = useHistory();
 
-  const qtdeRespostas = form.answers.length;
+  const turnUnic = () => {
+    var vetorUnico = [];
+    form.answers.map((ques) => {
+      const vetorDeIds = vetorUnico.map((q) => {
+        return q.user_id;
+      })
+      if (!vetorDeIds.includes(ques.user_id, 0)) {
+        vetorUnico = [...vetorUnico, ques];
+      }
+    })
+    return vetorUnico;
+  }
+
+  const qtdeRespostas = turnUnic().length;
 
   const listaRespostas = () => {
     if (form.answers.length == 0) {
@@ -73,10 +86,10 @@ const FormCard = ({ form }) => {
         <div>
           <button onClick={urlCopy} target="blank" className="card-box__copy">
             <FileCopyIcon style={{ fontSize: 20 }} />
-					</button>
+          </button>
           <a>
             <AssignForms formId={form.id} />
-        	</a>
+          </a>
           <button onClick={deletaForm} className="card-box__delete">
             <DeleteOutlineIcon style={{ fontSize: 20 }} />
           </button>

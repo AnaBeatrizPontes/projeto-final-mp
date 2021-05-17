@@ -34,7 +34,7 @@ const Root = () => {
           exact path="/form/:id"
           component={RespostaQuestionario}
         />
-        <PrivateRoute exact path="/formRespondido/:id" component={FormRespondido} />
+        <PrivateRoute exact path="/formRespondido/:id/:user_id" component={FormRespondido} />
         <PrivateRoute component={PagesNotFound} />
       </Switch>
     </Router>
