@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 
 import Pergunta from '../../components/Pergunta/Pergunta';
 import useConstructor from '../../Utils/useConstructor';
-import { getQuestionario } from '../../Utils/api';
+import { getQuestionario, getUserById } from '../../Utils/api';
 
 import './RespostaQuestionario.css';
 
@@ -20,7 +20,20 @@ const RespostaQuestionario = (props) => {
     useConstructor(() => {
         const questionarioId = 1; //props.questionarioId;
         const currentQuestionario = getQuestionario(questionarioId);
-        setQuestionario(currentQuestionario);
+        const userName = "anonymous";
+        getUserById(user_id)
+            .then((res) => {
+                userName = res.data.name;
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+        setQuestionario({
+            perguntas: currentQuestionario.questions,
+            descricao: currentQuestionario.description,
+            titulo: currentQuestionario.title,
+            userName: userName,
+        });
 
         const respostasIniciais = currentQuestionario.perguntas.map(pergunta => {
             return {
