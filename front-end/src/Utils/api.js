@@ -94,7 +94,7 @@ export const getAssignPerUser = (user_id) => {
 };
 
 export const getQuestionario = (questionarioId) => {
-  return api.get(`/questionario/${questionarioId}`);
+  return api.get(`/forms/${questionarioId}`);
   // return {
   //   titulo: "Questionario de teste",
   //   descricao: "Este é um questionário de testes que eu criei para testes. Estou apenas testando!!",

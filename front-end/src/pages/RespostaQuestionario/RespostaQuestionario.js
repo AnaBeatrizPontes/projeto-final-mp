@@ -1,51 +1,53 @@
 import React, { useState } from 'react';
 
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 import { useHistory } from 'react-router-dom';
 import { useParams } from 'react-router';
 
 import Pergunta from '../../components/Pergunta/Pergunta';
 import useConstructor from '../../Utils/useConstructor';
-import { getQuestionario, getUserById } from '../../Utils/api';
+import { getFormById, getUserById } from '../../Utils/api';
 
 import './RespostaQuestionario.css';
 
 const RespostaQuestionario = (props) => {
+    const initalValue = {
+        id: null,
+        title: '',
+        description: '',
+        link: '',
+        created_at: '',
+        updated_at: '',
+        user_id: null,
+        questions: [],
+        answers: []
+    }
 
-    const [questionario, setQuestionario] = useState({});
     const [respostas, setRespostas] = useState([]);
+    const [currentQuestionario, setCurrentQuestionario] = useState(initalValue)
+    const [userName, setUserName] = useState('');
 
     const history = useHistory();
     const { id } = useParams();
 
     useConstructor(() => {
-
-        const currentQuestionario = null;
-        getQuestionario(id)
+        getFormById(id)
             .then((res) => {
-                currentQuestionario = res.data
+                setCurrentQuestionario(res.data[0]);
+                console.log('TA AQUIIIIIIIIIII', res.data[0]);
+                getUserById(res.data[0].user_id)
+                    .then((res1) => {
+                        setUserName(res1.data.name);
+                    })
+                    .catch((err) => {
+                        console.log('ERRO NO GETuSER', err);
+                    });
             }).catch((err) => {
                 console.log(err);
             });
 
-        const userName = "anonymous";
-        getUserById(currentQuestionario.user_id)
-            .then((res) => {
-                userName = res.data.name;
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-
-        setQuestionario({
-            perguntas: currentQuestionario.questions,
-            descricao: currentQuestionario.description,
-            titulo: currentQuestionario.title,
-            userName: userName,
-        });
-
-        const respostasIniciais = currentQuestionario.perguntas.map(pergunta => {
+        const respostasIniciais = currentQuestionario.questions.map(pergunta => {
             return {
                 id: pergunta.id,
                 resposta: null,
@@ -71,10 +73,9 @@ const RespostaQuestionario = (props) => {
 
     }
 
-    const descricao = questionario.descricao || "Descrição++";
-    const titulo = questionario.titulo || "Título++";
-    const userName = questionario.userName || "Nome++";
-    const perguntas = questionario.perguntas || [];
+    const perguntas = currentQuestionario.questions || [];
+    const descricao = currentQuestionario.description || 'Descrição++';
+    const titulo = currentQuestionario.title || 'Título++';
 
     return (
         <div
@@ -108,9 +109,9 @@ const RespostaQuestionario = (props) => {
                             mostrarResposta={props.ehResposta}
                             resposta={pergunta.resposta}
                             id={pergunta.id}
-                            tipo={pergunta.tipo}
+                            tipo={pergunta.ques_type}
                             dadosPergunta={pergunta.dados}
-                            descricao={pergunta.descricao}
+                            descricao={pergunta.description}
                             handleChangeResposta={handleChangeResposta}
                             key={pergunta.id}
                         />
@@ -120,7 +121,7 @@ const RespostaQuestionario = (props) => {
                     variant="contained"
                     color="default"
                     onClick={() => {
-                        history.push("/")
+                        history.push("/home")
                     }}
                 >
                     Voltar para home
